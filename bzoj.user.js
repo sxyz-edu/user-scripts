@@ -21,7 +21,7 @@ const pid2url = (pid) => {
 }
 
 const createLink = (url, title) => {
-  return `<a href="${url}" title="${title}">${title}</a>`;
+  return `<a href="${url}" title="${title}" target="_blank">${title}</a>`;
 }
 
 const main = (data) => {
@@ -30,13 +30,13 @@ const main = (data) => {
     location.href = location.href.replace('problem.php', 'show.php');
   }
   // add links to other oj
-  const pid = location.href.split('=')[1];
-  for (const i in data) {
-    if (data[i][0] == pid) {
-      const res1 = data[i][4];
-      const res2 = data[i][6];
+  const pid = Number(location.href.split('=')[1]);
+  for (const item of data) {
+    if (Number(item[0]) == pid) {
+      const res1 = item[4];
+      const res2 = item[6];
       const ele = document.getElementsByTagName('h2');
-      ele[0].innerText += [ '\nSee Also:'
+      ele[0].innerHTML += [ '<br>See Also:'
         , createLink(pid2url(res1), res1)
         , createLink(pid2url(res2), res2) ].join(' ');
     }
@@ -62,7 +62,7 @@ if (!result) {
   });
 } else {
   // using local cache
-  main(result);
+  main(JSON.parse(result));
 }
 
 } // end namespace
