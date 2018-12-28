@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         Scripts for BZOJ
 // @namespace    https://www.lydsy.com/
-// @version      0.0.2
+// @version      0.0.3
 // @match        https://www.lydsy.com/JudgeOnline/problem.php?id=*
 // @match        https://www.lydsy.com/JudgeOnline/show.php?id=*
 // @updateURL    https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/bzoj.user.js
@@ -16,12 +16,16 @@ const pid2url = (pid) => {
     .replace(/^Luogu(\d+)$/, 'https://www.luogu.org/problemnew/show/P$1')
     .replace(/^Loj(\d+)$/, 'https://loj.ac/problem/$1')
     .replace(/^Codevs(\d+)$/, 'http://codevs.cn/problem/$1/')
-    .replace(/^Cogs(\d+)$/, 'http://cogs.pro:8080/cogs/problem/problem.php?pid=$1')
+    .replace(/^Cogs(\d+)$/, '')
     .replace(/^Vijos(\d+)$/, 'https://vijos.org/p/$1');
 }
 
 const createLink = (url, title) => {
-  return `<a href="${url}" title="${title}" target="_blank">${title}</a>`;
+  if (url) {
+    return `<a href="${url}" title="${title}" target="_blank">${title}</a>`;
+  }
+
+  return '';
 }
 
 const main = (data) => {
