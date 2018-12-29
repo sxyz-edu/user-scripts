@@ -4,13 +4,9 @@
 
 Useful user scripts for OIers.
 
-## Usage
-
-1. Download [Tampermonkey](https://tampermonkey.net/) for your browser.
+## Feature
 
 **bzoj.user.js**
-
-<https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/bzoj.user.js>
 
 - Provide links for the same problem on luogu, vijos, codevs, etc.
 - Provide direct data download link (based on <https://lydsy.download>).
@@ -18,6 +14,14 @@ Useful user scripts for OIers.
 
 **luogu.user.js**
 
-<https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/luogu.user.js>
-
 - Provide a more friendly UI.
+
+## Usage
+
+1. Download [Tampermonkey](https://tampermonkey.net/) for your browser.
+
+2. Click the links below to install.
+
+- [bzoj.user.js](https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/bzoj.user.js)
+
+- [luogu.user.js](https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/luogu.user.js)
