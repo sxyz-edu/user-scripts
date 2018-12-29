@@ -2,6 +2,13 @@ language: node_js
 node_js:
   - node
 install:
-  - npm install eslint --save-dev
+  - npm install
 script:
-  - ./node_modules/.bin/eslint *.js
+  # check grammar
+  - npm run eslint
+  - npm run stylelint
+  # check if files in `dist/` is up-to-date
+  - mv dist/luogu.user.js dist/_luogu.user.js
+  - npm run build
+  - diff dist/luogu.user.js dist/_luogu.user.js
+  - rm dist/_luogu.user.js

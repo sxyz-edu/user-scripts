@@ -1,0 +1,28 @@
+{
+  "name": "user-scripts",
+  "version": "0.0.1",
+  "description": "Useful user scripts for OIers",
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^5.11.1",
+    "gulp": "^4.0.0",
+    "gulp-autoprefixer": "^6.0.0",
+    "gulp-csso": "^3.0.1",
+    "gulp-rename": "^1.4.0",
+    "stylelint": "^9.9.0",
+    "stylelint-config-standard": "^18.2.0"
+  },
+  "scripts": {
+    "eslint": "eslint *.user.js",
+    "stylelint": "stylelint *.user.css",
+    "build": "gulp luogu"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sxyz-edu/user-scripts.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sxyz-edu/user-scripts/issues"
+  },
+  "homepage": "https://github.com/sxyz-edu/user-scripts#readme"
+}

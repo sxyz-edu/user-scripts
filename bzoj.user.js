@@ -9,8 +9,6 @@
 // @supportURL   https://github.com/sxyz-edu/user-scripts
 // ==/UserScript==
 
-{ // namespace
-
 const pid2url = (pid) => {
   return pid
     .replace(/^Luogu(\d+)$/, 'https://www.luogu.org/problemnew/show/P$1')
@@ -59,14 +57,12 @@ const result = localStorage.getItem('bzoj_json');
 if (!result) {
   // data not found, download
   fetch('https://ruanx.pw/bzojch/result.json')
-  .then((res) => res.json())
-  .then((result) => {
-    localStorage.setItem('bzoj_json', JSON.stringify(result));
-    main(result);
-  });
+    .then((res) => res.json())
+    .then((result) => {
+      localStorage.setItem('bzoj_json', JSON.stringify(result));
+      main(result);
+    });
 } else {
   // using local cache
   main(JSON.parse(result));
 }
-
-} // end namespace
