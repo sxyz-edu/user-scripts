@@ -1,0 +1,24 @@
+// ==UserScript==
+// @name          Scripts for Luogu
+// @version       0.0.1
+// @namespace     https://www.luogu.org/
+// @match         https://www.luogu.org/*
+// @run-at        document-start
+// @updateURL     https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/luogu.user.js
+// @downloadURL   https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/luogu.user.js
+// @supportURL    https://github.com/sxyz-edu/user-scripts
+// ==/UserScript==
+
+// require luogu.user.css
+const css = '';
+
+const node = document.createElement('style');
+node.type = 'text/css';
+node.appendChild(document.createTextNode(css));
+const heads = document.getElementsByTagName('head');
+if (heads.length > 0) {
+  heads[0].appendChild(node);
+} else {
+  // no head yet, stick it whereever
+  document.documentElement.appendChild(node);
+}
