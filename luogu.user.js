@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          Scripts for Luogu
-// @version       0.0.1
+// @version       0.1.0
 // @namespace     https://www.luogu.org/
 // @match         https://www.luogu.org/*
 // @run-at        document-start
