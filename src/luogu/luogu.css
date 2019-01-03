@@ -748,8 +748,6 @@ a.am-modal-btn:visited {
   padding-left: 15px;
 }
 
-/* ---一些细节的处理 */
-
 .lg-message-contact:hover {/* 私信左列hover的颜色 */
   background: rgba(200, 200, 200, .2);
 }
@@ -777,4 +775,12 @@ a.am-modal-btn:visited {
 
 #app-sidenav > a {
   color: #5e72e4 !important;
+}
+
+/* --代码字体 */
+
+code,
+kbd,
+samp {
+  font-family: Consolas, monospace !important;
 }
