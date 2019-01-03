@@ -10,7 +10,4 @@ script:
   # check if files in `dist/` is up-to-date
   - mv dist dist-tmp
   - npm run build
-  - diff dist/bzoj.user.js dist-tmp/bzoj.user.js
-  - diff dist/luogu.user.js dist-tmp/luogu.user.js
-  - diff dist/luogu-custom.user.js dist-tmp/luogu-custom.user.js
-  - rm -r dist-tmp
+  - diff dist dist-tmp
