@@ -20,6 +20,7 @@ html > body {
 
 .content {
   color: #333333 !important;
+  opacity: .75;
 }
 
 /* --加载进度条处理 */
@@ -442,13 +443,6 @@ a.am-btn-warning:visited {
 }
 
 /* --犇犇Tab条 */
-
-/* 此处使用了不太好的适配器解决方案，日后可能会优化 */
-
-.lg-index-benben > .lg-article:nth-of-type(2) {
-  box-shadow: none !important;
-  background: transparent;
-}
 
 .feed-selector > a {
   font-weight: 500;
