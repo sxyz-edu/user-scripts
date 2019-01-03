@@ -1,8 +1,9 @@
 // ==UserScript==
 // @name          Scripts for Luogu
-// @version       0.1.0
+// @version       0.1.1
 // @namespace     https://www.luogu.org/
 // @match         https://www.luogu.org/*
+// @match         https://www.luogu.com.cn/*
 // @run-at        document-start
 // @updateURL     https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/luogu.user.js
 // @downloadURL   https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/luogu.user.js
@@ -19,6 +20,5 @@ const heads = document.getElementsByTagName('head');
 if (heads.length > 0) {
   heads[0].appendChild(node);
 } else {
-  // no head yet, stick it wherever
   document.documentElement.appendChild(node);
 }

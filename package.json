@@ -13,9 +13,9 @@
     "stylelint-config-standard": "^18.2.0"
   },
   "scripts": {
-    "eslint": "eslint *.user.js",
-    "stylelint": "stylelint *.user.css",
-    "build": "gulp luogu"
+    "eslint": "eslint src/**/*.js",
+    "stylelint": "stylelint src/**/*.css",
+    "build": "gulp"
   },
   "repository": {
     "type": "git",

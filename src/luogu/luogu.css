@@ -3,7 +3,7 @@
 /* --背景 */
 
 html > body {
-  background: url(https://i.loli.net/2018/12/22/5c1deea79335a.jpg) fixed;
+  background: var(--lg-wallpaper) fixed;
   background-size: cover;
   background-attachment: fixed;
 }
@@ -199,8 +199,8 @@ textarea:focus {
 .lg-article-sub,
 .lg-content-table-left,
 .am-progress {
-  opacity: .75;
-  background: rgba(255, 255, 255, .75);
+  opacity: var(--lg-opacity);
+  background: rgba(255, 255, 255, var(--lg-opacity));
 }
 
 /* --卡片 */

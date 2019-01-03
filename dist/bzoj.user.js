@@ -1,11 +1,11 @@
 // ==UserScript==
 // @name         Scripts for BZOJ
 // @namespace    https://www.lydsy.com/
-// @version      0.0.3
+// @version      0.1.0
 // @match        https://www.lydsy.com/JudgeOnline/problem.php?id=*
 // @match        https://www.lydsy.com/JudgeOnline/show.php?id=*
-// @updateURL    https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/bzoj.user.js
-// @downloadURL  https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/bzoj.user.js
+// @updateURL    https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/bzoj.user.js
+// @downloadURL  https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/bzoj.user.js
 // @supportURL   https://github.com/sxyz-edu/user-scripts
 // ==/UserScript==
 
