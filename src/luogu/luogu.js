@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name          Scripts for Luogu
-// @version       0.1.2
+// @version       0.1.3
 // @namespace     https://www.luogu.org/
 // @match         https://www.luogu.org/*
 // @match         https://www.luogu.com.cn/*
