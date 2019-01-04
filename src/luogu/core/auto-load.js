@@ -67,3 +67,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* eslint no-cond-assign: 0 */
 /* eslint no-plusplus: 0 */
+/* eslint no-console: ["error", { allow: ["warn", "error"] }] */
