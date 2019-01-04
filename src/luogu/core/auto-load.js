@@ -1,31 +1,6 @@
-// ==UserScript==
-// @name          Scripts for Luogu
-// @version       0.2.0
-// @namespace     https://www.luogu.org/
-// @match         https://www.luogu.org/*
-// @match         https://www.luogu.com.cn/*
-// @exclude       https://www.luogu.org/blog/*
-// @exclude       https://www.luogu.com.cn/blog/*
-// @run-at        document-start
-// @updateURL     https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/luogu.user.js
-// @downloadURL   https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/luogu.user.js
-// @supportURL    https://github.com/sxyz-edu/user-scripts
-// ==/UserScript==
-
-// require luogu.user.css
-const css = '$css$';
-
-const node = document.createElement('style');
-node.type = 'text/css';
-node.appendChild(document.createTextNode(css));
-const heads = document.getElementsByTagName('head');
-if (heads.length > 0) {
-  heads[0].appendChild(node);
-} else {
-  document.documentElement.appendChild(node);
-}
-
-// load comments automatically in discuss pages
+/**
+ * load comments automatically in discuss pages
+ */
 
 const shouldLoad = () => {
   const scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
@@ -72,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         })
         .catch((err) => {
+          // some network error...
           loading = false;
           console.error(err);
         });
@@ -90,5 +66,4 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /* eslint no-cond-assign: 0 */
-/* eslint no-console: 0 */
 /* eslint no-plusplus: 0 */

@@ -1,13 +1,6 @@
-// ==UserScript==
-// @name         Scripts for BZOJ
-// @namespace    https://www.lydsy.com/
-// @version      0.1.0
-// @match        https://www.lydsy.com/JudgeOnline/problem.php?id=*
-// @match        https://www.lydsy.com/JudgeOnline/show.php?id=*
-// @updateURL    https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/bzoj.user.js
-// @downloadURL  https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/bzoj.user.js
-// @supportURL   https://github.com/sxyz-edu/user-scripts
-// ==/UserScript==
+/**
+ * Provide links for the same problem on luogu, vijos, codevs, etc.
+ */
 
 const pid2url = (pid) => {
   return pid
@@ -27,11 +20,6 @@ const createLink = (url, title) => {
 }
 
 const main = (data) => {
-  // provide access
-  if (location.href.indexOf('problem.php') > -1) {
-    location.href = location.href.replace('problem.php', 'show.php');
-  }
-  // add links to other oj
   const pid = Number(location.href.split('=')[1]);
   for (const item of data) {
     if (Number(item[0]) == pid) {
@@ -43,19 +31,11 @@ const main = (data) => {
         , createLink(pid2url(res2), res2) ].join(' ');
     }
   }
-  // add download link
-  const elem = [ document.querySelector('title+center'), document.querySelector('div.content+center')];
-  elem.forEach((el) => {
-    if (el) {
-      el.innerHTML += `[<a href="https://lydsy.download/archive/${pid}.zip">Download</a>]`;
-    }
-  });
 }
 
 const result = localStorage.getItem('bzoj_json');
 
 if (!result) {
-  // data not found, download
   fetch('https://ruanx.pw/bzojch/result.json')
     .then((res) => res.json())
     .then((result) => {

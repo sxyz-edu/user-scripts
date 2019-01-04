@@ -1,16 +1,4 @@
-// ==UserScript==
-// @name          Luogu Config
-// @version       0.1.1
-// @namespace     https://www.luogu.org/
-// @match         https://www.luogu.org/*
-// @match         https://www.luogu.com.cn/*
-// @run-at        document-start
-// @updateURL     https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/luogu-custom.user.js
-// @downloadURL   https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/luogu-custom.user.js
-// @supportURL    https://github.com/sxyz-edu/user-scripts
-// ==/UserScript==
-
-// This is the configs to luogu.user.js
+// This is the configs script to luogu.user.js
 // You can modify these configs in order to fit your aesthetic.
 // We will not update this file unless we published a major update.
 
