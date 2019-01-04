@@ -2,6 +2,8 @@
 
 ![](https://travis-ci.com/sxyz-edu/user-scripts.svg?branch=master)
 
+**English** | [中文](./README-zh.md)
+
 Useful user scripts for OIers.
 
 ## Feature
@@ -19,6 +21,7 @@ Useful user scripts for OIers.
 [core][luogu-user-js] | [configs][luogu-config]
 
 - Provide a more friendly UI.
+- Load comments automatically in discuss pages.
 
 ## Usage
 

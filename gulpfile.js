@@ -23,6 +23,6 @@ gulp.task('bzoj', () => {
   return gulp.src('./src/bzoj/bzoj.js')
     .pipe(rename('bzoj.user.js'))
     .pipe(gulp.dest('dist'));
-})
+});
 
 gulp.task('default', gulp.parallel('luogu', 'luogu-custom', 'bzoj'));
