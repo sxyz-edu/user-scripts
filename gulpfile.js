@@ -26,8 +26,8 @@ gulp.task('luogu-core', () => {
         'https://www.luogu.com.cn/*'
       ],
       'exclude': [
-        'https://www.luogu.org/*',
-        'https://www.luogu.com.cn/*'
+        'https://www.luogu.org/blog/*',
+        'https://www.luogu.com.cn/blog/*'
       ],
       'run-at': 'document-start',
       'updateURL': 'https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/luogu.user.js',

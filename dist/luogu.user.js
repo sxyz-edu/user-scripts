@@ -4,8 +4,8 @@
 // @namespace      https://www.luogu.org/
 // @match          https://www.luogu.org/*
 // @match          https://www.luogu.com.cn/*
-// @exclude        https://www.luogu.org/*
-// @exclude        https://www.luogu.com.cn/*
+// @exclude        https://www.luogu.org/blog/*
+// @exclude        https://www.luogu.com.cn/blog/*
 // @run-at         document-start
 // @updateURL      https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/luogu.user.js
 // @downloadURL    https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/luogu.user.js
