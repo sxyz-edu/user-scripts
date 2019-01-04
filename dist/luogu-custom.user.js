@@ -41,5 +41,3 @@ if (heads.length > 0) {
 } else {
   document.documentElement.appendChild(node);
 }
-
-/* eslint capitalized-comments: 0 */
