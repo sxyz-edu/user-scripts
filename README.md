@@ -10,7 +10,7 @@ Useful user scripts for OIers.
 
 **bzoj.user.js**
 
-[download][bzoj-user-js]
+[install][bzoj-user-js]
 
 - Provide links for the same problem on luogu, vijos, codevs, etc.
 - Provide direct data download link (based on <https://lydsy.download>).
@@ -22,6 +22,7 @@ Useful user scripts for OIers.
 
 - Provide a more friendly UI.
 - Load comments automatically in discuss pages.
+- Compare solved problems between you and other users.
 
 ## Usage
 

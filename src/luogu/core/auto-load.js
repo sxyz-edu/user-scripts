@@ -1,5 +1,5 @@
 /**
- * load comments automatically in discuss pages
+ * Load comments automatically in discuss pages
  */
 
 const shouldLoad = () => {

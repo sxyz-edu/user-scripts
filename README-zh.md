@@ -10,7 +10,7 @@
 
 **bzoj.user.js**
 
-[下载][bzoj-user-js]
+[安装][bzoj-user-js]
 
 - 提供其他题库相同题目的跳转连接（数据来自第三方）；
 - 提供便捷的数据下载链接（基于 <https://lydsy.download>）；
@@ -18,10 +18,11 @@
 
 **luogu.user.js**
 
-[内核][luogu-user-js] | [配置][luogu-config]
+[内核][luogu-user-js] | [配置项][luogu-config]
 
 - 提供了一个更加舒适的 UI；
-- 评论自动翻页功能。
+- 评论自动翻页功能；
+- 比较别人和你的做题记录。
 
 ## 实用方法
 
