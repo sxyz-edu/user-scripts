@@ -19,7 +19,7 @@
     "stylelint-config-standard": "^18.2.0"
   },
   "scripts": {
-    "eslint": "eslint src/**/*.js --ignore-pattern src/utils/*.js",
+    "eslint": "eslint src/**/*.js --ignore-pattern src/utils/",
     "stylelint": "stylelint src/**/*.css",
     "build": "gulp"
   },
