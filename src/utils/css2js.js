@@ -1,5 +1,3 @@
-/* eslint-disable */
-
 'use strict';
 
 const fs = require('fs');
@@ -24,7 +22,7 @@ module.exports = () => {
 
   stream._transform = (file, encoding, callback) => {
 
-    const css = String(file.contents).replace(/'/g, '\\\'');
+    const css = String(file.contents);
     const result = template(css);
     file.contents = Buffer.from(result);
 

@@ -6,6 +6,7 @@ const uglify = require('gulp-uglify');
 const concat = require('gulp-concat');
 const css2js = require('./src/utils/css2js.js');
 const info = require('./src/utils/user.info.js');
+const declare = require('./src/utils/declare.js');
 const autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('luogu-core', () => {
@@ -14,12 +15,13 @@ gulp.task('luogu-core', () => {
     .pipe(csso())
     .pipe(css2js())
     .pipe(gulp.src('./src/luogu/core/*.js'))
+    .pipe(declare())
     .pipe(concat('luogu.user.js'))
     .pipe(babel({ presets: ['@babel/preset-env'] }))
     .pipe(uglify())
     .pipe(info({
       'name': 'Scripts for Luogu',
-      'version': '0.3.0',
+      'version': '0.3.1',
       'namespace': 'https://www.luogu.org/',
       'match': [
         'https://www.luogu.org/*',
@@ -58,13 +60,14 @@ gulp.task('luogu-custom', () => {
 
 gulp.task('bzoj', () => {
   return gulp.src('./src/bzoj/*.js')
+    .pipe(declare())
     .pipe(concat('bzoj.user.js'))
     .pipe(babel({ presets: ['@babel/preset-env'] }))
     .pipe(uglify())
     .pipe(info({
       'name': 'Scripts for BZOJ',
       'namespace': 'https://www.lydsy.com/',
-      'version': '0.1.1',
+      'version': '0.1.2',
       'match': [
         'https://www.lydsy.com/JudgeOnline/problem.php?id=*',
         'https://www.lydsy.com/JudgeOnline/show.php?id=*'

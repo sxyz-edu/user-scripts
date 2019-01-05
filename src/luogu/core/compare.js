@@ -1,6 +1,6 @@
 /**
  * Compare solved problems between you and other users.
- * 
+ *
  * - Passed: green
  * - Tried: orange
  * - Other: red
@@ -12,11 +12,10 @@ const aRegex = /<a[^>]*?>([\s\S]*?)<\/a>/gi;
 
 const parseProblems = (str) => {
   const resultArray = [];
-  while (true) {
-    const result = aRegex.exec(str);
-    if (!result) break;
+  for (let result = aRegex.exec(str); result; result = aRegex.exec(str)) {
     resultArray.push(result[1]);
   }
+
   return resultArray;
 }
 
@@ -24,30 +23,36 @@ const getProblemList = (uid) => {
   return new Promise((resolve, reject) => {
     const saved = localStorage.getItem(uid);
     if (saved) {
-      const data = JSON.parse(saved);
-      if (Number(new Date()) - data.updateAt <= 1000 * 60 * 60 * 1) {
-        return resolve(data);
+      try {
+        const data = JSON.parse(saved);
+        if (Number(new Date()) - data.updateAt <= 1000 * 60 * 60 * 1) {
+          resolve(data);
+        }
+      } catch (e) {
+        // do nothing
       }
     }
 
     const parseResult = (result) => {
       if (!result) {
-        reject('parse error');
+        reject(new Error('parse error'));
       }
+
       return result[1];
     }
 
-    fetch('/space/show?uid=' + uid)
+    fetch(`/space/show?uid=${uid}`)
       .then((res) => res.text())
       .then((res) => {
-        const escaped = parseResult(dataRegex.exec(res)).replace(spanRegex, '');
-        const statistics = parseResult(dataRegex.exec(res));
-        const tried = parseResult(dataRegex.exec(res));
-        const passedlist = parseProblems(escaped);
+        const passed = parseResult(dataRegex.exec(res)).replace(spanRegex, '');
+        dataRegex.exec(res); // statistics is no using
+        const tried = parseResult(dataRegex.exec(res)).replace(spanRegex, '');
+        const passedlist = parseProblems(passed);
         const triedlist = parseProblems(tried);
         const save = {
-          updateAt: Number(new Date()),
-          passedlist, triedlist
+          passedlist
+          , triedlist
+          , 'updateAt': Number(new Date())
         }
         localStorage.setItem(uid, JSON.stringify(save));
         resolve(save);
@@ -58,14 +63,14 @@ const getProblemList = (uid) => {
 
 const loadProblems = () => {
   if (window.location.pathname === '/space/show') {
-    const anotherMatch = /uid=(\d+)/.exec(window.location.href);
+    const anotherMatch = (/uid=(\d+)/).exec(window.location.href);
     if (!anotherMatch) {
       // if this is not a profile page
       return;
     }
     const another = anotherMatch[1];
 
-    const uidMatch = /_uid=(\d+)/i.exec(document.cookie);
+    const uidMatch = (/_uid=(\d+)/i).exec(document.cookie);
     if (!uidMatch) {
       // if the current user is not logged in yet
       return;
