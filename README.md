@@ -1,6 +1,6 @@
 # User Scripts
 
-![](https://travis-ci.com/sxyz-edu/user-scripts.svg?branch=master)
+[![](https://travis-ci.com/sxyz-edu/user-scripts.svg?branch=master)](https://travis-ci.com/sxyz-edu/user-scripts)
 
 **English** | [中文](./README-zh.md)
 
