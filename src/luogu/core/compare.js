@@ -29,7 +29,7 @@ const getProblemList = (uid) => {
           resolve(data);
         }
       } catch (e) {
-        // do nothing
+        console.error(e);
       }
     }
 
@@ -61,6 +61,12 @@ const getProblemList = (uid) => {
   });
 }
 
+const displayNumber = (num) => {
+  const cssSelector = 'body > #app-body-new > div > div.am-u-md-4.lg-right >div.lg-article.am-hide-sm >h2';
+  document.querySelector(cssSelector).style.fontSize = '18px';
+  document.querySelector(cssSelector).textContent = `通过题目（其中你有 ${num} 道题尚未 AC）`;
+}
+
 const loadProblems = () => {
   if (window.location.pathname === '/space/show') {
     const anotherMatch = (/uid=(\d+)/).exec(window.location.href);
@@ -78,26 +84,34 @@ const loadProblems = () => {
     const uid = uidMatch[1];
 
     if (another === uid) {
-      // I fuck myself
+      // compared with the current user logged in
       return;
     }
 
     getProblemList(uid).then((data) => {
+      let num = 0;
       const passedlist = new Set(data.passedlist);
       const triedlist = new Set(data.triedlist);
-      const fuckyou = Array.from(document.querySelectorAll('div.lg-article > a[data-pjax]'));
-      fuckyou.forEach((a) => {
+      const list = Array.from(document.querySelectorAll('div.lg-article > a[data-pjax]'));
+      list.forEach((a) => {
         const pid = a.innerHTML;
         if (passedlist.has(pid)) {
           a.style.color = '#1fc51f';
-        } else if (triedlist.has(pid)) {
-          a.style.color = '#ff9900';
         } else {
-          a.style.color = '#ff6666';
+          ++num;
+          if (triedlist.has(pid)) {
+            a.style.color = '#ff9900';
+          } else {
+            a.style.color = '#ff6666';
+          }
         }
       })
+      displayNumber(num);
     })
   }
 }
 
 document.addEventListener('DOMContentLoaded', loadProblems);
+
+/* eslint no-plusplus: 0 */
+/* eslint no-console: ["error", { allow: ["warn", "error"] }] */
