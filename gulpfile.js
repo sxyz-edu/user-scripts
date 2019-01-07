@@ -1,5 +1,6 @@
 const gulp = require('gulp');
 const csso = require('gulp-csso');
+const sort = require('gulp-sort');
 const babel = require('gulp-babel');
 const rename = require('gulp-rename');
 const uglify = require('gulp-uglify');
@@ -15,6 +16,7 @@ gulp.task('luogu-core', () => {
     .pipe(csso())
     .pipe(css2js())
     .pipe(gulp.src('./src/luogu/core/*.js'))
+    .pipe(sort())
     .pipe(declare())
     .pipe(concat('luogu.user.js'))
     .pipe(babel({ presets: ['@babel/preset-env'] }))
@@ -36,6 +38,7 @@ gulp.task('bzoj', () => {
     .pipe(csso())
     .pipe(css2js())
     .pipe(gulp.src('./src/bzoj/*.js'))
+    .pipe(sort())
     .pipe(declare())
     .pipe(concat('bzoj.user.js'))
     .pipe(babel({ presets: ['@babel/preset-env'] }))
