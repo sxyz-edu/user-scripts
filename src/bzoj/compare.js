@@ -17,6 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
+  const another = (/user=(\S+)/).exec(window.location.href)[1];
+
+  if (another === uid) {
+    // compared with the current user logged in
+    return;
+  }
+
   window.getProblemList(uid)
     .then((data) => {
       const passedlist = new Set(data.passedlist);
