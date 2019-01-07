@@ -25,11 +25,13 @@ const main = (data) => {
     if (Number(item[0]) == pid) {
       const res1 = item[4];
       const res2 = item[6];
-      if (res1 || res2) {
+      const url1 = pid2url(res1);
+      const url2 = pid2url(res2);
+      if (url1 || url2) {
         const ele = document.getElementsByTagName('h2');
         ele[0].innerHTML += ['<br>See Also:'
-          , createLink(pid2url(res1), res1)
-          , createLink(pid2url(res2), res2)].join(' ');
+          , createLink(url1, res1)
+          , createLink(url2, res2)].join(' ');
       }
     }
   }
