@@ -31,7 +31,11 @@ gulp.task('luogu-custom', () => {
 });
 
 gulp.task('bzoj', () => {
-  return gulp.src('./src/bzoj/*.js')
+  return gulp.src('./src/bzoj/*.css')
+    .pipe(autoprefixer())
+    .pipe(csso())
+    .pipe(css2js())
+    .pipe(gulp.src('./src/bzoj/*.js'))
     .pipe(declare())
     .pipe(concat('bzoj.user.js'))
     .pipe(babel({ presets: ['@babel/preset-env'] }))

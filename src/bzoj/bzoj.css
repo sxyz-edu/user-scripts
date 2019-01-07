@@ -1,0 +1,12 @@
+/* check mark */
+
+i.icon.check {
+  background: transparent;
+  width: 8px;
+  height: 16px;
+  display: inline-block;
+  border-right: 5px solid green;
+  border-bottom: 5px solid green;
+  transform: rotate(45deg);
+  margin-right: 10px;
+}
