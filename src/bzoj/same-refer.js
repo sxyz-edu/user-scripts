@@ -27,9 +27,9 @@ const main = (data) => {
       const res2 = item[6];
       const url1 = pid2url(res1);
       const url2 = pid2url(res2);
+      const ele = document.getElementsByTagName('h2')[0];
       if (url1 || url2) {
-        const ele = document.getElementsByTagName('h2');
-        ele[0].innerHTML += ['<br>See Also:'
+        ele.innerHTML += ['<br>See Also:'
           , createLink(url1, res1)
           , createLink(url2, res2)].join(' ');
       }
@@ -37,16 +37,20 @@ const main = (data) => {
   }
 }
 
-const result = localStorage.getItem('bzoj_json');
+document.addEventListener('DOMContentLoaded', () => {
 
-if (!result) {
-  fetch('https://ruanx.pw/bzojch/result.json')
-    .then((res) => res.json())
-    .then((result) => {
-      localStorage.setItem('bzoj_json', JSON.stringify(result));
-      main(result);
-    });
-} else {
-  // using local cache
-  main(JSON.parse(result));
-}
+  const result = localStorage.getItem('bzoj_json');
+
+  if (!result) {
+    fetch('https://ruanx.pw/bzojch/result.json')
+      .then((res) => res.json())
+      .then((result) => {
+        localStorage.setItem('bzoj_json', JSON.stringify(result));
+        main(result);
+      });
+  } else {
+    // using local cache
+    main(JSON.parse(result));
+  }
+
+});
