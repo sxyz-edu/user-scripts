@@ -96,13 +96,13 @@ const loadProblems = () => {
       list.forEach((a) => {
         const pid = a.innerHTML;
         if (passedlist.has(pid)) {
-          a.style.color = '#1fc51f';
+          a.classList.add('solved');
         } else {
           ++num;
           if (triedlist.has(pid)) {
-            a.style.color = '#ff9900';
+            a.classList.add('tried');
           } else {
-            a.style.color = '#ff6666';
+            a.classList.add('unsolved');
           }
         }
       })

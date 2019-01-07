@@ -776,3 +776,17 @@ kbd,
 samp {
   font-family: Consolas, monospace !important;
 }
+
+/* render */
+
+a.solved {
+  color: #1fc51f;
+}
+
+a.unsolved {
+  color: #ff6666;
+}
+
+a.tried {
+  color: #ff9900;
+}

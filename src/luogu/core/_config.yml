@@ -1,5 +1,5 @@
 name: Scripts for Luogu
-version: 0.3.2
+version: 0.3.3
 namespace: https://www.luogu.org/
 match:
   - https://www.luogu.org/*

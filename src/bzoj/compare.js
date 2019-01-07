@@ -31,9 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
       list.forEach((a) => {
         const id = a.innerText.trim();
         if (passedlist.has(id)) {
-          a.style.color = '#1fc51f';
+          a.classList.add('solved');
         } else {
-          a.style.color = '#ff6666';
+          a.classList.add('unsolved');
         }
       })
     })

@@ -10,3 +10,13 @@ i.icon.check {
   transform: rotate(45deg);
   margin-right: 10px;
 }
+
+/* render */
+
+a.solved {
+  color: #1fc51f;
+}
+
+a.unsolved {
+  color: #ff6666;
+}
