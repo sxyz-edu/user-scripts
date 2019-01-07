@@ -10,15 +10,6 @@ const dataRegex = /<div class="lg-article am-hide-sm">([\s\S]*?)<\/div>/gi;
 const spanRegex = /<span[\s\S]*?<\/span>/gi;
 const aRegex = /<a[^>]*?>([\s\S]*?)<\/a>/gi;
 
-const parseProblems = (str) => {
-  const resultArray = [];
-  for (let result = aRegex.exec(str); result; result = aRegex.exec(str)) {
-    resultArray.push(result[1]);
-  }
-
-  return resultArray;
-}
-
 const getProblemList = (uid) => {
   return new Promise((resolve, reject) => {
     const saved = localStorage.getItem(uid);
@@ -44,11 +35,11 @@ const getProblemList = (uid) => {
     fetch(`/space/show?uid=${uid}`)
       .then((res) => res.text())
       .then((res) => {
-        const passed = parseResult(dataRegex.exec(res)).replace(spanRegex, '');
-        dataRegex.exec(res); // statistics is no using
-        const tried = parseResult(dataRegex.exec(res)).replace(spanRegex, '');
-        const passedlist = parseProblems(passed);
-        const triedlist = parseProblems(tried);
+        const data = res.match(dataRegex).map((match) => match.replace(spanRegex, ''));
+        const passed = parseResult(data[0]);
+        const tried = parseResult(data[2]);
+        const passedlist = passed.match(aRegex);
+        const triedlist = tried.match(aRegex);
         const save = {
           passedlist
           , triedlist
@@ -67,7 +58,7 @@ const displayNumber = (num) => {
   document.querySelector(cssSelector).textContent = `通过题目（其中你有 ${num} 道题尚未 AC）`;
 }
 
-const loadProblems = () => {
+document.addEventListener('DOMContentLoaded', () => {
   if (window.location.pathname === '/space/show') {
     const anotherMatch = (/uid=(\d+)/).exec(window.location.href);
     if (!anotherMatch) {
@@ -88,27 +79,26 @@ const loadProblems = () => {
       return;
     }
 
-    getProblemList(uid).then((data) => {
-      let num = 0;
-      const passedlist = new Set(data.passedlist);
-      const triedlist = new Set(data.triedlist);
-      const list = Array.from(document.querySelectorAll('div.lg-article > a[data-pjax]'));
-      list.forEach((a) => {
-        const pid = a.innerHTML;
-        if (passedlist.has(pid)) {
-          a.classList.add('solved');
-        } else {
-          ++num;
-          if (triedlist.has(pid)) {
-            a.classList.add('tried');
+    window.getProblemList(uid)
+      .then((data) => {
+        let num = 0;
+        const passedlist = new Set(data.passedlist);
+        const triedlist = new Set(data.triedlist);
+        const list = Array.from(document.querySelectorAll('div.lg-article > a[data-pjax]'));
+        list.forEach((a) => {
+          const pid = a.innerHTML;
+          if (passedlist.has(pid)) {
+            a.classList.add('solved');
           } else {
-            a.classList.add('unsolved');
+            ++num;
+            if (triedlist.has(pid)) {
+              a.classList.add('tried');
+            } else {
+              a.classList.add('unsolved');
+            }
           }
-        }
-      })
-      displayNumber(num);
-    })
+        });
+        displayNumber(num);
+      });
   }
-}
-
-document.addEventListener('DOMContentLoaded', loadProblems);
+});

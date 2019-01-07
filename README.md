@@ -26,6 +26,7 @@ Useful user scripts for OIers.
 - Provide a more friendly UI.
 - Load comments automatically in discuss pages.
 - Compare solved problems between you and other users.
+- Add your score of the problem before the title.
 
 ## Usage
 

@@ -18,7 +18,7 @@ html > body {
 
 h1 {
   color: #333333 !important;
-  opacity: .75;
+  opacity: var(--lg-opacity);
 }
 
 /* --加载进度条处理 */
@@ -389,13 +389,13 @@ a.am-btn-warning:visited {
   border: none;
   box-shadow: 0 3px 5px rgba(50, 50, 93, .1), 0 2px 3px rgba(0, 0, 0, .08);
   transition: all .15s;
-  opacity: .75;
+  opacity: var(--lg-opacity);
 }
 
 .am-comment-main:hover {
   border: none;
   box-shadow: 0 7px 14px rgba(50, 50, 93, .1), 0 3px 6px rgba(0, 0, 0, .08);
-  opacity: .75;
+  opacity: var(--lg-opacity);
 }
 
 .am-comment-main:before,
