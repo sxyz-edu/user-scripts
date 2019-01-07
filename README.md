@@ -12,7 +12,7 @@ Useful user scripts for OIers.
 
 [install][bzoj-user-js]
 
-- Provide links for the related problem on luogu, vijos, codevs, etc.
+- Provide links for related problems on luogu, vijos, codevs, etc.
 - Provide direct data download link (based on <https://lydsy.download>).
 - Provide access to protected problems (read only, cannot submit yet).
 - Compare solved problems between you and other users.
