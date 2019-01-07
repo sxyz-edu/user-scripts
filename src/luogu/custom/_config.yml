@@ -1,0 +1,10 @@
+name: Luogu Config
+version: 0.1.1
+namespace: https://www.luogu.org/
+match:
+  - https://www.luogu.org/*
+  - https://www.luogu.com.cn/*
+run-at: document-start
+updateURL: https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/luogu-custom.user.js
+downloadURL: https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/luogu-custom.user.js
+supportURL: https://github.com/sxyz-edu/user-scripts

@@ -1,15 +1,8 @@
 'use strict';
 
-const fs = require('fs');
 const { Transform } = require('stream');
 
-const template = (js) => `
-;(function () {
-
-${js}
-
-})();
-`
+const template = (js) => `;(function(){ ${js} })();`;
 
 module.exports = () => {
   const stream = new Transform({ objectMode: true });

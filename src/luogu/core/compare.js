@@ -112,6 +112,3 @@ const loadProblems = () => {
 }
 
 document.addEventListener('DOMContentLoaded', loadProblems);
-
-/* eslint no-plusplus: 0 */
-/* eslint no-console: ["error", { allow: ["warn", "error"] }] */

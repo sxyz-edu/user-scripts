@@ -19,42 +19,14 @@ gulp.task('luogu-core', () => {
     .pipe(concat('luogu.user.js'))
     .pipe(babel({ presets: ['@babel/preset-env'] }))
     .pipe(uglify())
-    .pipe(info({
-      'name': 'Scripts for Luogu',
-      'version': '0.3.2',
-      'namespace': 'https://www.luogu.org/',
-      'match': [
-        'https://www.luogu.org/*',
-        'https://www.luogu.com.cn/*'
-      ],
-      'exclude': [
-        'https://www.luogu.org/blog/*',
-        'https://www.luogu.com.cn/blog/*'
-      ],
-      'run-at': 'document-start',
-      'updateURL': 'https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/luogu.user.js',
-      'downloadURL': 'https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/luogu.user.js',
-      'supportURL': 'https://github.com/sxyz-edu/user-scripts'
-    }))
+    .pipe(info('./src/luogu/core/_config.yml'))
     .pipe(gulp.dest('dist'));
 });
 
 gulp.task('luogu-custom', () => {
   return gulp.src('./src/luogu/custom/custom.js')
     .pipe(rename('luogu-custom.user.js'))
-    .pipe(info({
-      'name': 'Luogu Config',
-      'version': '0.1.1',
-      'namespace': 'https://www.luogu.org/',
-      'match': [
-        'https://www.luogu.org/*',
-        'https://www.luogu.com.cn/*'
-      ],
-      'run-at': 'document-start',
-      'updateURL': 'https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/luogu-custom.user.js',
-      'downloadURL': 'https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/luogu-custom.user.js',
-      'supportURL': 'https://github.com/sxyz-edu/user-scripts'
-    }))
+    .pipe(info('./src/luogu/custom/_config.yml'))
     .pipe(gulp.dest('dist'));
 });
 
@@ -64,18 +36,7 @@ gulp.task('bzoj', () => {
     .pipe(concat('bzoj.user.js'))
     .pipe(babel({ presets: ['@babel/preset-env'] }))
     .pipe(uglify())
-    .pipe(info({
-      'name': 'Scripts for BZOJ',
-      'namespace': 'https://www.lydsy.com/',
-      'version': '0.1.2',
-      'match': [
-        'https://www.lydsy.com/JudgeOnline/problem.php?id=*',
-        'https://www.lydsy.com/JudgeOnline/show.php?id=*'
-      ],
-      'updateURL': 'https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/bzoj.user.js',
-      'downloadURL': 'https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/bzoj.user.js',
-      'supportURL': 'https://github.com/sxyz-edu/user-scripts'
-    }))
+    .pipe(info('./src/bzoj/_config.yml'))
     .pipe(gulp.dest('dist'));
 });
 

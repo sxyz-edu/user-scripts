@@ -1,6 +1,5 @@
 'use strict';
 
-const fs = require('fs');
 const { Transform } = require('stream');
 
 const template = (css) => `
