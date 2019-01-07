@@ -15,6 +15,7 @@ Useful user scripts for OIers.
 - Provide links for related problems on luogu, vijos, codevs, etc.
 - Provide direct data download link (based on <https://lydsy.download>).
 - Provide access to protected problems (read only, cannot submit yet).
+- Add a mark before the title if you have solved this problem already.
 - Compare solved problems between you and other users.
 - Keep your session.
 
