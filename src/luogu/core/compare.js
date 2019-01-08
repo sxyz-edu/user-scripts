@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    window.getProblemList(uid)
+    getProblemList(uid)
       .then((data) => {
         let num = 0;
         const passedlist = new Set(data.passedlist);
