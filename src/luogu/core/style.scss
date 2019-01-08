@@ -1,4 +1,4 @@
-/* --背景 */
+// 背景
 
 body {
   background: var(--lg-wallpaper) fixed;
@@ -6,7 +6,7 @@ body {
   background-attachment: fixed;
 }
 
-/* --顶栏 */
+// 顶栏
 
 #app-header,
 .content > header {
@@ -18,14 +18,14 @@ h1 {
   opacity: var(--lg-opacity);
 }
 
-/* --加载进度条处理 */
+// 加载进度条处理
 
 #nprogress .nprogress-peg {
   display: none;
   box-shadow: none !important;
 }
 
-/* --选中内容的样式 */
+// 选中内容的样式
 
 ::selection,
 ::-moz-selection,
@@ -33,10 +33,10 @@ h1 {
   background-color: #cce2ff;
 }
 
-/* --滚动条 */
+// 滚动条
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 12px;
   height: 10px;
   background-color: rgba(0, 0, 0, 0);
 }
@@ -53,7 +53,7 @@ h1 {
   }
 }
 
-/* --超链接 */
+// 超链接
 
 a {
   transition: all .15s;
@@ -72,7 +72,7 @@ a {
   }
 }
 
-/* --颜色定义 */
+// 颜色定义
 
 .lg-fg-green {
   color: #2dce89 !important;
@@ -98,7 +98,7 @@ a {
   background-color: #001277;
 }
 
-/* --动画定义 */
+// 动画定义
 @keyframes fadeLeft {
 
   from {
@@ -107,7 +107,7 @@ a {
   }
 }
 
-/* --输入框 */
+// 输入框
 
 .am-input-group {
   transition: box-shadow .15s ease;
@@ -179,7 +179,7 @@ textarea {
   }
 }
 
-/* -特判顶部工具条搜索 */
+// 特判顶部工具条搜索
 
 #topbar-search-text {
   border-radius: .5rem 0 0 .5em !important;
@@ -191,7 +191,7 @@ textarea {
   background-color: #5e72e4;
 }
 
-/* 卡片透明度 */
+// 卡片透明度
 
 .lg-article,
 .lg-summary,
@@ -202,7 +202,7 @@ textarea {
   background: rgba(255, 255, 255, var(--lg-opacity));
 }
 
-/* --卡片 */
+// 卡片
 
 .lg-article,
 .lg-summary,
@@ -218,7 +218,7 @@ textarea {
   }
 }
 
-/* --按钮 */
+// 按钮
 
 .am-btn {
   outline: none !important;
@@ -277,7 +277,7 @@ textarea {
   @include button-color(#fb6340, #fb6340);
 }
 
-/* --Tooltip */
+// Tooltip
 
 .tip-twitter {
   background: #172b4d;
@@ -293,7 +293,7 @@ textarea {
   }
 }
 
-/* --标签 */
+// 标签
 
 .am-badge {
   border-radius: 50px !important;
@@ -341,7 +341,7 @@ textarea {
   }
 }
 
-/* --菜单 */
+// 菜单
 
 .am-dropdown-content {
   padding: 1.5rem;
@@ -358,7 +358,7 @@ textarea {
   }
 }
 
-/* --私信提示浮窗 */
+// 私信提示浮窗
 
 .lg-unread {
   line-height: 60px;
@@ -374,7 +374,7 @@ textarea {
   overflow: hidden;
 }
 
-/* --消息内容 */
+// 消息内容
 
 .am-comment-main {
   border: none;
@@ -394,7 +394,7 @@ textarea {
   }
 }
 
-/* -未登录时登录条的处理 */
+// 未登录时登录条的处理
 
 .lg-toolbar > .lg-index-tool {
   box-shadow: 0 5px 15px rgba(50, 50, 93, .1), 0 5px 8px rgba(0, 0, 0, .07) !important;
@@ -403,7 +403,7 @@ textarea {
   color: #32325d;
 }
 
-/* --列表 */
+// 列表
 
 .lg-content-table-left {
   background: #fcfcfc;
@@ -431,7 +431,7 @@ textarea {
   }
 }
 
-/* --犇犇Tab条 */
+// 犇犇Tab条
 
 .feed-selector > a {
   font-weight: 500;
@@ -444,7 +444,7 @@ textarea {
   line-height: 36px;
 }
 
-/* --其余Tab条 */
+// 其余Tab条
 
 .am-nav-tabs {
 
@@ -473,7 +473,7 @@ textarea {
   background: transparent;
 }
 
-/* --页码 */
+// 页码
 
 .am-pagination {
   padding-top: 20px;
@@ -492,8 +492,6 @@ textarea {
     background-color: #ffffff;
     font-size: 15px;
     font-weight: unset;
-
-    /* display: flex; */
     min-width: 36px;
     height: 36px;
     border-radius: 100px !important;
@@ -525,7 +523,7 @@ textarea {
   background-color: #5e72e4;
 }
 
-/* --评测详情色块 */
+// 评测详情色块
 
 .lg-record-tile {
   transition: all .15s ease;
@@ -539,7 +537,7 @@ textarea {
   }
 }
 
-/* --头像 */
+// 头像
 
 .am-comment-avatar {
   box-shadow: 0 15px 35px rgba(50, 50, 93, .1), 0 5px 15px rgba(0, 0, 0, .07);
@@ -559,14 +557,14 @@ textarea {
   box-shadow: none;
 }
 
-/* --卡片面板 */
+// 卡片面板
 
 .am-panel {
   border: none;
   box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
 }
 
-/* --团队成员卡 */
+// 团队成员卡
 
 .lg-mcard {
   border: none;
@@ -581,7 +579,7 @@ textarea {
   }
 }
 
-/* --进度条 */
+// 进度条
 
 .lg-table-small {
   margin-top: 5px;
@@ -597,7 +595,7 @@ textarea {
   background-color: #5e72e4;
 }
 
-/* --复选框 */
+// 复选框
 
 .am-ucheck-checkbox:checked + .am-ucheck-icons,
 .am-ucheck-radio:checked + .am-ucheck-icons,
@@ -616,7 +614,7 @@ textarea {
   margin-top: 3px;
 }
 
-/* --404页面 */
+// 404页面
 
 .lg-info-box {
   color: #ffffff;
@@ -659,7 +657,7 @@ textarea {
   }
 }
 
-/* --对话框 */
+// 对话框
 
 .am-modal-dialog {
   box-shadow: 0 15px 35px rgba(50, 50, 93, .2), 0 5px 15px rgba(0, 0, 0, .17);
@@ -748,7 +746,7 @@ textarea {
 .lg-message-contact {
 
   &:hover {
-    /* 私信左列hover的颜色 */
+    // 私信左列
     background: rgba(200, 200, 200, .2);
   }
 
@@ -758,17 +756,17 @@ textarea {
 }
 
 .am-selected-list li:hover {
-  /* 弹出菜单项Hover处理 */
+  // 弹出菜单项
   background: rgba(200, 200, 200, .2) !important;
 }
 
-/* --底栏 */
+// 底栏
 
 #app-footer {
   margin-left: 0 !important;
 }
 
-/* --侧栏 */
+// 侧栏
 
 #app-sidenav {
   background-color: transparent !important;
@@ -779,7 +777,7 @@ textarea {
   }
 }
 
-/* --代码字体 */
+// 代码字体
 
 code,
 kbd,
