@@ -21,7 +21,9 @@ const getProblemList = (uid) => {
       try {
         const data = JSON.parse(saved);
         if (Number(new Date()) - data.updateAt <= 1000 * 60 * 60 * 1) {
-          return resolve(data);
+          resolve(data);
+
+          return;
         }
       } catch (e) {
         console.error(e);

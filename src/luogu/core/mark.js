@@ -6,8 +6,8 @@
 const queryForScore = (uid, pid) => {
   return new Promise((resolve, reject) => {
     fetch(`/recordnew/lists?uid=${uid}&pid=${pid}`)
-      .then(res => res.text())
-      .then(res => {
+      .then((res) => res.text())
+      .then((res) => {
         const dom = new DOMParser().parseFromString(res, 'text/html');
         const elems = Array.from(dom.querySelectorAll('strong[class^="lg-fg-"]'));
         // special judge for remote judge
@@ -20,10 +20,13 @@ const queryForScore = (uid, pid) => {
             resolve(-1);
           }
         }
-        const score = Math.max(-1,
+        const score = Math.max(
+          -1,
           ...elems.map((elem) => Number(elem.textContent))
-                  .filter((num) => !isNaN(num)));
-        // TODO: submit history may more than one page
+            .filter((num) => !isNaN(num))
+        );
+        // submit history may more than one page
+        // may cause bug here...
         resolve(score);
       })
       .catch(reject);

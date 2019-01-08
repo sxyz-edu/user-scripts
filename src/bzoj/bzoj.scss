@@ -13,10 +13,13 @@ i.icon.check {
 
 /* render */
 
-a.solved {
-  color: #1fc51f;
-}
+a {
 
-a.unsolved {
-  color: #ff6666;
+  &.solved {
+    color: #1fc51f;
+  }
+
+  &.unsolved {
+    color: #ff6666;
+  }
 }

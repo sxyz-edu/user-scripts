@@ -1,6 +1,7 @@
 const gulp = require('gulp');
 const csso = require('gulp-csso');
 const sort = require('gulp-sort');
+const sass = require('gulp-sass');
 const babel = require('gulp-babel');
 const rename = require('gulp-rename');
 const uglify = require('gulp-uglify');
@@ -11,7 +12,8 @@ const declare = require('./src/utils/declare.js');
 const autoprefixer = require('gulp-autoprefixer');
 
 gulp.task('luogu-core', () => {
-  return gulp.src('./src/luogu/core/*.css')
+  return gulp.src('./src/luogu/core/*.scss')
+    .pipe(sass())
     .pipe(autoprefixer())
     .pipe(csso())
     .pipe(css2js())
@@ -33,7 +35,8 @@ gulp.task('luogu-custom', () => {
 });
 
 gulp.task('bzoj', () => {
-  return gulp.src('./src/bzoj/*.css')
+  return gulp.src('./src/bzoj/*.scss')
+    .pipe(sass())
     .pipe(autoprefixer())
     .pipe(csso())
     .pipe(css2js())

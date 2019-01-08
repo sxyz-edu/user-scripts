@@ -2,7 +2,9 @@
   "name": "user-scripts",
   "version": "0.0.1",
   "description": "Useful user scripts for OIers",
-  "dependencies": {},
+  "dependencies": {
+    "stylelint-cli": "^1.0.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.3",
@@ -14,15 +16,20 @@
     "gulp-concat": "^2.6.1",
     "gulp-csso": "^3.0.1",
     "gulp-rename": "^1.4.0",
+    "gulp-sass": "^4.0.2",
     "gulp-sort": "^2.0.0",
     "gulp-uglify": "^3.0.1",
     "js-yaml": "^3.12.1",
+    "node-sass": "^4.11.0",
     "stylelint": "^9.9.0",
-    "stylelint-config-standard": "^18.2.0"
+    "stylelint-config-standard-scss": "^1.0.1",
+    "stylelint-scss": "^3.4.4"
   },
   "scripts": {
-    "eslint": "eslint src/**/*.js --ignore-pattern src/utils/",
-    "stylelint": "stylelint src/**/*.css",
+    "eslint": "eslint \"src/**/*.js\" --ignore-pattern \"src/utils/\"",
+    "eslint:fix": "eslint \"src/**/*.js\" --ignore-pattern \"src/utils/\" --fix",
+    "stylelint": "stylelint \"src/**/*.scss\"",
+    "stylelint:fix": "stylelint \"src/**/*.scss\" --fix",
     "build": "gulp"
   },
   "repository": {
