@@ -10,6 +10,10 @@ const dataRegex = /<div class="lg-article am-hide-sm">([\s\S]*?)<\/div>/gi;
 const spanRegex = /<span[\s\S]*?<\/span>/gi;
 const aRegex = /<a[^>]*?>([\s\S]*?)<\/a>/gi;
 
+const parseProblems = (str) => {
+  return str.match(aRegex).map((res) => res.replace(aRegex, '$1'));
+}
+
 const getProblemList = (uid) => {
   return new Promise((resolve, reject) => {
     const saved = localStorage.getItem(uid);
@@ -17,7 +21,7 @@ const getProblemList = (uid) => {
       try {
         const data = JSON.parse(saved);
         if (Number(new Date()) - data.updateAt <= 1000 * 60 * 60 * 1) {
-          resolve(data);
+          return resolve(data);
         }
       } catch (e) {
         console.error(e);
@@ -29,17 +33,15 @@ const getProblemList = (uid) => {
         reject(new Error('parse error'));
       }
 
-      return result[1];
+      return result;
     }
 
     fetch(`/space/show?uid=${uid}`)
       .then((res) => res.text())
       .then((res) => {
         const data = res.match(dataRegex).map((match) => match.replace(spanRegex, ''));
-        const passed = parseResult(data[0]);
-        const tried = parseResult(data[2]);
-        const passedlist = passed.match(aRegex);
-        const triedlist = tried.match(aRegex);
+        const passedlist = parseProblems(parseResult(data[0]));
+        const triedlist = parseProblems(parseResult(data[2]));
         const save = {
           passedlist
           , triedlist
