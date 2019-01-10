@@ -1,6 +1,6 @@
 name: Scripts for BZOJ
 namespace: https://www.lydsy.com/
-version: 0.2.6
+version: 0.2.7
 match:
   - https://lydsy.com/JudgeOnline/*
   - https://www.lydsy.com/JudgeOnline/*

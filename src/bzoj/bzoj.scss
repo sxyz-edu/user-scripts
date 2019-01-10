@@ -23,3 +23,19 @@ a {
     color: #ff6666;
   }
 }
+
+.star {
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  color: #656565;
+  transition: color .2s;
+  margin: 0 10px;
+  cursor: pointer;
+  vertical-align: middle;
+
+  &.stared {
+    color: #ffcc2f;
+    transition: color .2s;
+  }
+}
