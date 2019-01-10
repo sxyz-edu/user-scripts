@@ -27,6 +27,9 @@ Useful user scripts for OIers.
 - Load comments automatically in discuss pages.
 - Compare solved problems between you and other users.
 - Add your score of the problem before the title.
+- Extend the original search function.
+  + Default: direct search for the problem (title or pid).
+  + Start with "u:" : search for the user (username or uid).
 
 ## Usage
 
