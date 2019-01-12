@@ -27,11 +27,15 @@ const main = (data) => {
       const res2 = item[6];
       const url1 = pid2url(res1);
       const url2 = pid2url(res2);
-      const ele = document.getElementsByTagName('h2')[0];
+      const ele = document.querySelector('span');
+      const e = document.createElement('h3');
+      e.style.color = 'blue';
       if (url1 || url2) {
-        ele.innerHTML += ['<br>See Also:'
+        e.innerHTML = ['See Also:'
           , createLink(url1, res1)
-          , createLink(url2, res2)].join(' ');
+          , createLink(url2, res2)
+        ].join(' ');
+        ele.insertBefore(e, ele.firstChild);
       }
     }
   }
