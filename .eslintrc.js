@@ -106,7 +106,7 @@ module.exports = {
     "max-depth": "error",
     "max-len": "off",
     "max-lines": "error",
-    "max-lines-per-function": "error",
+    "max-lines-per-function": ["error", 80],
     "max-nested-callbacks": "error",
     "max-params": "error",
     "max-statements": "off",
@@ -219,8 +219,8 @@ module.exports = {
     "no-with": "error",
     "nonblock-statement-body-position": "error",
     "object-curly-newline": "error",
-    "object-curly-spacing": "error",
-    "object-property-newline": "error",
+    "object-curly-spacing": ["error", "always"],
+    "object-property-newline": "off",
     "object-shorthand": "error",
     "one-var": "off",
     "one-var-declaration-per-line": "error",
@@ -253,7 +253,10 @@ module.exports = {
     "require-unicode-regexp": "off",
     "rest-spread-spacing": "error",
     "semi": "off",
-    "semi-spacing": "error",
+    "semi-spacing": ["error", {
+      "before": false,
+      "after": true
+    }],
     "semi-style": [
       "error",
       "last"
