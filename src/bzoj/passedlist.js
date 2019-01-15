@@ -42,4 +42,4 @@ const getProblemList = (uid) => {
   });
 }
 
-window.getProblemList = getProblemList;
+export default getProblemList;

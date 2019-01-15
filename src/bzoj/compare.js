@@ -5,6 +5,8 @@
  * - Other: red
  */
 
+import getProblemList from './passedlist.js';
+
 document.addEventListener('DOMContentLoaded', () => {
   if (window.location.pathname !== '/JudgeOnline/userinfo.php') {
     // is not a profile page
@@ -24,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  window.getProblemList(uid)
+  getProblemList(uid)
     .then((data) => {
       const passedlist = new Set(data.passedlist);
       const list = Array.from(document.querySelectorAll('a[href^="problem.php"]'));

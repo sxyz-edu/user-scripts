@@ -1,12 +1,12 @@
 name: Scripts for BZOJ
 namespace: https://www.lydsy.com/
-version: 0.4.0-alpha.0
+version: 0.4.0-alpha.1
 match:
   - https://lydsy.com/JudgeOnline/*
   - https://www.lydsy.com/JudgeOnline/*
 run-at: document-start
-updateURL: https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/bzoj.user.js
-downloadURL: https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/bzoj.user.js
+updateURL: https://github.com/sxyz-edu/user-scripts/raw/alpha/dist/bzoj.user.js
+downloadURL: https://github.com/sxyz-edu/user-scripts/raw/alpha/dist/bzoj.user.js
 supportURL: https://github.com/sxyz-edu/user-scripts
 
 # leancloud api

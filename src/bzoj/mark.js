@@ -2,6 +2,8 @@
  * Display a check mark if you accept this problem
  */
 
+import getProblemList from './passedlist.js';
+
 document.addEventListener('DOMContentLoaded', () => {
   if (window.location.pathname !== '/JudgeOnline/show.php' &&
       window.location.pathname !== '/JudgeOnline/problem.php') {
@@ -17,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const pid = location.href.split('=')[1];
 
-  window.getProblemList(uid)
+  getProblemList(uid)
     .then((data) => {
       const passedlist = new Set(data.passedlist);
       if (passedlist.has(pid)) {

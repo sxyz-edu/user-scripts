@@ -1,6 +1,6 @@
 name: Scripts for Luogu
-version: 0.4.0
 namespace: https://www.luogu.org/
+version: 0.5.0-alpha.1
 match:
   - https://www.luogu.org/*
   - https://www.luogu.com.cn/*
@@ -8,6 +8,6 @@ exclude:
   - https://www.luogu.org/blog/*
   - https://www.luogu.com.cn/blog/*
 run-at: document-start
-updateURL: https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/luogu.user.js
-downloadURL: https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/luogu.user.js
+updateURL: https://github.com/sxyz-edu/user-scripts/raw/alpha/dist/luogu.user.js
+downloadURL: https://github.com/sxyz-edu/user-scripts/raw/alpha/dist/luogu.user.js
 supportURL: https://github.com/sxyz-edu/user-scripts

@@ -1,53 +1,19 @@
 const gulp = require('gulp');
-const csso = require('gulp-csso');
-const sort = require('gulp-sort');
-const sass = require('gulp-sass');
-const babel = require('gulp-babel');
+const path = require('path');
 const rename = require('gulp-rename');
-const uglify = require('gulp-uglify');
-const concat = require('gulp-concat');
-const css2js = require('./src/utils/css2js.js');
-const info = require('./src/utils/user.info.js');
-const declare = require('./src/utils/declare.js');
-const autoprefixer = require('gulp-autoprefixer');
+const webpack = require('webpack-stream');
+const info = require('./user.info.js');
+const webpackConfig = require('./webpack.config.js');
 
-gulp.task('luogu-core', () => {
-  return gulp.src('./src/luogu/core/*.scss')
-    .pipe(sass())
-    .pipe(autoprefixer())
-    .pipe(csso())
-    .pipe(css2js())
-    .pipe(gulp.src('./src/luogu/core/*.js'))
-    .pipe(sort())
-    .pipe(declare())
-    .pipe(concat('luogu.user.js'))
-    .pipe(babel({ presets: ['@babel/preset-env'] }))
-    .pipe(uglify())
-    .pipe(info('./src/luogu/core/_config.yml'))
+const generateUserScript = (dirname) => () => {
+  return gulp.src(path.join(dirname, 'index.js'))
+    .pipe(webpack(webpackConfig))
+    .pipe(info(path.join(dirname, '_config.yml')))
+    .pipe(rename(path.basename(dirname) + '.user.js'))
     .pipe(gulp.dest('dist'));
-});
+}
 
-gulp.task('luogu-custom', () => {
-  return gulp.src('./src/luogu/custom/custom.js')
-    .pipe(rename('luogu-custom.user.js'))
-    .pipe(info('./src/luogu/custom/_config.yml'))
-    .pipe(gulp.dest('dist'));
-});
+gulp.task('luogu', generateUserScript('./src/luogu'));
+gulp.task('bzoj', generateUserScript('./src/bzoj'));
 
-gulp.task('bzoj', () => {
-  return gulp.src('./src/bzoj/*.scss')
-    .pipe(sass())
-    .pipe(autoprefixer())
-    .pipe(csso())
-    .pipe(css2js())
-    .pipe(gulp.src('./src/bzoj/*.js'))
-    .pipe(sort())
-    .pipe(declare())
-    .pipe(concat('bzoj.user.js'))
-    .pipe(babel({ presets: ['@babel/preset-env'] }))
-    .pipe(uglify())
-    .pipe(info('./src/bzoj/_config.yml'))
-    .pipe(gulp.dest('dist'));
-});
-
-gulp.task('default', gulp.parallel('luogu-core', 'luogu-custom', 'bzoj'));
+gulp.task('default', gulp.series('luogu', 'bzoj'));
