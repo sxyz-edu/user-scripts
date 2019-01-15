@@ -23,7 +23,7 @@
     "stylelint-scss": "^3.4.4",
     "webpack": "^4.28.4",
     "webpack-cli": "^3.2.1",
-    "webpack-stream": "^5.0.0"
+    "webpack-stream": "^5.2.1"
   },
   "scripts": {
     "eslint": "eslint \"src/**/*.js\"",
