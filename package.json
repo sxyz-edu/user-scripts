@@ -2,7 +2,9 @@
   "name": "user-scripts",
   "version": "0.0.1",
   "description": "Useful user scripts for OIers",
-  "dependencies": {},
+  "dependencies": {
+    "leancloud-storage": "^3.11.1"
+  },
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.3",
@@ -21,13 +23,16 @@
     "stylelint": "^9.9.0",
     "stylelint-config-standard-scss": "^1.0.1",
     "stylelint-scss": "^3.4.4",
+    "ts-loader": "^5.3.3",
+    "typescript": "^3.2.2",
+    "typescript-eslint-parser": "^21.0.2",
     "webpack": "^4.28.4",
     "webpack-cli": "^3.2.1",
     "webpack-stream": "^5.2.1"
   },
   "scripts": {
-    "eslint": "eslint \"src/**/*.js\"",
-    "eslint:fix": "eslint \"src/**/*.js\" --fix",
+    "eslint": "eslint \"src/**/*.ts\"",
+    "eslint:fix": "eslint \"src/**/*.ts\" --fix",
     "stylelint": "stylelint \"src/**/*.scss\"",
     "stylelint:fix": "stylelint \"src/**/*.scss\" --fix",
     "build": "gulp"

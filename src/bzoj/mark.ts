@@ -2,7 +2,7 @@
  * Display a check mark if you accept this problem
  */
 
-import getProblemList from './passedlist.js';
+import { getProblemList } from './getProblemList';
 
 document.addEventListener('DOMContentLoaded', () => {
   if (window.location.pathname !== '/JudgeOnline/show.php' &&
@@ -11,13 +11,14 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  const uid = document.querySelector('font[color]').innerText;
+  const uidElem = document.querySelector('font[color]');
+  const uid = uidElem && uidElem.textContent || '';
   if (uid === '捐赠本站') {
     // not logged in yet
     return;
   }
 
-  const pid = location.href.split('=')[1];
+  const pid = Number(location.href.split('=')[1]);
 
   getProblemList(uid)
     .then((data) => {

@@ -6,7 +6,7 @@ const info = require('./user.info.js');
 const webpackConfig = require('./webpack.config.js');
 
 const generateUserScript = (dirname) => () => {
-  return gulp.src(path.join(dirname, 'index.js'))
+  return gulp.src(path.join(dirname, 'index.ts'))
     .pipe(webpack(Object.assign({}, webpackConfig)))
     .pipe(info(path.join(dirname, '_config.yml')))
     .pipe(rename(path.basename(dirname) + '.user.js'))

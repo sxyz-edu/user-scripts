@@ -9,8 +9,10 @@ document.addEventListener('DOMContentLoaded', () => {
     return;
   }
 
-  const elem = [document.querySelector('title+center')
-    , document.querySelector('div.content+center')];
+  const elem = [
+    document.querySelector('title+center')
+    , document.querySelector('div.content+center')
+  ];
   const pid = Number(location.href.split('=')[1]);
 
   if (pid >= 5000) {

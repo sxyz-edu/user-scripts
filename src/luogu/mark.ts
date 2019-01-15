@@ -3,7 +3,13 @@
  * or your highest score ever got.
  */
 
-const queryForScore = (uid, pid) => {
+/**
+ * Query highest score
+ * @param {Number} uid user id
+ * @param {String} pid problem id
+ * @returns {Promise<Number>} highest score
+ */
+const queryForScore = (uid: number, pid: string): Promise<number> => {
   return new Promise((resolve, reject) => {
     fetch(`/recordnew/lists?uid=${uid}&pid=${pid}`)
       .then((res) => res.text())
@@ -48,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // if the current user is not logged in yet
     return;
   }
-  const uid = uidMatch[1];
+  const uid = Number(uidMatch[1]);
 
   queryForScore(uid, pid)
     .then((score) => {
@@ -68,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       html = `<a href="/recordnew/lists?uid=${uid}&pid=${pid}" target="_blank">${html}</a>`;
 
-      const waitForLoaded = () => {
+      const waitForLoaded = ():void => {
         const h1 = document.querySelector('header h1');
         if (h1) {
           h1.innerHTML = html + h1.innerHTML;

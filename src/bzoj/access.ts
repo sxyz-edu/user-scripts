@@ -12,4 +12,4 @@ document.addEventListener('DOMContentLoaded', () => {
     const ele = document.getElementsByTagName('h2')[0];
     ele.innerHTML += '<span style="color:red;">[权限题]</span>';
   }
-})
+});

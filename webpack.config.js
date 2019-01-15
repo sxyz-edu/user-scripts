@@ -1,13 +1,14 @@
 module.exports = {
   mode: 'production',
+  resolve: {
+    extensions: [ '.tsx', '.ts', '.js' ]
+  },
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.tsx?$/,
+        use: 'ts-loader',
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader'
-        }
       }, {
         test: /\.scss$/,
         use: [
