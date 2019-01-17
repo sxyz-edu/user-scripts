@@ -1,7 +1,7 @@
 module.exports = {
   mode: 'production',
   resolve: {
-    extensions: [ '.tsx', '.ts', '.js' ]
+    extensions: ['.tsx', '.ts', '.js']
   },
   module: {
     rules: [

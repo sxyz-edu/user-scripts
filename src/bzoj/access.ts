@@ -3,7 +3,7 @@
  */
 
 if (document.title === 'Please contact lydsy2012@163.com!' &&
-    location.href.indexOf('problem.php') > -1) {
+  location.href.indexOf('problem.php') > -1) {
   location.href = location.href.replace('problem.php', 'show.php');
 }
 

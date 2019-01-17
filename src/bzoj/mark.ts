@@ -6,7 +6,7 @@ import { getProblemList } from './getProblemList';
 
 document.addEventListener('DOMContentLoaded', () => {
   if (window.location.pathname !== '/JudgeOnline/show.php' &&
-      window.location.pathname !== '/JudgeOnline/problem.php') {
+    window.location.pathname !== '/JudgeOnline/problem.php') {
     // is not a problem
     return;
   }

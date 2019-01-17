@@ -5,7 +5,7 @@
 /* eslint no-implicit-globals: "off" */
 /* eslint camelcase: "off" */
 
-declare function show_alert (title: string, content: string): void;
+declare function show_alert(title: string, content: string): void;
 
 /**
  * Do search event
@@ -63,7 +63,7 @@ const search = (parameter: string): void => {
 const searchEvent = (el: HTMLInputElement): void => {
   el.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
-      const target = <HTMLInputElement> e.target;
+      const target = <HTMLInputElement>e.target;
       const txt = target && target.value || '';
       search(txt);
     }
@@ -86,7 +86,7 @@ const replaceBtn = (): void => {
     nbtn.addEventListener('click', (e) => {
       // prevent default listener
       e.stopImmediatePropagation();
-      const toproblem = <HTMLInputElement> document.querySelector('input[name=toproblem]');
+      const toproblem = <HTMLInputElement>document.querySelector('input[name=toproblem]');
       const txt = toproblem && toproblem.value || '';
       search(txt);
     });
@@ -99,7 +99,7 @@ const replaceBtn = (): void => {
 
   const input = document.querySelector('[name=toproblem]');
   if (input) {
-    const ninput = <HTMLInputElement> input.cloneNode(true);
+    const ninput = <HTMLInputElement>input.cloneNode(true);
     ninput.placeholder = '使用 "u:" 搜索用户';
 
     if (input.parentNode) {
@@ -117,7 +117,7 @@ const replaceSearchBar = (): void => {
   const searchBar = () => {
     const sbt = document.querySelector('.search-wrap input');
     if (sbt) {
-      const nsbt = <HTMLInputElement> sbt.cloneNode(true);
+      const nsbt = <HTMLInputElement>sbt.cloneNode(true);
       if (sbt.parentNode) {
         sbt.parentNode.replaceChild(nsbt, sbt);
       }

@@ -39,7 +39,7 @@ const main = (data: string[][]): void => {
       const res2 = item[6];
       const url1 = pid2url(res1);
       const url2 = pid2url(res2);
-      const ele = document.querySelector('span');
+      const ele = document.querySelector('center>span');
       if (!ele) {
         return;
       }
@@ -51,7 +51,9 @@ const main = (data: string[][]): void => {
           , createLink(url1, res1)
           , createLink(url2, res2)
         ].join(' ');
-        ele.insertBefore(e, ele.firstChild);
+        if (ele.parentElement) {
+          ele.parentElement.insertBefore(e, ele);
+        }
       }
     }
   }

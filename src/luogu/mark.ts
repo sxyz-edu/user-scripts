@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
       html = `<a href="/recordnew/lists?uid=${uid}&pid=${pid}" target="_blank">${html}</a>`;
 
-      const waitForLoaded = ():void => {
+      const waitForLoaded = (): void => {
         const h1 = document.querySelector('header h1');
         if (h1) {
           h1.innerHTML = html + h1.innerHTML;

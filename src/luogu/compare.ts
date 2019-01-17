@@ -80,7 +80,7 @@ const getProblemList = (uid: string): Promise<ProblemList> => {
  */
 const displayNumber = (num: number): void => {
   const cssSelector = 'body > #app-body-new > div > div.am-u-md-4.lg-right >div.lg-article.am-hide-sm >h2';
-  const h2 = <HTMLElement> document.querySelector(cssSelector);
+  const h2 = <HTMLElement>document.querySelector(cssSelector);
   if (h2) {
     h2.style.fontSize = '18px';
     h2.textContent = `通过题目（其中你有 ${num} 道题尚未 AC）`;
