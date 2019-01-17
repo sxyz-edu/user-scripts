@@ -1,0 +1,61 @@
+.config-container {
+  position: fixed;
+  width: 500px;
+  height: 600px;
+  margin-top: 75px;
+  margin-left: calc(50% - 250px);
+  background-color: #f3f3f3;
+  z-index: 2147483647;
+  border: 1px solid #666;
+  box-shadow: 0 0 10px #aaa;
+  border-radius: 5px;
+
+  .menu {
+    display: block;
+    height: 25px;
+    text-align: right;
+    background-color: white;
+
+    .close {
+      height: 25px;
+      width: 35px;
+      display: inline-block;
+      background-color: #ff3333;
+      position: relative;
+      cursor: pointer;
+
+      &:before,
+      &:after {
+        content: "";
+        width: 15px;
+        height: 2px;
+        background-color: #eee;
+        top: 11px;
+        position: absolute;
+      }
+      &:before {
+        left: 10px;
+        transform: rotate(45deg);
+      }
+      &:after {
+        right: 10px;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+
+  .item {
+    display: block;
+    padding: 5px;
+    margin-top: 10px;
+
+    span {
+      width: 30%;
+      display: inline-block;
+    }
+
+    input {
+      width: 70%;
+    }
+  }
+}
