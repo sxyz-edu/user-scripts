@@ -62,9 +62,9 @@ const getProblemList = (uid: string): Promise<ProblemList> => {
         const passedlist = parseProblems(parseResult(data[0]));
         const triedlist = parseProblems(parseResult(data[2]));
         const save = {
-          passedlist
-          , triedlist
-          , 'updateAt': Number(new Date())
+          passedlist,
+          triedlist,
+          'updateAt': Number(new Date())
         }
         localStorage.setItem(uid, JSON.stringify(save));
         resolve(save);
@@ -87,7 +87,7 @@ const displayNumber = (num: number): void => {
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+export default () => {
   if (window.location.pathname === '/space/show') {
     const anotherMatch = (/uid=(\d+)/).exec(window.location.href);
     if (!anotherMatch) {
@@ -130,4 +130,4 @@ document.addEventListener('DOMContentLoaded', () => {
         displayNumber(num);
       });
   }
-});
+};

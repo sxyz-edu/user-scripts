@@ -6,19 +6,28 @@
   margin-left: calc(50% - 250px);
   background-color: #f3f3f3;
   z-index: 2147483647;
-  border: 1px solid #666;
-  box-shadow: 0 0 10px #aaa;
-  border-radius: 5px;
+  border: 1px solid #666666;
+  box-shadow: 0 0 10px #aaaaaa;
+  display: flex;
+  flex-direction: column;
+  visibility: hidden;
+  user-select: none;
 
   .menu {
     display: block;
-    height: 25px;
+    height: 30px;
     text-align: right;
     background-color: white;
 
+    span {
+      float: left;
+      line-height: 30px;
+      margin-left: 5px;
+    }
+
     .close {
-      height: 25px;
-      width: 35px;
+      height: 30px;
+      width: 50px;
       display: inline-block;
       background-color: #ff3333;
       position: relative;
@@ -27,35 +36,65 @@
       &:before,
       &:after {
         content: "";
-        width: 15px;
+        width: 20px;
         height: 2px;
-        background-color: #eee;
-        top: 11px;
+        background-color: #eeeeee;
+        top: 14px;
         position: absolute;
       }
+
       &:before {
-        left: 10px;
+        left: 15px;
         transform: rotate(45deg);
       }
+
       &:after {
-        right: 10px;
+        right: 15px;
         transform: rotate(-45deg);
       }
     }
   }
 
-  .item {
-    display: block;
-    padding: 5px;
-    margin-top: 10px;
+  .content {
+    flex: 1;
 
-    span {
-      width: 30%;
-      display: inline-block;
+    .item {
+      display: block;
+      padding: 5px;
+      margin-top: 10px;
+
+      span {
+        width: 40%;
+        display: inline-block;
+      }
+
+      input {
+        width: 60%;
+        display: inline-block;
+      }
     }
+  }
 
-    input {
-      width: 70%;
+  .buttonset {
+    text-align: right;
+    display: block;
+    margin: 20px 0;
+
+    .button {
+      margin-right: 20px;
+      padding: 5px 25px;
+      display: inline-block;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+
+      &.confirm {
+        background-color: #4caf50;
+      }
+
+      &.cancel {
+        background-color: #ff3333;
+      }
     }
   }
 }

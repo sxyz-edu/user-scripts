@@ -2,8 +2,6 @@
  * Star problems
  */
 
-import * as AV from 'leancloud-storage';
-
 /**
  * Provides data storage
  */

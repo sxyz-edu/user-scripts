@@ -5,7 +5,7 @@
  * - Other: red
  */
 
-import { getProblemList } from './getProblemList';
+import getProblemList from './getProblemList';
 
 document.addEventListener('DOMContentLoaded', () => {
   if (window.location.pathname !== '/JudgeOnline/userinfo.php') {

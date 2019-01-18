@@ -2,12 +2,10 @@ language: node_js
 node_js:
   - node
 install:
-  - npm install
+  - yarn install
 script:
   # check grammar
-  - npm run eslint
-  - npm run stylelint
+  - yarn run eslint
+  - yarn run stylelint
   # check if files in `dist/` is up-to-date
-  - mv dist _dist
-  - npm run build
-  - diff dist _dist
+  - mv dist _dist && yarn run build && diff dist _dist

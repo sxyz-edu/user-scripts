@@ -130,11 +130,10 @@ const replaceSearchBar = (): void => {
   setTimeout(searchBar, 500);
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-
+export default () => {
   if (window.location.pathname === '/') {
     // is home page
     replaceBtn();
   }
   replaceSearchBar();
-});
+};

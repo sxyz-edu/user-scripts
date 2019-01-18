@@ -10,7 +10,7 @@
     "jsx": "preserve",
     "lib": [
       "es2018",
-      "dom"
+      "dom",
     ],
     "strict": true,
     "noUnusedLocals": true,
@@ -19,10 +19,8 @@
     "noFallthroughCasesInSwitch": false
   },
   "include": [
-    "src/**/*"
-  ],
-  "exclude": [
-    ".git",
-    "node_modules"
+    "src/**/*",
+    // leancloud API
+    "node_modules/leancloud-storage/storage.d.ts"
   ]
 }

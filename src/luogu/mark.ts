@@ -39,7 +39,7 @@ const queryForScore = (uid: number, pid: string): Promise<number> => {
   });
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+export default () => {
 
   const pidMatch = (/\/problemnew\/show\/(\w+)/i).exec(window.location.href);
   if (!pidMatch) {
@@ -85,4 +85,4 @@ document.addEventListener('DOMContentLoaded', () => {
       waitForLoaded();
     });
 
-});
+};

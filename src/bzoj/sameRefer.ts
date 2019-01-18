@@ -47,9 +47,9 @@ const main = (data: string[][]): void => {
       e.style.color = 'blue';
       if (url1 || url2) {
         e.innerHTML = [
-          'See Also:'
-          , createLink(url1, res1)
-          , createLink(url2, res2)
+          'See Also:',
+          createLink(url1, res1),
+          createLink(url2, res2)
         ].join(' ');
         if (ele.parentElement) {
           ele.parentElement.insertBefore(e, ele);

@@ -19,7 +19,7 @@ const shouldLoad = (): boolean => {
   return scrollTop + 2000 > height && scrollTop + 1800 < height;
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+export default () => {
 
   if (!(/^\/discuss\/show\/\d+$/).test(window.location.pathname)) {
     // this is not a discuss page
@@ -45,13 +45,12 @@ document.addEventListener('DOMContentLoaded', () => {
       .then((res) => res.text())
       .then((res) => {
         const regex = /<article[\s\S]*?<\/article>/ig;
-        let result = regex.exec(res);
-        while (result = regex.exec(res)) {
+        (res.match(regex) || []).slice(1).forEach((result) => {
           loading = false;
           const articles = document.querySelectorAll('article');
           const last = articles[articles.length - 1];
-          last.outerHTML += result[0];
-        }
+          last.outerHTML += result;
+        });
       })
       .catch((err) => {
         // some network error...
@@ -69,6 +68,4 @@ document.addEventListener('DOMContentLoaded', () => {
     nav.remove();
   }
 
-});
-
-/* eslint no-cond-assign: 0 */
+};

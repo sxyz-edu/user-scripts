@@ -3,6 +3,7 @@
  */
 
 import './config.scss';
+import html from './html';
 
 interface ConfigType {
   'text': string;
@@ -25,51 +26,50 @@ interface ConfigElement<K extends keyof ConfigType> {
 declare type SaveEvent = Map<string, ConfigType[keyof ConfigType]>;
 
 export default class ConfigWindow {
-  _configs: ConfigElement<keyof ConfigType>[];
+  configs: ConfigElement<keyof ConfigType>[];
+
+  container: HTMLElement;
+
+  onsave: (e: SaveEvent) => void;
 
   constructor (configs: ConfigItem<any>[], onsave: (e: SaveEvent) => void) {
+    this.onsave = onsave;
 
-    let data: Map<string, ConfigType[keyof ConfigType]>;
+    let data: Map<string, ConfigType[keyof ConfigType]> = new Map();
     try {
       const res = localStorage.getItem('config');
       if (res) {
         data = new Map(JSON.parse(res));
-      } else {
-        data = new Map();
       }
     } catch (e) {
       data = new Map();
     }
 
-    const emitsave = () => {
-      const data = new Map();
-      this._configs.forEach(({ config, input }) => {
-        data.set(config.key, config.type === 'checkbox' ? input.checked : input.value);
-      });
-      onsave(data);
-    }
+    this.container = html('div.config-container');
 
-    const container = document.createElement('div');
-    container.classList.add('config-container');
-
-    const menu = document.createElement('div');
-    menu.classList.add('menu');
-    const close = document.createElement('div');
-    close.classList.add('close');
+    const menu = html('div.menu');
+    const title = html('span 个性化');
+    menu.appendChild(title);
+    const close = html('div.close');
+    close.addEventListener('click', () => {
+      this.hide();
+    });
     menu.appendChild(close);
-    container.appendChild(menu);
+    this.container.appendChild(menu);
 
-    this._configs = configs.map((config) => {
+    const content = html('div.content');
 
-      const div = document.createElement('div');
-      div.classList.add('item');
-      const defaultValue = data.has(config.key) && data.get(config.key) || config.value;
+    this.configs = configs.map((config) => {
 
-      const span = document.createElement('span');
-      span.innerText = config.key;
+      const div = html('div.item');
+      const defaultValue = data.has(config.key)
+        ? data.get(config.key)
+        : config.value;
+
+      const span = html(`span ${config.key}`);
       div.appendChild(span);
 
-      const input = document.createElement('input');
+      const input = <HTMLInputElement> html('input');
       switch (config.type) {
       case 'text': {
         input.setAttribute('type', 'text');
@@ -93,19 +93,62 @@ export default class ConfigWindow {
         input.checked = defaultValue;
         break;
       }
+      default: {
+        throw new Error('Unexpected Config Type');
+      }
       }
       div.appendChild(input);
-      container.appendChild(div);
+      content.appendChild(div);
+
 
       return { config, input };
     });
 
+    this.container.appendChild(content);
+
+    const buttonset = html('div.buttonset');
+    const confirmButton = html('div.button.confirm 确定');
+    confirmButton.addEventListener('click', () => {
+      this.emitsave(false);
+      this.hide();
+    });
+    const cancelButton = html('div.button.cancel 取消');
+    cancelButton.addEventListener('click', () => {
+      this.hide();
+    });
+    buttonset.appendChild(cancelButton);
+    buttonset.appendChild(confirmButton);
+    this.container.appendChild(buttonset);
+
     document.addEventListener('DOMContentLoaded', () => {
-      document.body.appendChild(container);
+      document.body.appendChild(this.container);
     });
 
-    emitsave();
+    this.emitsave(true);
 
+  }
+
+  emitsave (primary: boolean): void {
+    const data = new Map();
+    this.configs.forEach(({ config, input }) => {
+      data.set(
+        config.key,
+        config.type === 'checkbox'
+          ? input.checked
+          : input.value
+      );
+    });
+    localStorage.setItem('config', JSON.stringify(Array.from(data)));
+    data.set('primary', primary);
+    this.onsave(data);
+  }
+
+  show (): void {
+    this.container.style.visibility = 'visible';
+  }
+
+  hide (): void {
+    this.container.style.visibility = 'hidden';
   }
 
 }

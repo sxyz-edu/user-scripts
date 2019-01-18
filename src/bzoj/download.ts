@@ -10,8 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const elem = [
-    document.querySelector('title+center')
-    , document.querySelector('div.content+center')
+    document.querySelector('title+center'),
+    document.querySelector('div.content+center')
   ];
   const pid = Number(location.href.split('=')[1]);
 

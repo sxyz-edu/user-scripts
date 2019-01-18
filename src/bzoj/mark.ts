@@ -2,7 +2,7 @@
  * Display a check mark if you accept this problem
  */
 
-import { getProblemList } from './getProblemList';
+import getProblemList from './getProblemList';
 
 document.addEventListener('DOMContentLoaded', () => {
   if (window.location.pathname !== '/JudgeOnline/show.php' &&

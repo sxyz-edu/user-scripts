@@ -10,7 +10,15 @@ module.exports = {
         use: 'ts-loader',
         exclude: /node_modules/,
       }, {
-        test: /\.scss$/,
+        test: /\.useable\.scss$/,
+        use: [
+          { loader: 'style-loader/useable' },
+          { loader: 'css-loader' },
+          { loader: 'postcss-loader' },
+          { loader: 'sass-loader' }
+        ]
+      }, {
+        test: /^[^\.]+\.scss$/,
         use: [
           { loader: 'style-loader' },
           { loader: 'css-loader' },

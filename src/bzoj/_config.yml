@@ -10,4 +10,4 @@ downloadURL: https://github.com/sxyz-edu/user-scripts/raw/alpha/dist/bzoj.user.j
 supportURL: https://github.com/sxyz-edu/user-scripts
 
 # leancloud api
-# require: https://cdn1.lncld.net/static/js/3.0.4/av-min.js
+require: https://cdn1.lncld.net/static/js/3.0.4/av-min.js

@@ -13,12 +13,12 @@ const parseProblems = (str: string): number[] => {
   return (str.match(pRegex) || []).map((str) => Number(str.slice(2, 4)));
 }
 
-export interface PassedList {
+interface PassedList {
   passedlist: number[];
   updateAt: number;
 }
 
-export const getProblemList = (uid: string): Promise<PassedList> => {
+const getProblemList = (uid: string): Promise<PassedList> => {
   return new Promise((resolve, reject) => {
     const saved = localStorage.getItem(uid);
     if (saved) {
@@ -36,8 +36,8 @@ export const getProblemList = (uid: string): Promise<PassedList> => {
       .then((res) => res.text())
       .then((res) => {
         const save = {
-          'passedlist': parseProblems(res)
-          , 'updateAt': Number(new Date())
+          'passedlist': parseProblems(res),
+          'updateAt': Number(new Date())
         };
         localStorage.setItem(uid, JSON.stringify(save));
         resolve(save);
@@ -45,3 +45,5 @@ export const getProblemList = (uid: string): Promise<PassedList> => {
       .catch(reject);
   });
 }
+
+export default getProblemList;
