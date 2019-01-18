@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name           Scripts for BZOJ
 // @namespace      https://www.lydsy.com/
-// @version        0.4.0-alpha.2
+// @version        0.4.0-alpha.3
 // @match          https://lydsy.com/JudgeOnline/*
 // @match          https://www.lydsy.com/JudgeOnline/*
 // @run-at         document-start

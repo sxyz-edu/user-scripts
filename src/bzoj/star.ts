@@ -2,6 +2,8 @@
  * Star problems
  */
 
+/* global AV */
+
 /**
  * Provides data storage
  */
