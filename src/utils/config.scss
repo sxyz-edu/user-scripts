@@ -10,8 +10,18 @@
   box-shadow: 0 0 10px #aaaaaa;
   display: flex;
   flex-direction: column;
-  visibility: hidden;
   user-select: none;
+  visibility: hidden;
+  opacity: 0;
+  transform: scale(.8);
+  transition: all .2s;
+
+  &.open {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+    transition: all .5s;
+  }
 
   .menu {
     display: block;
@@ -37,7 +47,7 @@
       &:after {
         content: "";
         width: 20px;
-        height: 2px;
+        height: 1px;
         background-color: #eeeeee;
         top: 14px;
         position: absolute;
@@ -60,7 +70,7 @@
 
     .item {
       display: block;
-      padding: 5px;
+      padding: 5px 20px;
       margin-top: 10px;
 
       span {

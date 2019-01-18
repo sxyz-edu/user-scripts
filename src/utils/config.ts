@@ -16,6 +16,8 @@ interface ConfigItem<K extends keyof ConfigType> {
   type: K;
   key: string;
   value: ConfigType[K];
+  range?: Array<number>;
+  step?: number;
 }
 
 interface ConfigElement<K extends keyof ConfigType> {
@@ -72,24 +74,32 @@ export default class ConfigWindow {
       const input = <HTMLInputElement> html('input');
       switch (config.type) {
       case 'text': {
-        input.setAttribute('type', 'text');
+        input.type = 'text';
         input.classList.add('am-form-field');
-        // TODO...
         input.value = defaultValue;
         break;
       }
       case 'color': {
-        input.setAttribute('type', 'color');
+        input.type = 'color';
+        input.classList.add('am-form-field');
         input.value = defaultValue;
         break;
       }
       case 'number': {
-        input.setAttribute('type', 'number');
+        input.type = 'number';
+        input.classList.add('am-form-field');
         input.value = defaultValue;
+        if (config.range) {
+          input.min = String(config.range[0]);
+          input.max = String(config.range[1]);
+        }
+        if (config.step) {
+          input.step = String(config.step);
+        }
         break;
       }
       case 'checkbox': {
-        input.setAttribute('type', 'checkbox');
+        input.type = 'checkbox';
         input.checked = defaultValue;
         break;
       }
@@ -99,7 +109,6 @@ export default class ConfigWindow {
       }
       div.appendChild(input);
       content.appendChild(div);
-
 
       return { config, input };
     });
@@ -144,11 +153,11 @@ export default class ConfigWindow {
   }
 
   show (): void {
-    this.container.style.visibility = 'visible';
+    this.container.classList.add('open');
   }
 
   hide (): void {
-    this.container.style.visibility = 'hidden';
+    this.container.classList.remove('open');
   }
 
 }

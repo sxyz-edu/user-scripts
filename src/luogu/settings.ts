@@ -1,9 +1,7 @@
 import ConfigWindow from '../utils/config';
 import ControlCSS from '../utils/ccss';
 
-import html from '../utils/html';
 import style from './style.useable.scss';
-
 
 const languages = {
   'zh_CN': {
@@ -18,17 +16,19 @@ const language = languages.zh_CN;
 const configs = [];
 
 configs.push({
-  'key': language.bgi,
-  'type': 'text',
-  'value': 'https://gallery.swwind.me/2018-08/12.jpg'
-});
-configs.push({
   'key': language.thm,
   'type': 'checkbox',
   'value': true
 });
 configs.push({
+  'key': language.bgi,
+  'type': 'text',
+  'value': 'https://gallery.swwind.me/2018-08/12.jpg'
+});
+configs.push({
   'key': language.opc,
+  'range': [0, 1],
+  'step': 0.01,
   'type': 'number',
   'value': 0.75
 });
@@ -47,21 +47,24 @@ const configWindow = new ConfigWindow(configs, (data) => {
 });
 
 export default () => {
-  const a = html('a.icon-btn.color-none');
-  const i = html('i.fas.fa-cog');
-  a.appendChild(i);
-  a.addEventListener('click', () => {
-    configWindow.show();
-  });
-
-  const call = () => {
-    const nav = document.querySelector('.user-nav');
-    if (nav) {
-      const as = nav.querySelectorAll('a.icon-btn');
-      nav.insertBefore(a, as[1].nextElementSibling);
+  const bind = () => {
+    const nav = <HTMLElement> document.querySelector('nav#app-sidenav');
+    const as = nav.querySelectorAll('a');
+    const last = as[as.length - 1];
+    if (last) {
+      const a = <HTMLElement> last.cloneNode(true);
+      const icon = <HTMLElement> a.querySelector('span.icon i');
+      const text = <HTMLElement> a.querySelector('span.text');
+      icon.className = 'fa fa-cog';
+      text.innerText = '设置';
+      a.addEventListener('click', () => {
+        configWindow.show();
+      });
+      a.setAttribute('href', '#');
+      nav.append(a);
     } else {
-      setTimeout(call, 500);
+      setTimeout(bind, 500);
     }
   }
-  setTimeout(call, 500);
+  setTimeout(bind, 500);
 }
