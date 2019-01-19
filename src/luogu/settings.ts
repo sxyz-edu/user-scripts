@@ -23,7 +23,7 @@ configs.push({
 configs.push({
   'key': language.bgi,
   'type': 'text',
-  'value': 'https://gallery.swwind.me/2018-08/12.jpg'
+  'value': ''
 });
 configs.push({
   'key': language.opc,
@@ -41,20 +41,20 @@ const configWindow = new ConfigWindow(configs, (data) => {
   } else {
     style.unuse();
   }
-  ccss.set('--lg-wallpaper', `url(${<string> data.get(language.bgi)})`);
-  const opacity = <number> data.get(language.opc);
+  ccss.set('--lg-wallpaper', `url(${<string>data.get(language.bgi)})`);
+  const opacity = <number>data.get(language.opc);
   ccss.set('--lg-opacity', opacity.toString());
 });
 
 export default () => {
   const bind = () => {
-    const nav = <HTMLElement> document.querySelector('nav#app-sidenav');
+    const nav = <HTMLElement>document.querySelector('nav#app-sidenav');
     const as = nav.querySelectorAll('a');
     const last = as[as.length - 1];
     if (last) {
-      const a = <HTMLElement> last.cloneNode(true);
-      const icon = <HTMLElement> a.querySelector('span.icon i');
-      const text = <HTMLElement> a.querySelector('span.text');
+      const a = <HTMLElement>last.cloneNode(true);
+      const icon = <HTMLElement>a.querySelector('span.icon i');
+      const text = <HTMLElement>a.querySelector('span.text');
       icon.className = 'fa fa-cog';
       text.innerText = '设置';
       a.addEventListener('click', () => {

@@ -39,7 +39,7 @@ const main = (data: string[][]): void => {
       const res2 = item[6];
       const url1 = pid2url(res1);
       const url2 = pid2url(res2);
-      const ele = document.querySelector('center>span');
+      const ele = document.querySelector('center > span');
       if (!ele) {
         return;
       }

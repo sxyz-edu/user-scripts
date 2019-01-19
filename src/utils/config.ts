@@ -71,7 +71,7 @@ export default class ConfigWindow {
       const span = html(`span ${config.key}`);
       div.appendChild(span);
 
-      const input = <HTMLInputElement> html('input');
+      const input = <HTMLInputElement>html('input');
       switch (config.type) {
       case 'text': {
         input.type = 'text';

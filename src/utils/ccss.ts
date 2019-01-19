@@ -10,7 +10,7 @@ export default class ControlCSS {
 
   constructor (map: Map<string, string>) {
     this.map = map;
-    this.style = <HTMLStyleElement> html('style');
+    this.style = <HTMLStyleElement>html('style');
     document.addEventListener('DOMContentLoaded', () => {
       document.head.appendChild(this.style);
     });

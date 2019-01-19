@@ -8,7 +8,7 @@ import search from './search';
 import settings from './settings';
 
 const bind = (e: any) => {
-  document.addEventListener('DOMContentLoaded', <EventListener> e);
+  document.addEventListener('DOMContentLoaded', <EventListener>e);
 }
 
 bind(settings);

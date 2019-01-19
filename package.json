@@ -2,8 +2,7 @@
   "name": "user-scripts",
   "version": "0.0.1",
   "description": "Useful user scripts for OIers",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.2.3",
