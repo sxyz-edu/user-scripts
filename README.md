@@ -6,6 +6,16 @@
 
 Useful user scripts for OIers.
 
+Written in TypeScript, bundle by Webpack.
+
+**WARNING: This is a dev branch, including new features but unstable.**
+
+## Usage
+
+1. Download [Tampermonkey](https://tampermonkey.net/) for your browser.
+
+2. Just click the "install" link.
+
 ## Feature
 
 **bzoj.user.js**
@@ -21,7 +31,9 @@ Useful user scripts for OIers.
 
 **luogu.user.js**
 
-[core][luogu-user-js] | [configs][luogu-config]
+[install][luogu-user-js]
+
+**Config Entrance is at the left nav bar**
 
 - Provide a more friendly UI.
 - Load comments automatically in discuss pages.
@@ -31,12 +43,5 @@ Useful user scripts for OIers.
   + Default: direct search for the problem (title or pid).
   + Start with "u:" : search for the user (username or uid).
 
-## Usage
-
-1. Download [Tampermonkey](https://tampermonkey.net/) for your browser.
-
-2. Click the links above to install.
-
-[bzoj-user-js]: https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/bzoj.user.js
-[luogu-user-js]: https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/luogu.user.js
-[luogu-config]: https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/luogu-custom.user.js
+[bzoj-user-js]: https://raw.githubusercontent.com/sxyz-edu/user-scripts/alpha/dist/bzoj.user.js
+[luogu-user-js]: https://raw.githubusercontent.com/sxyz-edu/user-scripts/alpha/dist/luogu.user.js

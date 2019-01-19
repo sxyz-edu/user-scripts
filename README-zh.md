@@ -6,6 +6,16 @@
 
 实用的用户脚本 for OIer
 
+使用 TypeScript 编写，由 Webpack 打包。
+
+**警告：这是一个开发分支，会包括一些新功能但可能不稳定。**
+
+## 使用方法
+
+1. 下载 [Tampermonkey](https://tampermonkey.net/) 浏览器插件.
+
+2. 直接点击上方的「安装」链接即可安装脚本（~~我觉得没必要用 greasyfork 啊~~）。
+
 ## 特性
 
 **bzoj.user.js**
@@ -32,12 +42,6 @@
 - 扩展原有搜索功能：
   + 默认：直接搜索题目（标题或 pid）
   + "u:" 开头：搜索用户（用户名或 uid）
-
-## 使用方法
-
-1. 下载 [Tampermonkey](https://tampermonkey.net/) 浏览器插件.
-
-2. 直接点击上方的「安装」链接即可安装脚本（~~为什么别人都用 greasyfork~~）。
 
 [bzoj-user-js]: https://raw.githubusercontent.com/sxyz-edu/user-scripts/alpha/dist/bzoj.user.js
 [luogu-user-js]: https://raw.githubusercontent.com/sxyz-edu/user-scripts/alpha/dist/luogu.user.js
