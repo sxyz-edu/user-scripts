@@ -8,7 +8,7 @@ export default class ControlCSS {
 
   style: HTMLStyleElement;
 
-  constructor (map: Map<string, string>) {
+  constructor(map: Map<string, string>) {
     this.map = map;
     this.style = <HTMLStyleElement>html('style');
     document.addEventListener('DOMContentLoaded', () => {
@@ -17,15 +17,14 @@ export default class ControlCSS {
     this.flush();
   }
 
-  flush () {
+  flush() {
     const v = Array.from(this.map).map((a) => a.join(':'))
       .join(';');
     this.style.innerHTML = `:root{${v}}`;
   }
 
-  set (type: string, value: string) {
+  set(type: string, value: string) {
     this.map.set(type, value);
     this.flush();
   }
 }
-

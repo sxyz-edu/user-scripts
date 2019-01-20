@@ -35,7 +35,7 @@ configs.push({
 
 const ccss = new ControlCSS(new Map());
 
-const configWindow = new ConfigWindow(configs, (data) => {
+const configWindow = new ConfigWindow('luogu', configs, (data) => {
   if (data.get(language.thm)) {
     style.use();
   } else {

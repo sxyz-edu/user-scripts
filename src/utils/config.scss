@@ -91,19 +91,10 @@
 
     .button {
       margin-right: 20px;
-      padding: 5px 25px;
       display: inline-block;
       border-radius: 5px;
       color: white;
       cursor: pointer;
-
-      &.confirm {
-        background-color: #4caf50;
-      }
-
-      &.cancel {
-        background-color: #ff3333;
-      }
     }
   }
 }

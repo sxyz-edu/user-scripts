@@ -86,7 +86,10 @@
     ],
     "indent": [
       "error",
-      2
+      2,
+      {
+        "SwitchCase": 1
+      }
     ],
     "indent-legacy": "off",
     "init-declarations": "error",
@@ -287,7 +290,10 @@
     "sort-keys": "error",
     "sort-vars": "error",
     "space-before-blocks": "error",
-    "space-before-function-paren": "error",
+    "space-before-function-paren": [
+      "error",
+      "never"
+    ],
     "space-in-parens": [
       "error",
       "never"
