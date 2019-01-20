@@ -46,6 +46,7 @@ const configWindow = new ConfigWindow('luogu', configs, (data) => {
   ccss.set('--lg-opacity', opacity.toString());
 });
 
+// append setting button at last
 export default () => {
   const bind = () => {
     const nav = <HTMLElement>document.querySelector('nav#app-sidenav');
@@ -57,6 +58,7 @@ export default () => {
       const text = <HTMLElement>a.querySelector('span.text');
       icon.className = 'fa fa-cog';
       text.innerText = '设置';
+
       a.addEventListener('click', () => {
         configWindow.show();
       });

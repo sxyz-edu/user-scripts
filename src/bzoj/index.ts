@@ -2,6 +2,7 @@
  * entry point
  */
 
+// loading sequence
 import './style.scss';
 
 import './access.ts';

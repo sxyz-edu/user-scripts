@@ -1,7 +1,7 @@
 import html from './html';
 
 /**
- * Dynamic control your css global variables
+ * Dynamic control your CSS global variables
  */
 export default class ControlCSS {
   map: Map<string, string>;
@@ -17,6 +17,7 @@ export default class ControlCSS {
     this.flush();
   }
 
+  // flush to make the settings take effect
   flush() {
     const v = Array.from(this.map).map((a) => a.join(':'))
       .join(';');

@@ -22,6 +22,8 @@
     transition: all .5s;
   }
 
+  // 标题栏
+
   .menu {
     display: block;
     height: 30px;
@@ -64,6 +66,8 @@
     }
   }
 
+  // 主体
+
   .content {
     flex: 1;
 
@@ -77,12 +81,16 @@
         display: inline-block;
       }
 
+      // 输入框
+
       input {
         width: 60%;
         display: inline-block;
       }
     }
   }
+
+  // 按钮
 
   .buttonset {
     text-align: right;

@@ -37,6 +37,7 @@ export default class ConfigWindow {
   constructor(onlineJudge: string, configs: ConfigItem<any>[], onsave: (e: SaveEvent) => void) {
     this.onsave = onsave;
 
+    // load data
     let data: Map<string, ConfigType[keyof ConfigType]> = new Map();
     try {
       const res = localStorage.getItem('config');
@@ -47,6 +48,7 @@ export default class ConfigWindow {
       data = new Map();
     }
 
+    // create the config window
     this.container = html('div.config-container');
 
     const menu = html('div.menu');
@@ -171,6 +173,7 @@ export default class ConfigWindow {
 
   }
 
+  // save settings
   emitsave(primary: boolean): void {
     const data = new Map();
     this.configs.forEach(({ config, input }) => {
@@ -184,10 +187,12 @@ export default class ConfigWindow {
     this.onsave(data);
   }
 
+  // show the config window
   show(): void {
     this.container.classList.add('open');
   }
 
+  // hide the config window
   hide(): void {
     this.container.classList.remove('open');
   }

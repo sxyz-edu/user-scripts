@@ -11,6 +11,7 @@ const bind = (e: any) => {
   document.addEventListener('DOMContentLoaded', <EventListener>e);
 }
 
+// loading sequence
 bind(settings);
 bind(autoLoad);
 bind(compare);
