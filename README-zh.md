@@ -28,8 +28,8 @@
 - 比较别人和你的做题记录；
 - 在题目页面标题处添加该题的当前得分；
 - 扩展原有搜索功能：
-  + 默认：直接搜索题目（标题或pid ）
-  + "u:" 开头：搜索用户（用户名或uid ）
+  - 默认：直接搜索题目（标题或 pid ）
+  - "u:" 开头：搜索用户（用户名或 uid ）
 
 ## 使用方法
 
@@ -40,3 +40,21 @@
 [bzoj-user-js]: https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/bzoj.user.js
 [luogu-user-js]: https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/luogu.user.js
 [luogu-config]: https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/luogu-custom.user.js
+
+---
+
+## 开发
+
+```bash
+git clone https://github.com/sxyz-edu/user-scripts.git
+```
+
+修改好本地代码后依次运行以下代码：
+
+```bash
+npm run eslint
+npm run stylelint
+npm run build
+```
+
+重复以上步骤直到没有错误后进行 commit 或者 Pull request。

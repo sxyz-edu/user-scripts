@@ -28,8 +28,8 @@ Useful user scripts for OIers.
 - Compare solved problems between you and other users.
 - Add your score of the problem before the title.
 - Extend the original search function.
-  + Default: direct search for the problem (title or pid).
-  + Start with "u:" : search for the user (username or uid).
+  - Default: direct search for the problem (title or pid).
+  - Start with "u:" : search for the user (username or uid).
 
 ## Usage
 
@@ -40,3 +40,23 @@ Useful user scripts for OIers.
 [bzoj-user-js]: https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/bzoj.user.js
 [luogu-user-js]: https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/luogu.user.js
 [luogu-config]: https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/luogu-custom.user.js
+
+---
+
+## Development
+
+```bash
+git clone https://github.com/sxyz-edu/user-scripts.git
+```
+
+Run the codes below in turn after modifying the local codes:
+
+```bash
+npm run eslint
+npm run stylelint
+npm run build
+```
+
+Repeat the above steps until there is no error.
+
+Then commit or pull request.
