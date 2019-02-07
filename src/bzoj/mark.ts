@@ -2,22 +2,25 @@
  * Display a check mark if you accept this problem
  */
 
+import getProblemList from './getProblemList';
+
 document.addEventListener('DOMContentLoaded', () => {
   if (window.location.pathname !== '/JudgeOnline/show.php' &&
-      window.location.pathname !== '/JudgeOnline/problem.php') {
+    window.location.pathname !== '/JudgeOnline/problem.php') {
     // is not a problem
     return;
   }
 
-  const uid = document.querySelector('font[color]').innerText;
+  const uidElem = document.querySelector('font[color]');
+  const uid = uidElem && uidElem.textContent || '';
   if (uid === '捐赠本站') {
     // not logged in yet
     return;
   }
 
-  const pid = location.href.split('=')[1];
+  const pid = Number(location.href.split('=')[1]);
 
-  window.getProblemList(uid)
+  getProblemList(uid)
     .then((data) => {
       const passedlist = new Set(data.passedlist);
       if (passedlist.has(pid)) {

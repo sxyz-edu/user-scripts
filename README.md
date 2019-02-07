@@ -6,6 +6,16 @@
 
 Useful user scripts for OIers.
 
+Written in TypeScript, bundle by Webpack.
+
+**WARNING: This is a dev branch, including new features but unstable.**
+
+## Usage
+
+1. Download [Tampermonkey](https://tampermonkey.net/) for your browser.
+
+2. Just click the "install" link.
+
 ## Feature
 
 **bzoj.user.js**
@@ -21,43 +31,44 @@ Useful user scripts for OIers.
 
 **luogu.user.js**
 
-[core][luogu-user-js] | [configs][luogu-config]
+[install][luogu-user-js]
+
+**Config Entrance is at the left nav bar**
 
 - Provide a more friendly UI.
 - Load comments automatically in discuss pages.
 - Compare solved problems between you and other users.
 - Add your score of the problem before the title.
 - Extend the original search function.
-  - Default: direct search for the problem (title or pid).
-  - Start with "u:" : search for the user (username or uid).
-
-## Usage
-
-1. Download [Tampermonkey](https://tampermonkey.net/) for your browser.
-
-2. Click the links above to install.
-
-[bzoj-user-js]: https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/bzoj.user.js
-[luogu-user-js]: https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/luogu.user.js
-[luogu-config]: https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/luogu-custom.user.js
-
----
+  + Default: direct search for the problem (title or pid).
+  + Start with `u:` : search for the user (username or uid).
 
 ## Development
 
 ```bash
 git clone https://github.com/sxyz-edu/user-scripts.git
-nmp install
+cd user-scripts
+git checkout alpha
+# if you use npm
+npm install
+# if you use yarn
+yarn install
 ```
 
-Run the codes below in turn after modifying the local codes:
+Before you commit or pull request, you need to make sure your code passes the test and is built.
 
 ```bash
+# if you use npm
 npm run eslint
 npm run stylelint
 npm run build
+# if you use yarn
+yarn eslint
+yarn stylelint
+yarn build
 ```
 
-Repeat the above steps until there is no error.
+Thanks for your contribution.
 
-Then commit or pull request.
+[bzoj-user-js]: https://raw.githubusercontent.com/sxyz-edu/user-scripts/alpha/dist/bzoj.user.js
+[luogu-user-js]: https://raw.githubusercontent.com/sxyz-edu/user-scripts/alpha/dist/luogu.user.j

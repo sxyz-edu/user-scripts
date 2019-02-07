@@ -1,0 +1,108 @@
+.config-container {
+  position: fixed;
+  width: 500px;
+  margin-top: 75px;
+  margin-left: calc(50% - 250px);
+  background-color: #f3f3f3;
+  z-index: 2147483647;
+  border: 1px solid #666666;
+  box-shadow: 0 0 10px #aaaaaa;
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+  visibility: hidden;
+  opacity: 0;
+  transform: scale(.8);
+  transition: all .2s;
+
+  &.open {
+    visibility: visible;
+    opacity: 1;
+    transform: scale(1);
+    transition: all .5s;
+  }
+
+  // 标题栏
+
+  .menu {
+    display: block;
+    height: 30px;
+    text-align: right;
+    background-color: white;
+
+    span {
+      float: left;
+      line-height: 30px;
+      margin-left: 5px;
+    }
+
+    .close {
+      height: 30px;
+      width: 50px;
+      display: inline-block;
+      background-color: #ff3333;
+      position: relative;
+      cursor: pointer;
+
+      &:before,
+      &:after {
+        content: "";
+        width: 20px;
+        height: 1px;
+        background-color: #eeeeee;
+        top: 14px;
+        position: absolute;
+      }
+
+      &:before {
+        left: 15px;
+        transform: rotate(45deg);
+      }
+
+      &:after {
+        right: 15px;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+
+  // 主体
+
+  .content {
+    flex: 1;
+
+    .item {
+      display: block;
+      padding: 5px 20px;
+      margin-top: 10px;
+
+      span {
+        width: 40%;
+        display: inline-block;
+      }
+
+      // 输入框
+
+      input {
+        width: 60%;
+        display: inline-block;
+      }
+    }
+  }
+
+  // 按钮
+
+  .buttonset {
+    text-align: right;
+    display: block;
+    margin: 20px 0;
+
+    .button {
+      margin-right: 20px;
+      display: inline-block;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+    }
+  }
+}

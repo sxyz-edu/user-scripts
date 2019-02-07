@@ -10,29 +10,46 @@ const dataRegex = /<div class="lg-article am-hide-sm">([\s\S]*?)<\/div>/gi;
 const spanRegex = /<span[\s\S]*?<\/span>/gi;
 const aRegex = /<a[^>]*?>([\s\S]*?)<\/a>/gi;
 
-const parseProblems = (str) => {
-  return str.match(aRegex).map((res) => res.replace(aRegex, '$1'));
+/**
+ * Parse problem id from html source text
+ * @param {String} str html source text
+ * @returns {[String]} problem ids
+ */
+const parseProblems = (str: string): string[] => {
+  return (str.match(aRegex) || []).map((res) => res.replace(aRegex, '$1'));
 }
 
-const getProblemList = (uid) => {
+/**
+ * ProblemList for caching
+ */
+interface ProblemList {
+  passedlist: string[];
+  triedlist: string[];
+  updateAt: number;
+}
+
+/**
+ * Get list of problems who passed or tried
+ * @param {String} uid user id
+ * @return {Promise<ProblemList>} problem list
+ */
+const getProblemList = (uid: string): Promise<ProblemList> => {
   return new Promise((resolve, reject) => {
     const saved = localStorage.getItem(uid);
     if (saved) {
       try {
         const data = JSON.parse(saved);
         if (Number(new Date()) - data.updateAt <= 1000 * 60 * 60 * 1) {
-          resolve(data);
-
-          return;
+          return resolve(data);
         }
       } catch (e) {
         console.error(e);
       }
     }
 
-    const parseResult = (result) => {
+    const parseResult = (result: string) => {
       if (!result) {
-        reject(new Error('parse error'));
+        reject(new Error('Parse error'));
       }
 
       return result;
@@ -41,13 +58,13 @@ const getProblemList = (uid) => {
     fetch(`/space/show?uid=${uid}`)
       .then((res) => res.text())
       .then((res) => {
-        const data = res.match(dataRegex).map((match) => match.replace(spanRegex, ''));
+        const data = (res.match(dataRegex) || []).map((match) => match.replace(spanRegex, ''));
         const passedlist = parseProblems(parseResult(data[0]));
         const triedlist = parseProblems(parseResult(data[2]));
         const save = {
-          passedlist
-          , triedlist
-          , 'updateAt': Number(new Date())
+          passedlist,
+          triedlist,
+          'updateAt': Number(new Date())
         }
         localStorage.setItem(uid, JSON.stringify(save));
         resolve(save);
@@ -56,13 +73,21 @@ const getProblemList = (uid) => {
   });
 }
 
-const displayNumber = (num) => {
+/**
+ * Display a number on a h2 element
+ * @param {Number} num number need to be show
+ * @returns {void} nothing
+ */
+const displayNumber = (num: number): void => {
   const cssSelector = 'body > #app-body-new > div > div.am-u-md-4.lg-right >div.lg-article.am-hide-sm >h2';
-  document.querySelector(cssSelector).style.fontSize = '18px';
-  document.querySelector(cssSelector).textContent = `通过题目（其中你有 ${num} 道题尚未 AC）`;
+  const h2 = <HTMLElement>document.querySelector(cssSelector);
+  if (h2) {
+    h2.style.fontSize = '18px';
+    h2.textContent = `通过题目（其中你有 ${num} 道题尚未 AC）`;
+  }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+export default () => {
   if (window.location.pathname === '/space/show') {
     const anotherMatch = (/uid=(\d+)/).exec(window.location.href);
     if (!anotherMatch) {
@@ -105,4 +130,4 @@ document.addEventListener('DOMContentLoaded', () => {
         displayNumber(num);
       });
   }
-});
+};
