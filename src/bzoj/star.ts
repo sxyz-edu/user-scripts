@@ -47,7 +47,7 @@ const createLocalSaver = (): Saver => {
   return { add, has, remove };
 }
 
-const createLeancloudSaver = (appKey: string, appId: string): Promise<Saver> => {
+const createLeancloudSaver = (appKey: string, appId: string, username: string): Promise<Saver> => {
   const reportError = (err: Error): void => {
     // alert(err);
     console.error(err);
@@ -57,9 +57,11 @@ const createLeancloudSaver = (appKey: string, appId: string): Promise<Saver> => 
     AV.init({ appId, appKey });
     const Stars = AV.Object.extend('Stars');
     const str = new AV.Query('Stars');
+    str.equalTo('name', username);
 
     const createNewStar = (): Promise<AV.Object> => {
       const star = new Stars();
+      star.set('name', username);
       star.set('star', []);
 
       return star.save();
@@ -97,37 +99,35 @@ const createLeancloudSaver = (appKey: string, appId: string): Promise<Saver> => 
           // initialize
           createNewStar().then(solve, reject);
         }
-      })
-      .catch((error: Error) => {
-        if (error.message === 'Class or object doesn\'t exists.') {
-          // prefix: initialize
-          createNewStar().then(solve, reject);
-        } else {
-          reject(error);
-        }
-      });
+      }, reject);
   });
 }
 
 const getSaver = (): Promise<Saver> => {
   return new Promise((resolve) => {
 
-    // TODO: split each user's stars
-    // stars are the same for any user so far because we did not implement it yet.
-    // FIXME first.
-
-    // TODO: use specified leancloud app but not this default app
-    // in case that, we need to support a more convenient config page
-    // this can also replace luogu-custom.user.js
-
     // TODO: localStorage needs to be synced to leancloud
 
-    createLeancloudSaver('Hd5RR4oB6dkRi9n8mrKcQMXB', 'Xg0skcXL3ifVW7K0SFKTFCzE-gzGzoHsz')
+    // return a local saver
+    const reject = () => {
+      resolve(createLocalSaver());
+    }
+
+    const font = document.querySelector('font');
+    if (!font) {
+      return reject();
+    }
+    const username = font.innerText;
+    if (username === '捐赠本站') {
+      return reject();
+    }
+
+    createLeancloudSaver('Hd5RR4oB6dkRi9n8mrKcQMXB', 'Xg0skcXL3ifVW7K0SFKTFCzE-gzGzoHsz', username)
       .then(resolve)
       .catch((err: Error) => {
         console.error(err);
         console.warn('Leancloud saver disabled, use localStorage instead.');
-        resolve(createLocalSaver());
+        reject();
       });
   });
 }

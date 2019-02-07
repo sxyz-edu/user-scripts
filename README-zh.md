@@ -41,7 +41,34 @@
 - 在题目页面标题处添加该题的当前得分；
 - 扩展原有搜索功能：
   + 默认：直接搜索题目（标题或 pid）
-  + "u:" 开头：搜索用户（用户名或 uid）
+  + `u:` 开头：搜索用户（用户名或 uid）
+
+## 参与开发
+
+```bash
+git clone https://github.com/sxyz-edu/user-scripts.git
+cd user-scripts
+git checkout alpha
+# 如果你用 npm
+npm install
+# 如果你用 yarn
+yarn install
+```
+
+在 commit 或者发送 pull request 之前，需要确保代码能够通过测试以及经过构建。
+
+```bash
+# 如果你用 npm
+npm run eslint
+npm run stylelint
+npm run build
+# 如果你用 yarn
+yarn eslint
+yarn stylelint
+yarn build
+```
+
+感谢您的贡献！
 
 [bzoj-user-js]: https://raw.githubusercontent.com/sxyz-edu/user-scripts/alpha/dist/bzoj.user.js
 [luogu-user-js]: https://raw.githubusercontent.com/sxyz-edu/user-scripts/alpha/dist/luogu.user.js

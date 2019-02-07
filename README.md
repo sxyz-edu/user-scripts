@@ -41,7 +41,34 @@ Written in TypeScript, bundle by Webpack.
 - Add your score of the problem before the title.
 - Extend the original search function.
   + Default: direct search for the problem (title or pid).
-  + Start with "u:" : search for the user (username or uid).
+  + Start with `u:` : search for the user (username or uid).
+
+## Development
+
+```bash
+git clone https://github.com/sxyz-edu/user-scripts.git
+cd user-scripts
+git checkout alpha
+# if you use npm
+npm install
+# if you use yarn
+yarn install
+```
+
+Before you commit or pull request, you need to make sure your code passes the test and is built.
+
+```bash
+# if you use npm
+npm run eslint
+npm run stylelint
+npm run build
+# if you use yarn
+yarn eslint
+yarn stylelint
+yarn build
+```
+
+Thanks for your contribution.
 
 [bzoj-user-js]: https://raw.githubusercontent.com/sxyz-edu/user-scripts/alpha/dist/bzoj.user.js
 [luogu-user-js]: https://raw.githubusercontent.com/sxyz-edu/user-scripts/alpha/dist/luogu.user.js
