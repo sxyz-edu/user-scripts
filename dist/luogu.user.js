@@ -159,8 +159,7 @@ function() {
 }),
 function() {
     var t = function(a) {
-        var o = encodeURIComponent(a.trim());
-        a = encodeURIComponent(a);
+        var o = a.trim();
         if (!o) return show_alert("提示", "请输入内容");
         if (/^u:/i.test(o)) {
             var r = o.slice(2);
@@ -174,7 +173,10 @@ function() {
                 return console.error(a),
                 show_alert("错误", "网络超时")
             })
-        } else / ^( ? :\d + |P\d + |CF\d + [A - Z] | SP\d + |AT\d + |UVA\d + ) $ / .test(o) ? window.location.href = "/problemnew/show/".concat(o) : window.location.href = "/problemnew/lists?name=".concat(o)
+        } else {
+            o = encodeURIComponent(o);
+            / ^( ? :\d + |P\d + |CF\d + [A - Z] | SP\d + |AT\d + |UVA\d + ) $ / .test(o) ? window.location.href = "/problemnew/show/".concat(o) : window.location.href = "/problemnew/lists?name=".concat(o)
+        }
     };
     document.addEventListener("DOMContentLoaded",
     function() {
