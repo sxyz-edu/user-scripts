@@ -8,8 +8,6 @@
 
 使用 TypeScript 编写，由 Webpack 打包。
 
-**警告：这是一个开发分支，会包括一些新功能但可能不稳定。**
-
 ## 使用方法
 
 1. 下载 [Tampermonkey](https://tampermonkey.net/) 浏览器插件.
@@ -48,7 +46,6 @@
 ```bash
 git clone https://github.com/sxyz-edu/user-scripts.git
 cd user-scripts
-git checkout alpha
 # 如果你用 npm
 npm install
 # 如果你用 yarn
@@ -70,5 +67,5 @@ yarn build
 
 感谢您的贡献！
 
-[bzoj-user-js]: https://raw.githubusercontent.com/sxyz-edu/user-scripts/alpha/dist/bzoj.user.js
-[luogu-user-js]: https://raw.githubusercontent.com/sxyz-edu/user-scripts/alpha/dist/luogu.user.js
+[bzoj-user-js]: https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/bzoj.user.js
+[luogu-user-js]: https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/luogu.user.js

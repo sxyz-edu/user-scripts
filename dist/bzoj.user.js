@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name           Scripts for BZOJ
 // @namespace      https://www.lydsy.com/
-// @version        0.4.0-alpha.3
+// @version        0.4.0-beta.0
 // @match          https://lydsy.com/JudgeOnline/*
 // @match          https://www.lydsy.com/JudgeOnline/*
 // @run-at         document-start
-// @updateURL      https://github.com/sxyz-edu/user-scripts/raw/alpha/dist/bzoj.user.js
-// @downloadURL    https://github.com/sxyz-edu/user-scripts/raw/alpha/dist/bzoj.user.js
+// @updateURL      https://github.com/sxyz-edu/user-scripts/raw/master/dist/bzoj.user.js
+// @downloadURL    https://github.com/sxyz-edu/user-scripts/raw/master/dist/bzoj.user.js
 // @supportURL     https://github.com/sxyz-edu/user-scripts
 // @require        https://cdn1.lncld.net/static/js/3.0.4/av-min.js
 // ==/UserScript==

@@ -8,8 +8,6 @@ Useful user scripts for OIers.
 
 Written in TypeScript, bundle by Webpack.
 
-**WARNING: This is a dev branch, including new features but unstable.**
-
 ## Usage
 
 1. Download [Tampermonkey](https://tampermonkey.net/) for your browser.
@@ -48,7 +46,6 @@ Written in TypeScript, bundle by Webpack.
 ```bash
 git clone https://github.com/sxyz-edu/user-scripts.git
 cd user-scripts
-git checkout alpha
 # if you use npm
 npm install
 # if you use yarn
@@ -70,5 +67,5 @@ yarn build
 
 Thanks for your contribution.
 
-[bzoj-user-js]: https://raw.githubusercontent.com/sxyz-edu/user-scripts/alpha/dist/bzoj.user.js
-[luogu-user-js]: https://raw.githubusercontent.com/sxyz-edu/user-scripts/alpha/dist/luogu.user.j
+[bzoj-user-js]: https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/bzoj.user.js
+[luogu-user-js]: https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/luogu.user.j

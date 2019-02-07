@@ -1,14 +1,14 @@
 // ==UserScript==
 // @name           Scripts for Luogu
 // @namespace      https://www.luogu.org/
-// @version        0.5.0-alpha.6
+// @version        0.5.0-beta.0
 // @match          https://www.luogu.org/*
 // @match          https://www.luogu.com.cn/*
 // @exclude        https://www.luogu.org/blog/*
 // @exclude        https://www.luogu.com.cn/blog/*
 // @run-at         document-start
-// @updateURL      https://github.com/sxyz-edu/user-scripts/raw/alpha/dist/luogu.user.js
-// @downloadURL    https://github.com/sxyz-edu/user-scripts/raw/alpha/dist/luogu.user.js
+// @updateURL      https://github.com/sxyz-edu/user-scripts/raw/master/dist/luogu.user.js
+// @downloadURL    https://github.com/sxyz-edu/user-scripts/raw/master/dist/luogu.user.js
 // @supportURL     https://github.com/sxyz-edu/user-scripts
 // ==/UserScript==
 
