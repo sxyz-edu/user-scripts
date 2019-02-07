@@ -8,10 +8,7 @@
     "sourceMap": false,
     "declaration": false,
     "jsx": "preserve",
-    "lib": [
-      "es2018",
-      "dom",
-    ],
+    "lib": ["es2018", "dom"],
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,

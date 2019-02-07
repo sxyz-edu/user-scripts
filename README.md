@@ -38,8 +38,8 @@ Written in TypeScript, bundle by Webpack.
 - Compare solved problems between you and other users.
 - Add your score of the problem before the title.
 - Extend the original search function.
-  + Default: direct search for the problem (title or pid).
-  + Start with `u:` : search for the user (username or uid).
+  - Default: direct search for the problem (title or pid).
+  - Start with `u:` : search for the user (username or uid).
 
 ## Development
 
@@ -68,4 +68,4 @@ yarn build
 Thanks for your contribution.
 
 [bzoj-user-js]: https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/bzoj.user.js
-[luogu-user-js]: https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/luogu.user.j
+[luogu-user-js]: https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/luogu.user.js
