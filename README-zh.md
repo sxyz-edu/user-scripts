@@ -47,6 +47,7 @@
 
 ```bash
 git clone https://github.com/sxyz-edu/user-scripts.git
+npm install
 ```
 
 修改好本地代码后依次运行以下代码：

@@ -47,6 +47,7 @@ Useful user scripts for OIers.
 
 ```bash
 git clone https://github.com/sxyz-edu/user-scripts.git
+nmp install
 ```
 
 Run the codes below in turn after modifying the local codes:
