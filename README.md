@@ -56,11 +56,11 @@ Before you commit or pull request, you need to make sure your code passes the te
 
 ```bash
 # if you use npm
-npm run eslint
+npm run tslint
 npm run stylelint
 npm run build
 # if you use yarn
-yarn eslint
+yarn tslint
 yarn stylelint
 yarn build
 ```

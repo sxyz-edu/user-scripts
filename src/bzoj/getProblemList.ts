@@ -10,15 +10,15 @@ const pRegex = /p\((\d+)\);/gi;
  * @returns {number} problem ids
  */
 const parseProblems = (str: string): number[] => {
-  return (str.match(pRegex) || []).map((str) => Number(str.slice(2, 4)));
-}
+  return (str.match(pRegex) || []).map((s) => Number(s.slice(2, 4)));
+};
 
-interface PassedList {
+interface IPassedList {
   passedlist: number[];
   updateAt: number;
 }
 
-const getProblemList = (uid: string): Promise<PassedList> => {
+const getProblemList = (uid: string): Promise<IPassedList> => {
   return new Promise((resolve, reject) => {
     const saved = localStorage.getItem(uid);
     if (saved) {
@@ -36,14 +36,14 @@ const getProblemList = (uid: string): Promise<PassedList> => {
       .then((res) => res.text())
       .then((res) => {
         const save = {
-          'passedlist': parseProblems(res),
-          'updateAt': Number(new Date())
+          passedlist: parseProblems(res),
+          updateAt: Number(new Date()),
         };
         localStorage.setItem(uid, JSON.stringify(save));
         resolve(save);
       })
       .catch(reject);
   });
-}
+};
 
 export default getProblemList;

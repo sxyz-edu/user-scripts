@@ -6,12 +6,9 @@
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.3.1",
-    "@typescript-eslint/parser": "^1.2.0",
     "babel-loader": "^8.0.5",
     "css-loader": "^2.1.0",
     "cssnano": "^4.1.8",
-    "eslint": "^5.13.0",
-    "eslint-cli": "^1.1.1",
     "gulp": "^4.0.0",
     "gulp-rename": "^1.4.0",
     "js-yaml": "^3.12.1",
@@ -24,14 +21,15 @@
     "stylelint-config-standard-scss": "^1.0.1",
     "stylelint-scss": "^3.5.3",
     "ts-loader": "^5.3.3",
-    "typescript": "^3.2.1",
+    "tslint": "^5.12.1",
+    "typescript": "^3.3.3",
     "webpack": "^4.29.3",
     "webpack-cli": "^3.2.3",
     "webpack-stream": "^5.2.1"
   },
   "scripts": {
-    "eslint": "eslint \"src/**/*.ts\"",
-    "eslint:fix": "eslint \"src/**/*.ts\" --fix",
+    "tslint": "tslint \"src/**/*.ts\"",
+    "tslint:fix": "tslint \"src/**/*.ts\" --fix",
     "stylelint": "stylelint \"src/**/*.scss\"",
     "stylelint:fix": "stylelint \"src/**/*.scss\" --fix",
     "build": "gulp"

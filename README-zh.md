@@ -56,11 +56,11 @@ yarn install
 
 ```bash
 # 如果你用 npm
-npm run eslint
+npm run tslint
 npm run stylelint
 npm run build
 # 如果你用 yarn
-yarn eslint
+yarn tslint
 yarn stylelint
 yarn build
 ```

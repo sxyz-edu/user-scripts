@@ -5,7 +5,7 @@
  */
 
 setInterval(() => {
-  fetch('/JudgeOnline/', {
-    'credentials': 'same-origin'
+  fetch("/JudgeOnline/", {
+    credentials: "same-origin",
   });
 }, 1000 * 60 * 10);

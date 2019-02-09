@@ -8,7 +8,7 @@ const webpackConfig = require("./webpack.config.js");
 const generateUserScript = dirname => () => {
   return gulp
     .src(path.join(dirname, "index.ts"))
-    .pipe(webpack(Object.assign({}, webpackConfig)))
+    .pipe(webpack(webpackConfig))
     .pipe(info(path.join(dirname, "_config.yml")))
     .pipe(rename(path.basename(dirname) + ".user.js"))
     .pipe(gulp.dest("dist"));

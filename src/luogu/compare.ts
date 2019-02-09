@@ -16,13 +16,13 @@ const aRegex = /<a[^>]*?>([\s\S]*?)<\/a>/gi;
  * @returns {[String]} problem ids
  */
 const parseProblems = (str: string): string[] => {
-  return (str.match(aRegex) || []).map((res) => res.replace(aRegex, '$1'));
-}
+  return (str.match(aRegex) || []).map((res) => res.replace(aRegex, "$1"));
+};
 
 /**
  * ProblemList for caching
  */
-interface ProblemList {
+interface IProblemList {
   passedlist: string[];
   triedlist: string[];
   updateAt: number;
@@ -33,7 +33,7 @@ interface ProblemList {
  * @param {String} uid user id
  * @return {Promise<ProblemList>} problem list
  */
-const getProblemList = (uid: string): Promise<ProblemList> => {
+const getProblemList = (uid: string): Promise<IProblemList> => {
   return new Promise((resolve, reject) => {
     const saved = localStorage.getItem(uid);
     if (saved) {
@@ -49,29 +49,29 @@ const getProblemList = (uid: string): Promise<ProblemList> => {
 
     const parseResult = (result: string) => {
       if (!result) {
-        reject(new Error('Parse error'));
+        reject(new Error("Parse error"));
       }
 
       return result;
-    }
+    };
 
     fetch(`/space/show?uid=${uid}`)
       .then((res) => res.text())
       .then((res) => {
-        const data = (res.match(dataRegex) || []).map((match) => match.replace(spanRegex, ''));
+        const data = (res.match(dataRegex) || []).map((match) => match.replace(spanRegex, ""));
         const passedlist = parseProblems(parseResult(data[0]));
         const triedlist = parseProblems(parseResult(data[2]));
         const save = {
           passedlist,
           triedlist,
-          'updateAt': Number(new Date())
-        }
+          updateAt: Number(new Date()),
+        };
         localStorage.setItem(uid, JSON.stringify(save));
         resolve(save);
       })
       .catch(reject);
   });
-}
+};
 
 /**
  * Display a number on a h2 element
@@ -79,16 +79,16 @@ const getProblemList = (uid: string): Promise<ProblemList> => {
  * @returns {void} nothing
  */
 const displayNumber = (num: number): void => {
-  const cssSelector = 'body > #app-body-new > div > div.am-u-md-4.lg-right >div.lg-article.am-hide-sm >h2';
-  const h2 = <HTMLElement>document.querySelector(cssSelector);
+  const cssSelector = "body > #app-body-new > div > div.am-u-md-4.lg-right >div.lg-article.am-hide-sm >h2";
+  const h2 = document.querySelector(cssSelector) as HTMLElement;
   if (h2) {
-    h2.style.fontSize = '18px';
+    h2.style.fontSize = "18px";
     h2.textContent = `通过题目（其中你有 ${num} 道题尚未 AC）`;
   }
-}
+};
 
 export default () => {
-  if (window.location.pathname === '/space/show') {
+  if (window.location.pathname === "/space/show") {
     const anotherMatch = (/uid=(\d+)/).exec(window.location.href);
     if (!anotherMatch) {
       // if this is not a profile page
@@ -113,17 +113,17 @@ export default () => {
         let num = 0;
         const passedlist = new Set(data.passedlist);
         const triedlist = new Set(data.triedlist);
-        const list = Array.from(document.querySelectorAll('div.lg-article > a[data-pjax]'));
+        const list = Array.from(document.querySelectorAll("div.lg-article > a[data-pjax]"));
         list.forEach((a) => {
           const pid = a.innerHTML;
           if (passedlist.has(pid)) {
-            a.classList.add('solved');
+            a.classList.add("solved");
           } else {
             ++num;
             if (triedlist.has(pid)) {
-              a.classList.add('tried');
+              a.classList.add("tried");
             } else {
-              a.classList.add('unsolved');
+              a.classList.add("unsolved");
             }
           }
         });
