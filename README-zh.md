@@ -21,7 +21,7 @@
 [安装][bzoj-user-js]
 
 - 提供其他题库相关题目的跳转连接（数据来自第三方）；
-- 提供便捷的数据下载链接（基于 <https://lydsy.download>）；
+- 提供便捷的数据下载链接（基于 <https://lydsy.download>，仅供个人学习使用）；
 - 提供权限题的访问权限（仍然不能提交）；
 - 在做过的题目标题前打勾；
 - 比较别人和你的做题记录；
@@ -33,7 +33,7 @@
 
 **设置的入口在左侧导航栏中**
 
-- 提供了一个更加舒适的 UI；
+- 提供了一个更加舒适的 UI（从[这个样式][this style]修改而来）；
 - 评论自动翻页功能；
 - 比较别人和你的做题记录；
 - 在题目页面标题处添加该题的当前得分；
@@ -69,3 +69,4 @@ yarn build
 
 [bzoj-user-js]: https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/bzoj.user.js
 [luogu-user-js]: https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/luogu.user.js
+[this style]: https://userstyles.org/styles/166554/argon-design-luogu-argon-design

@@ -21,7 +21,7 @@ Written in TypeScript, bundle by Webpack.
 [install][bzoj-user-js]
 
 - Provide links for related problems on luogu, vijos, codevs, etc.
-- Provide direct data download link (based on <https://lydsy.download>).
+- Provide direct data download link (based on <https://lydsy.download>, for personal study only).
 - Provide access to protected problems (read only, cannot submit yet).
 - Add a mark before the title if you have solved this problem already.
 - Compare solved problems between you and other users.
@@ -33,7 +33,7 @@ Written in TypeScript, bundle by Webpack.
 
 **Config Entrance is at the left nav bar**
 
-- Provide a more friendly UI.
+- Provide a more friendly UI (modified from [this style]).
 - Load comments automatically in discuss pages.
 - Compare solved problems between you and other users.
 - Add your score of the problem before the title.
@@ -69,3 +69,4 @@ Thanks for your contribution.
 
 [bzoj-user-js]: https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/bzoj.user.js
 [luogu-user-js]: https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/luogu.user.js
+[this style]: https://userstyles.org/styles/166554/argon-design-luogu-argon-design
