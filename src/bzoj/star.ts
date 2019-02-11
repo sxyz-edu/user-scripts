@@ -10,13 +10,26 @@
  * Provides data storage
  */
 interface ISaver {
+  /**
+   * check if pid is stared
+   * @param {String} pid problem id
+   */
   has(pid: string): boolean;
+  /**
+   * mark pid as stared
+   * @param {String} pid problem id
+   */
   add(pid: string): void;
+  /**
+   * mark pid as unstared
+   * @param {String} pid problem id
+   */
   remove(pid: string): void;
 }
 
 /**
  * Create a local Saver
+ * use localStorage to save and load data
  * @returns {Saver} a local saver
  */
 const createLocalSaver = (): ISaver => {
@@ -49,6 +62,13 @@ const createLocalSaver = (): ISaver => {
   return { add, has, remove };
 };
 
+/**
+ * Create a leancloud saver
+ * return a local saver if fails anyway
+ * @param {String} appKey appkey
+ * @param {String} appId appid
+ * @param {String} username username
+ */
 const createLeancloudSaver = (appKey: string, appId: string, username: string): Promise<ISaver> => {
   const reportError = (err: Error): void => {
     // alert(err);
@@ -61,6 +81,9 @@ const createLeancloudSaver = (appKey: string, appId: string, username: string): 
     const str = new AV.Query("Stars");
     str.equalTo("name", username);
 
+    /**
+     * create a new object
+     */
     const createNewStar = (): Promise<AV.Object> => {
       const star = new Stars();
       star.set("name", username);
@@ -69,12 +92,15 @@ const createLeancloudSaver = (appKey: string, appId: string, username: string): 
       return star.save();
     };
 
-    const solve = (Data: AV.Queriable): void => {
+    /**
+     * resolve a saver
+     * @param {AV.Object} star av object
+     */
+    const solve = (star: AV.Queriable): void => {
 
-      if (Data instanceof AV.File) {
+      if (star instanceof AV.File) {
         throw new Error("File can not be solved");
       }
-      const star: AV.Object = Data;
 
       const data = new Set(star.get("star"));
       const has = (id: string): boolean => {
@@ -105,6 +131,11 @@ const createLeancloudSaver = (appKey: string, appId: string, username: string): 
   });
 };
 
+/**
+ * get a saver
+ * default to a leancloud saver
+ * if fails anyway, return a local saver
+ */
 const getSaver = (): Promise<ISaver> => {
   return new Promise((resolve) => {
 
@@ -124,6 +155,9 @@ const getSaver = (): Promise<ISaver> => {
       return reject();
     }
 
+    /**
+     * This is my leancloud app now (@swwind)
+     */
     createLeancloudSaver("Hd5RR4oB6dkRi9n8mrKcQMXB", "Xg0skcXL3ifVW7K0SFKTFCzE-gzGzoHsz", username)
       .then(resolve)
       .catch((err: Error) => {
@@ -138,7 +172,11 @@ const regularStar = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 51
 const solidStar = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path></svg>';
 
 document.addEventListener("DOMContentLoaded", () => {
+
+  // get a saver
   getSaver().then((saver: ISaver) => {
+
+    // bind elements here
 
     const insertStar = (pid: string, elem: Element | null): void => {
 
