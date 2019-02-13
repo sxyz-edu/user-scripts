@@ -48,7 +48,8 @@ const search = (parameter: string): void => {
     window.location.href = `/problemnew/show/${txt}`;
   } else {
     // search it
-    window.location.href = `/problemnew/lists?name=${txt}`;
+    const str = encodeURIComponent(txt);
+    window.location.href = `/problemnew/lists?name=${str}`;
   }
 };
 
