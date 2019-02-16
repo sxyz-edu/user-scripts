@@ -12,7 +12,7 @@
 
 1. 下载 [Tampermonkey](https://tampermonkey.net/) 浏览器插件.
 
-2. 直接点击上方的「安装」链接即可安装脚本（~~我觉得没必要用 greasyfork 啊~~）。
+2. 直接点击上方的「安装」链接即可安装脚本。
 
 ## 特性
 
@@ -67,6 +67,6 @@ yarn build
 
 感谢您的贡献！
 
-[bzoj-user-js]: https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/bzoj.user.js
-[luogu-user-js]: https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/luogu.user.js
+[bzoj-user-js]: https://cdn.jsdelivr.net/gh/sxyz-edu/user-scripts/dist/bzoj.user.js
+[luogu-user-js]: https://cdn.jsdelivr.net/gh/sxyz-edu/user-scripts/dist/luogu.user.js
 [this style]: https://userstyles.org/styles/166554/argon-design-luogu-argon-design

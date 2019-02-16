@@ -67,6 +67,6 @@ yarn build
 
 Thanks for your contribution.
 
-[bzoj-user-js]: https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/bzoj.user.js
-[luogu-user-js]: https://raw.githubusercontent.com/sxyz-edu/user-scripts/master/dist/luogu.user.js
+[bzoj-user-js]: https://cdn.jsdelivr.net/gh/sxyz-edu/user-scripts/dist/bzoj.user.js
+[luogu-user-js]: https://cdn.jsdelivr.net/gh/sxyz-edu/user-scripts/dist/luogu.user.js
 [this style]: https://userstyles.org/styles/166554/argon-design-luogu-argon-design
