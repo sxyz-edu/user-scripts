@@ -783,3 +783,15 @@ kbd,
 samp {
   font-family: Consolas, monospace !important;
 }
+
+// 代码框
+
+/* stylelint-disable selector-max-universal */
+
+.am-tab-panel * {
+  transition: all .1s linear 0s;
+}
+
+.am-tab-panel *:hover {
+  transition: all .1s linear 0s;
+}
