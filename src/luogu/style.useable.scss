@@ -58,18 +58,6 @@ h1 {
 a {
   transition: all .15s;
   color: #5e72e4;
-
-  &.solved {
-    color: #1fc51f;
-  }
-
-  &.unsolved {
-    color: #ff6666;
-  }
-
-  &.tried {
-    color: #ff9900;
-  }
 }
 
 // 颜色定义

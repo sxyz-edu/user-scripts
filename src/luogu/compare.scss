@@ -1,0 +1,14 @@
+a {
+
+  &.solved {
+    color: #1fc51f;
+  }
+
+  &.unsolved {
+    color: #ff6666;
+  }
+
+  &.tried {
+    color: #ff9900;
+  }
+}

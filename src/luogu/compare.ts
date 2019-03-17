@@ -6,6 +6,7 @@
  * - Other: red
  */
 
+import style from "./compare.scss";
 const dataRegex = /<div class="lg-article am-hide-sm">([\s\S]*?)<\/div>/gi;
 const spanRegex = /<span[\s\S]*?<\/span>/gi;
 const aRegex = /<a[^>]*?>([\s\S]*?)<\/a>/gi;
@@ -89,14 +90,14 @@ const displayNumber = (num: number): void => {
 
 export default () => {
   if (window.location.pathname === "/space/show") {
-    const anotherMatch = (/uid=(\d+)/).exec(window.location.href);
+    const anotherMatch = /uid=(\d+)/.exec(window.location.href);
     if (!anotherMatch) {
       // if this is not a profile page
       return;
     }
     const another = anotherMatch[1];
 
-    const uidMatch = (/_uid=(\d+)/i).exec(document.cookie);
+    const uidMatch = /_uid=(\d+)/i.exec(document.cookie);
     if (!uidMatch) {
       // if the current user is not logged in yet
       return;
@@ -108,26 +109,29 @@ export default () => {
       return;
     }
 
-    getProblemList(uid)
-      .then((data) => {
-        let num = 0;
-        const passedlist = new Set(data.passedlist);
-        const triedlist = new Set(data.triedlist);
-        const list = Array.from(document.querySelectorAll("div.lg-article > a[data-pjax]"));
-        list.forEach((a) => {
-          const pid = a.innerHTML;
-          if (passedlist.has(pid)) {
-            a.classList.add("solved");
+    getProblemList(uid).then((data) => {
+      let num = 0;
+      const passedlist = new Set(data.passedlist);
+      const triedlist = new Set(data.triedlist);
+      const list = Array.from(document.querySelectorAll("div.lg-article > a[data-pjax]"));
+      list.forEach((a) => {
+        const pid = a.innerHTML;
+        if (passedlist.has(pid)) {
+          a.classList.add("solved");
+        } else {
+          ++num;
+          if (triedlist.has(pid)) {
+            a.classList.add("tried");
           } else {
-            ++num;
-            if (triedlist.has(pid)) {
-              a.classList.add("tried");
-            } else {
-              a.classList.add("unsolved");
-            }
+            a.classList.add("unsolved");
           }
-        });
-        displayNumber(num);
+        }
       });
+      displayNumber(num);
+    });
   }
 };
+
+document.addEventListener("DOMContentLoaded", () => {
+  style.use();
+});
