@@ -97,7 +97,6 @@ const createLeancloudSaver = (appKey: string, appId: string, username: string): 
      * @param {AV.Object} star av object
      */
     const solve = (star: AV.Queriable): void => {
-
       if (star instanceof AV.File) {
         throw new Error("File can not be solved");
       }
@@ -119,15 +118,14 @@ const createLeancloudSaver = (appKey: string, appId: string, username: string): 
       resolve({ add, has, remove });
     };
 
-    str.find()
-      .then((res: AV.Queriable[]) => {
-        if (res[0]) {
-          solve(res[0]);
-        } else {
-          // initialize
-          createNewStar().then(solve, reject);
-        }
-      }, reject);
+    str.find().then((res: AV.Queriable[]) => {
+      if (res[0]) {
+        solve(res[0]);
+      } else {
+        // initialize
+        createNewStar().then(solve, reject);
+      }
+    }, reject);
   });
 };
 
@@ -138,7 +136,6 @@ const createLeancloudSaver = (appKey: string, appId: string, username: string): 
  */
 const getSaver = (): Promise<ISaver> => {
   return new Promise((resolve) => {
-
     // TODO: localStorage needs to be synced to leancloud
 
     // return a local saver
@@ -158,7 +155,7 @@ const getSaver = (): Promise<ISaver> => {
     /**
      * This is my leancloud app now (@swwind)
      */
-    createLeancloudSaver("Hd5RR4oB6dkRi9n8mrKcQMXB", "Xg0skcXL3ifVW7K0SFKTFCzE-gzGzoHsz", username)
+    createLeancloudSaver("48WcElR7mXie846wsb85yTgB", "yxzUEAgrLrP0XSQkN4k1vNE6-gzGzoHsz", username)
       .then(resolve)
       .catch((err: Error) => {
         console.error(err);
@@ -172,14 +169,11 @@ const regularStar = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 51
 const solidStar = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path></svg>';
 
 document.addEventListener("DOMContentLoaded", () => {
-
   // get a saver
   getSaver().then((saver: ISaver) => {
-
     // bind elements here
 
     const insertStar = (pid: string, elem: Element | null): void => {
-
       if (!elem) {
         return;
       }
@@ -208,8 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
       elem.appendChild(div);
     };
 
-    if (window.location.pathname === "/JudgeOnline/show.php" ||
-      window.location.pathname === "/JudgeOnline/problem.php") {
+    if (window.location.pathname === "/JudgeOnline/show.php" || window.location.pathname === "/JudgeOnline/problem.php") {
       // is problem page
       const pid = location.href.split("=")[1];
       insertStar(pid, document.querySelector("h2"));
@@ -223,7 +216,5 @@ document.addEventListener("DOMContentLoaded", () => {
         insertStar(pid, td);
       });
     }
-
   });
-
 });
