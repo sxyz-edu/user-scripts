@@ -14,6 +14,8 @@ Written in TypeScript, bundle by Webpack.
 
 2. Just click the "install" link.
 
+3. If you want to update the scripts, please update them by Tampermonkey.Because the links in this page have cached so you cannot get the latest version.
+
 ## Feature
 
 **bzoj.user.js**
@@ -25,6 +27,7 @@ Written in TypeScript, bundle by Webpack.
 - Provide access to protected problems (read only, cannot submit yet).
 - Add a mark before the title if you have solved this problem already.
 - Compare solved problems between you and other users.
+- Star problems you like and sync them by cloud.
 - Keep your session.
 
 **luogu.user.js**
