@@ -7,8 +7,7 @@
  * @returns {Boolean} true if need to be loaded
  */
 const shouldLoad = (): boolean => {
-  const scrollTop =
-    document.body.scrollTop || document.documentElement.scrollTop;
+  const scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
   const height = Math.max(
     document.body.scrollHeight,
     document.body.offsetHeight,

@@ -19,7 +19,8 @@ export default class ControlCSS {
 
   // flush to make the settings take effect
   public flush() {
-    const v = Array.from(this.map).map((a) => a.join(":"))
+    const v = Array.from(this.map)
+      .map((a) => a.join(":"))
       .join(";");
     this.style.innerHTML = `:root{${v}}`;
   }

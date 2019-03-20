@@ -15,7 +15,7 @@ const search = (parameter: string): void => {
     return show_alert("提示", "请输入内容");
   }
 
-  if ((/^u:/i).test(txt)) {
+  if (/^u:/i.test(txt)) {
     // search user
     let uid = txt.slice(2);
     uid = uid.trim();
@@ -23,7 +23,7 @@ const search = (parameter: string): void => {
       // no input
       return show_alert("提示", "请输入用户名或uid");
     }
-    if ((/^\d+$/g).test(uid)) {
+    if (/^\d+$/g.test(uid)) {
       // direct jump
       window.location.href = `/space/show?uid=${uid}`;
     } else {
@@ -43,7 +43,7 @@ const search = (parameter: string): void => {
           return show_alert("错误", "网络超时");
         });
     }
-  } else if ((/^(?:\d+|P\d+|CF\d+[A-Z]|SP\d+|AT\d+|UVA\d+)$/i).test(txt)) {
+  } else if (/^(?:\d+|P\d+|CF\d+[A-Z]|SP\d+|AT\d+|UVA\d+)$/i.test(txt)) {
     // is a pid
     window.location.href = `/problemnew/show/${txt}`;
   } else {
@@ -62,7 +62,7 @@ const searchEvent = (el: HTMLInputElement): void => {
   el.addEventListener("keypress", (e) => {
     if (e.key === "Enter") {
       const target = e.target as HTMLInputElement;
-      const txt = target && target.value || "";
+      const txt = (target && target.value) || "";
       search(txt);
     }
   });
@@ -85,7 +85,7 @@ const replaceBtn = (): void => {
       // prevent default listener
       e.stopImmediatePropagation();
       const toproblem = document.querySelector("input[name=toproblem]") as HTMLInputElement;
-      const txt = toproblem && toproblem.value || "";
+      const txt = (toproblem && toproblem.value) || "";
       search(txt);
     });
   }

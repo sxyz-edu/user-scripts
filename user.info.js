@@ -19,12 +19,8 @@ module.exports = filename => {
       tasks.push([key, config[key]]);
     }
   }
-  const infos = tasks
-    .map(([key, value]) => `// @${key.padEnd(15)}${value}`)
-    .join("\n");
-  const result = ["// ==UserScript==", infos, "// ==/UserScript==", ""].join(
-    "\n"
-  );
+  const infos = tasks.map(([key, value]) => `// @${key.padEnd(15)}${value}`).join("\n");
+  const result = ["// ==UserScript==", infos, "// ==/UserScript==", ""].join("\n");
   const template = js => [result, js].join("\n");
 
   stream._transform = (file, encoding, callback) => {

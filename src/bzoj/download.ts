@@ -3,16 +3,12 @@
  */
 
 document.addEventListener("DOMContentLoaded", () => {
-  if (window.location.pathname !== "/JudgeOnline/show.php" &&
-    window.location.pathname !== "/JudgeOnline/problem.php") {
+  if (window.location.pathname !== "/JudgeOnline/show.php" && window.location.pathname !== "/JudgeOnline/problem.php") {
     // is not a problem
     return;
   }
 
-  const elem = [
-    document.querySelector("title+center"),
-    document.querySelector("div.content+center"),
-  ];
+  const elem = [document.querySelector("title+center"), document.querySelector("div.content+center")];
   const pid = Number(location.href.split("=")[1]);
 
   if (pid >= 5000) {
@@ -25,5 +21,4 @@ document.addEventListener("DOMContentLoaded", () => {
       el.innerHTML += `[<a href="https://lydsy.download/archive/${pid}.zip">Download</a>]`;
     }
   });
-
 });

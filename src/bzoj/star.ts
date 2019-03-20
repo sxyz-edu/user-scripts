@@ -153,7 +153,7 @@ const getSaver = (): Promise<ISaver> => {
     }
 
     /**
-     * This is my leancloud app now (@swwind)
+     * This is my leancloud app now (@sxyugao)
      */
     createLeancloudSaver("48WcElR7mXie846wsb85yTgB", "yxzUEAgrLrP0XSQkN4k1vNE6-gzGzoHsz", username)
       .then(resolve)

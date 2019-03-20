@@ -46,11 +46,7 @@ const main = (data: string[][]): void => {
       const e = document.createElement("h3");
       e.style.color = "blue";
       if (url1 || url2) {
-        e.innerHTML = [
-          "See Also:",
-          createLink(url1, res1),
-          createLink(url2, res2),
-        ].join(" ");
+        e.innerHTML = ["See Also:", createLink(url1, res1), createLink(url2, res2)].join(" ");
         if (ele.parentElement) {
           ele.parentElement.insertBefore(e, ele);
         }
@@ -60,7 +56,6 @@ const main = (data: string[][]): void => {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-
   const result = localStorage.getItem("bzoj_json");
 
   if (!result) {
@@ -74,5 +69,4 @@ document.addEventListener("DOMContentLoaded", () => {
     // using local cache
     main(JSON.parse(result));
   }
-
 });
