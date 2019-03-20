@@ -6,10 +6,10 @@ import "./config.scss";
 import html from "./html";
 
 interface IConfigType {
-  "text": string;
-  "color": string;
-  "number": number;
-  "checkbox": boolean;
+  text: string;
+  color: string;
+  number: number;
+  checkbox: boolean;
 }
 
 interface IConfigItem<K extends keyof IConfigType> {
@@ -29,14 +29,69 @@ declare type SaveEvent = Map<string, IConfigType[keyof IConfigType]>;
 
 export default class ConfigWindow {
   public configs: Array<IConfigElement<keyof IConfigType>>;
-
   public container: HTMLElement;
-
+  public onlineJudge: string;
   public onsave: (e: SaveEvent) => void;
+  private par: Array<IConfigItem<any>>;
 
   constructor(onlineJudge: string, configs: Array<IConfigItem<any>>, onsave: (e: SaveEvent) => void) {
     this.onsave = onsave;
 
+    this.onlineJudge = onlineJudge;
+
+    // load config
+    this.par = configs;
+    this.configs = this.loadConfig();
+    // create the config window
+    this.container = html("div.config-container");
+
+    // insert menu
+    this.insertMenu();
+
+    // insert content
+    this.insertContent();
+
+    // insert button
+    this.insertButton();
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.body.appendChild(this.container);
+    });
+
+    this.emitsave(true);
+  }
+  // save settings
+  public emitsave(primary: boolean): void {
+    const data = new Map();
+    this.configs.forEach(({ config, input }) => {
+      data.set(config.key, config.type === "checkbox" ? input.checked : input.value);
+    });
+    localStorage.setItem("config", JSON.stringify(Array.from(data)));
+    data.set("primary", primary);
+    this.onsave(data);
+  }
+
+  // show the config window
+  public show(): void {
+    const e = this.container;
+    while (e.firstChild) {
+      const ele = e.firstChild as ChildNode;
+      e.removeChild(ele);
+    }
+    // reload config
+    this.configs = this.loadConfig();
+    this.insertMenu();
+    this.insertContent();
+    this.insertButton();
+    this.container.classList.add("open");
+  }
+
+  // hide the config window
+  public hide(): void {
+    this.container.classList.remove("open");
+  }
+
+  private loadConfig(): Array<IConfigElement<keyof IConfigType>> {
     // load data
     let data: Map<string, IConfigType[keyof IConfigType]> = new Map();
     try {
@@ -48,34 +103,14 @@ export default class ConfigWindow {
       data = new Map();
     }
 
-    // create the config window
-    this.container = html("div.config-container");
-
-    const menu = html("div.menu");
-    const title = html("span 个性化");
-    menu.appendChild(title);
-    const close = html("div.close");
-    close.addEventListener("click", () => {
-      this.hide();
-    });
-    menu.appendChild(close);
-    this.container.appendChild(menu);
-
-    const content = html("div.content");
-
-    this.configs = configs.map((config) => {
-
-      const div = html("div.item");
+    return this.par.map((config) => {
       const defaultValue = data.has(config.key) ? data.get(config.key) : config.value;
-
-      const span = html(`span ${config.key}`);
-      div.appendChild(span);
-
       const input = html("input") as HTMLInputElement;
       switch (config.type) {
         case "text": {
           input.type = "text";
-          switch (onlineJudge) { // different input-box styles for different online judges
+          // different input-box styles for different online judges
+          switch (this.onlineJudge) {
             case "luogu": {
               input.classList.add("am-form-field");
               break;
@@ -89,7 +124,8 @@ export default class ConfigWindow {
         }
         case "color": {
           input.type = "color";
-          switch (onlineJudge) { // different input-box styles for different online judges
+          // different input-box styles for different online judges
+          switch (this.onlineJudge) {
             case "luogu": {
               input.classList.add("am-form-field");
               break;
@@ -103,7 +139,8 @@ export default class ConfigWindow {
         }
         case "number": {
           input.type = "number";
-          switch (onlineJudge) { // different input-box styles for different online judges
+          // different input-box styles for different online judges
+          switch (this.onlineJudge) {
             case "luogu": {
               input.classList.add("am-form-field");
               break;
@@ -131,18 +168,40 @@ export default class ConfigWindow {
           throw new Error("Unexpected Config Type");
         }
       }
-      div.appendChild(input);
-      content.appendChild(div);
-
       return { config, input };
     });
+  }
 
+  private insertMenu(): void {
+    const menu = html("div.menu");
+    const title = html("span 个性化");
+    menu.appendChild(title);
+    const close = html("div.close");
+    close.addEventListener("click", () => {
+      this.hide();
+    });
+    menu.appendChild(close);
+    this.container.appendChild(menu);
+  }
+
+  private insertContent(): void {
+    const content = html("div.content");
+    this.configs.forEach(({ config, input }) => {
+      const div = html("div.item");
+      const span = html(`span ${config.key}`);
+      div.appendChild(span);
+      div.appendChild(input as HTMLElement);
+      content.appendChild(div);
+    });
     this.container.appendChild(content);
+  }
+
+  private insertButton(): void {
     const buttonset = html("div.buttonset");
     const confirmButton = html("div.button 确定");
     const cancelButton = html("div.button 取消");
     // different button styles for different online judges
-    switch (onlineJudge) {
+    switch (this.onlineJudge) {
       case "luogu": {
         confirmButton.classList.add("am-btn", "am-btn-danger", "am-btn-sm");
         cancelButton.classList.add("am-btn", "am-btn-primary", "am-btn-sm");
@@ -164,37 +223,5 @@ export default class ConfigWindow {
     buttonset.appendChild(cancelButton);
     buttonset.appendChild(confirmButton);
     this.container.appendChild(buttonset);
-
-    document.addEventListener("DOMContentLoaded", () => {
-      document.body.appendChild(this.container);
-    });
-
-    this.emitsave(true);
-
   }
-
-  // save settings
-  public emitsave(primary: boolean): void {
-    const data = new Map();
-    this.configs.forEach(({ config, input }) => {
-      data.set(
-        config.key,
-        config.type === "checkbox" ? input.checked : input.value,
-      );
-    });
-    localStorage.setItem("config", JSON.stringify(Array.from(data)));
-    data.set("primary", primary);
-    this.onsave(data);
-  }
-
-  // show the config window
-  public show(): void {
-    this.container.classList.add("open");
-  }
-
-  // hide the config window
-  public hide(): void {
-    this.container.classList.remove("open");
-  }
-
 }

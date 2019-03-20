@@ -62,7 +62,7 @@ export default () => {
       a.addEventListener("click", () => {
         configWindow.show();
       });
-      a.setAttribute("href", "#");
+      a.setAttribute("href", "javascript:void(0)");
       nav.append(a);
     } else {
       setTimeout(bind, 500);
