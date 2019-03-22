@@ -10,7 +10,7 @@ const pRegex = /p\((\d+)\);/gi;
  * @returns {number} problem ids
  */
 const parseProblems = (str: string): number[] => {
-  return (str.match(pRegex) || []).map((s) => Number(s.slice(2, 4)));
+  return (str.match(pRegex) || []).map((s) => Number(s.slice(2, 6)));
 };
 
 interface IPassedList {
