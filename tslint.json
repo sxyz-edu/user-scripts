@@ -6,7 +6,8 @@
     "indent": [true, "spaces", 2],
     "linebreak-style": [true, "LF"],
     "no-console": [true, "log"],
-    "max-line-length": [true, 120]
+    "max-line-length": [true, 120],
+    "no-bitwise": false
   },
   "rulesDirectory": []
 }

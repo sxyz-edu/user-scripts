@@ -11,6 +11,10 @@
  */
 interface ISaver {
   /**
+   * stared problems
+   */
+  data: Set<string>;
+  /**
    * check if pid is stared
    * @param {String} pid problem id
    */
@@ -33,33 +37,33 @@ interface ISaver {
  * @returns {Saver} a local saver
  */
 const createLocalSaver = (): ISaver => {
-  let data: string[] = [];
+  let Data: string[] = [];
   const saved = localStorage.getItem("stars");
   if (saved) {
     try {
-      data = JSON.parse(saved);
+      Data = JSON.parse(saved);
     } catch (e) {
-      data = [];
+      Data = [];
     }
   }
-  const st = new Set(data);
+  const data = new Set(Data);
 
   const update = (): void => {
-    localStorage.setItem("stars", JSON.stringify(Array.from(st)));
+    localStorage.setItem("stars", JSON.stringify(Array.from(data)));
   };
   const remove = (pid: string): void => {
-    st.delete(pid);
+    data.delete(pid);
     update();
   };
   const add = (pid: string): void => {
-    st.add(pid);
+    data.add(pid);
     update();
   };
   const has = (pid: string): boolean => {
-    return st.has(pid);
+    return data.has(pid);
   };
 
-  return { add, has, remove };
+  return { data, add, has, remove };
 };
 
 /**
@@ -101,7 +105,7 @@ const createLeancloudSaver = (appKey: string, appId: string, username: string): 
         throw new Error("File can not be solved");
       }
 
-      const data = new Set(star.get("star"));
+      const data = new Set(star.get("star") as string[]);
       const has = (id: string): boolean => {
         return data.has(id);
       };
@@ -115,7 +119,7 @@ const createLeancloudSaver = (appKey: string, appId: string, username: string): 
         star.remove("star", id);
         star.save().catch(reportError);
       };
-      resolve({ add, has, remove });
+      resolve({ data, add, has, remove });
     };
 
     str.find().then((res: AV.Queriable[]) => {
@@ -165,8 +169,10 @@ const getSaver = (): Promise<ISaver> => {
   });
 };
 
-const regularStar = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM388.6 312.3l23.7 138.4L288 385.4l-124.3 65.3 23.7-138.4-100.6-98 139-20.2 62.2-126 62.2 126 139 20.2-100.6 98z"></path></svg>';
-const solidStar = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path></svg>';
+const regularStar =
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM388.6 312.3l23.7 138.4L288 385.4l-124.3 65.3 23.7-138.4-100.6-98 139-20.2 62.2-126 62.2 126 139 20.2-100.6 98z"></path></svg>';
+const solidStar =
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path></svg>';
 
 document.addEventListener("DOMContentLoaded", () => {
   // get a saver
@@ -202,7 +208,10 @@ document.addEventListener("DOMContentLoaded", () => {
       elem.appendChild(div);
     };
 
-    if (window.location.pathname === "/JudgeOnline/show.php" || window.location.pathname === "/JudgeOnline/problem.php") {
+    if (
+      window.location.pathname === "/JudgeOnline/show.php" ||
+      window.location.pathname === "/JudgeOnline/problem.php"
+    ) {
       // is problem page
       const pid = location.href.split("=")[1];
       insertStar(pid, document.querySelector("h2"));
@@ -215,6 +224,31 @@ document.addEventListener("DOMContentLoaded", () => {
         const pid = (td.children[0].getAttribute("href") || "").split("=")[1];
         insertStar(pid, td);
       });
+      const ele = document.querySelector("thead > tr > td > center") as HTMLElement;
+      const a = document.createElement("a") as HTMLElement;
+      a.innerText = " Stared problems";
+      a.setAttribute("href", "javascript:void(0)");
+      a.addEventListener("click", () => {
+        let table: string;
+        table = "";
+        let x: number;
+        const contain = document.querySelector("#problemset > tbody") as HTMLElement;
+        saver.data.forEach((e) => {
+          x++;
+          let s: string;
+          s = `<tr class="${x & 1 ? "evenrow" : "oddrow"}">`;
+          s += `<td><span></span></td>`; // TODO: mark accepted problmes
+          s += `<td align="center">${e}</td>`;
+          s += `<td align="left"><a href="problem.php?id=${e}">${e}</a></td>`; // TODO: display Title
+          s += `<td align="center"></td>`; // TODO: display Source
+          s += `<td align="center"><a href="status.php?problem_id=${e}&amp;jresult=4">${0}</a></td>`; // TODO: display ac number
+          s += `<td align="center"><a href="status.php?problem_id=${e}">${0}</a></td>`; // TODO: display submit number
+          s += "</tr>";
+          table += s;
+        });
+        contain.innerHTML = table;
+      });
+      ele.appendChild(a);
     }
   });
 });
