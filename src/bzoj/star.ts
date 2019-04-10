@@ -181,7 +181,7 @@ const solidStar =
 const getHtml = (url: string): Promise<string> => {
   return new Promise((resolve) => {
     const xhr = new XMLHttpRequest();
-    xhr.onload = function() {
+    xhr.onload = () => {
       resolve(xhr.responseText);
     };
     xhr.open("GET", url);
@@ -261,7 +261,8 @@ document.addEventListener("DOMContentLoaded", () => {
           const url = `problem.php?id=${e}`;
           getHtml(url).then((txt) => {
             x++;
-            let s, str: string;
+            let s: string;
+            let str: string;
             s = `<tr class="${x & 1 ? "evenrow" : "oddrow"}">`;
             const html = document.createElement("html");
             html.innerHTML = txt;
