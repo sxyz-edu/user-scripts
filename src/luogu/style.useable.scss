@@ -757,17 +757,81 @@ textarea {
 
 // 侧栏
 
-#app-sidenav {
-  background-color: transparent !important;
-  line-height: normal !important;
-
-  & > a {
-    color: #5e72e4 !important;
-  }
-}
-
 .popup-button {
   background-color: #3498dbd1;
+}
+
+#app-sidenav {
+  background-color: hsla(0, 0%, 100%, .6) !important;
+  line-height: normal !important;
+  box-shadow: 4px 5px 15px rgba(50, 50, 93, .1), 2px 5px 8px rgba(0, 0, 0, .07) !important;
+}
+
+#app-sidenav > a {
+  color: #5e72e4 !important;
+  height: 3.7em;
+  margin-top: 3px;
+  padding: 0 !important;
+}
+
+#app-sidenav > a:first-of-type {
+  margin-top: 10px !important;
+}
+
+#app-sidenav > a > .icon {
+  line-height: 2.4em;
+  font-size: 17px;
+  width: 100%;
+  margin: 0 !important;
+  transition: all .3s ease;
+}
+
+#app-sidenav > a > .text {
+  opacity: 0;
+  margin-top: -1em;
+  display: block;
+  transition: all .3s ease;
+}
+
+#app-sidenav > a:hover > .icon {
+  line-height: 1.5em;
+  font-size: 17px;
+}
+
+#app-sidenav > a:hover > .text {
+  opacity: 1;
+  margin-top: .2em;
+}
+
+#app-sidenav > div:first-of-type {
+  background-color: #5e72e4 !important;
+}
+
+#app-sidenav > .popup-button {
+  background-color: transparent !important;
+  margin-top: 8px;
+  color: #5e72e4 !important;
+}
+
+/// 侧栏Hover动画
+
+.lg-sidebar-list li[class^="lg-nav"] a span[class^="am-icon"]:after {
+  content: "";
+  background: #5e72e4;
+  position: absolute;
+  left: 50%;
+  right: 50%;
+  bottom: 8px;
+  height: 2px;
+  width: 0;
+  border-radius: 10px;
+  transition: all .15s ease;
+}
+
+.lg-sidebar-list li[class^="lg-nav"] a:hover span[class^="am-icon"]:after {
+  left: 40%;
+  right: 40%;
+  width: 20%;
 }
 
 // 代码字体
@@ -775,7 +839,7 @@ textarea {
 code,
 kbd,
 samp {
-  font-family: Consolas, monospace !important;
+  font-family: Consolas, monospace, "Courier New" !important;
 }
 
 // 标题字体
@@ -806,4 +870,31 @@ h2 {
 th,
 td {
   padding: 8px;
+}
+
+// 选中后的颜色
+
+::selection {
+  background-color: #cce2ff;
+  color: rgba(0, 0, 0, .87);
+}
+
+// 私信文字上方鼠标悬浮有淡淡的蓝色
+
+.lg-contacts > .lg-small:hover {
+  background-color: #f5f5f500 !important;
+}
+
+.lg-article > .lg-contacts > .lg-message-contact :hover {
+  background-color: #f5f5f500 !important;
+}
+
+// 应用悬浮
+
+.popup {
+  background: #ffffffbf !important;
+}
+
+.center {
+  background: #ffffffbf !important;
 }
