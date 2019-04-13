@@ -13,7 +13,7 @@ body {
   background-color: transparent !important;
 }
 
-.lfe-display {
+.lfe-h1 {
   color: #333333 !important;
   font-size: 30px !important;
   font-weight: bolder !important;
@@ -851,18 +851,6 @@ h4,
 h5,
 h6 {
   font-weight: 600 !important;
-}
-
-// 样例两个标题之间的行距过小
-
-h2 {
-  margin-bottom: 12 !important;
-}
-
-// 题解评论区、最新讨论与题目推荐标题与正文间距过小
-
-.lg-summary > h2 {
-  margin-bottom: 10px;
 }
 
 // 表格边距
