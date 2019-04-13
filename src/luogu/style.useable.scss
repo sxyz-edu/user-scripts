@@ -753,6 +753,30 @@ textarea {
 
 #app-footer {
   margin-left: 0 !important;
+  background: #ffffff00 !important;
+}
+
+// 底栏字颜色
+
+.color-header,
+.info,
+.slogan,
+.footer {
+  color: #292828d9 !important;
+}
+
+.slogan {
+  margin-left: 2em;
+}
+
+.color-header:hover {
+  color: #333333 !important;
+}
+
+// 删除底栏洛谷图片
+
+.logo-img {
+  display: none !important;
 }
 
 // 侧栏
