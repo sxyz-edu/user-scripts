@@ -4,6 +4,7 @@
 
 // loading sequence
 import "../utils/compare.scss";
+import "./style.scss";
 
 import "./access.ts";
 import "./autoRenewal.ts";
