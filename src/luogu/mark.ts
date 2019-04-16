@@ -38,7 +38,7 @@ const queryForScore = (uid: number, pid: string): Promise<number> => {
 export default () => {
   const pidMatch = /\/problemnew\/show\/(\w+)/i.exec(window.location.href);
   if (!pidMatch) {
-    // this is now a problem page
+    // this is not a problem page
     return;
   }
 
