@@ -1,0 +1,9 @@
+name: Scripts for LibreOJ
+namespace: https://loj.ac/
+version: 1.0.0
+match:
+  - https://loj.ac/*
+run-at: document-start
+updateURL: https://github.com/sxyz-edu/user-scripts/raw/master/dist/LibreOJ.user.js
+downloadURL: https://github.com/sxyz-edu/user-scripts/raw/master/dist/LibreOJ.user.js
+supportURL: https://github.com/sxyz-edu/user-scripts

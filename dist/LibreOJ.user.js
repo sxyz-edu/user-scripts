@@ -1,0 +1,12 @@
+// ==UserScript==
+// @name           Scripts for LibreOJ
+// @namespace      https://loj.ac/
+// @version        1.0.0
+// @match          https://loj.ac/*
+// @run-at         document-start
+// @updateURL      https://github.com/sxyz-edu/user-scripts/raw/master/dist/LibreOJ.user.js
+// @downloadURL    https://github.com/sxyz-edu/user-scripts/raw/master/dist/LibreOJ.user.js
+// @supportURL     https://github.com/sxyz-edu/user-scripts
+// ==/UserScript==
+
+!function(e){var t={};function n(r){if(t[r])return t[r].exports;var o=t[r]={i:r,l:!1,exports:{}};return e[r].call(o.exports,o,o.exports,n),o.l=!0,o.exports}n.m=e,n.c=t,n.d=function(e,t,r){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:r})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var r=Object.create(null);if(n.r(r),Object.defineProperty(r,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var o in e)n.d(r,o,function(t){return e[t]}.bind(null,o));return r},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="",n(n.s=0)}([function(e,t,n){"use strict";n.r(t);var r=/<a[^>]*?>(\d+)<\/a>/gi,o=function(e){return new Promise(function(t,n){var o=localStorage.getItem(e);if(o)try{var u=JSON.parse(o);if(Number(new Date)-u.updateAt<=36e5)return t(u)}catch(e){console.error(e)}fetch("/user/"+e).then(function(e){return e.text()}).then(function(n){var o,u={passedlist:(o=n,(o.match(r)||[]).map(function(e){return Number(e.replace(r,"$1"))})),updateAt:Number(new Date)};localStorage.setItem(e,JSON.stringify(u)),t(u)}).catch(n)})};document.addEventListener("DOMContentLoaded",function(){var e=document.querySelector("div.right.menu > a");if(null!==e){var t=e.attributes[0].value,n=/\/user\/(\w+)/i.exec(t)[1],r=/\/problem\/(\w+)/i.exec(window.location.href);if(r){var u=Number(r[1]);o(n).then(function(e){if(new Set(e.passedlist).has(u)){var t=document.getElementsByTagName("h1")[0];t.innerHTML=['<span class="status accepted"><i class="checkmark icon"></i></span>'].join(" ")+t.innerHTML}})}}})}]);

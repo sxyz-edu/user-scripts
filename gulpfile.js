@@ -16,5 +16,6 @@ const generateUserScript = dirname => () => {
 
 gulp.task("luogu", generateUserScript("./src/luogu"));
 gulp.task("bzoj", generateUserScript("./src/bzoj"));
+gulp.task("LibreOJ", generateUserScript("./src/LibreOJ"));
 
-gulp.task("default", gulp.series("luogu", "bzoj"));
+gulp.task("default", gulp.series("luogu", "bzoj", "LibreOJ"));

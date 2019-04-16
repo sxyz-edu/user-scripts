@@ -44,6 +44,12 @@ Written in TypeScript, bundle by Webpack.
   - Default: direct search for the problem (title or pid).
   - Start with `u:` : search for the user (username or uid).
 
+**LibreOJ.user.js**
+
+[install][LibreOJ-user-js]
+
+- Add a mark before the title if you have solved this problem already.
+
 ## Development
 
 ```bash
@@ -72,4 +78,5 @@ Thanks for your contribution.
 
 [bzoj-user-js]: https://cdn.jsdelivr.net/gh/sxyz-edu/user-scripts/dist/bzoj.user.js
 [luogu-user-js]: https://cdn.jsdelivr.net/gh/sxyz-edu/user-scripts/dist/luogu.user.js
+[LibreOJ-user-js]: https://cdn.jsdelivr.net/gh/sxyz-edu/user-scripts/dist/LibreOJ.user.js
 [this style]: https://userstyles.org/styles/166554/argon-design-luogu-argon-design

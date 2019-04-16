@@ -44,6 +44,12 @@
   - 默认：直接搜索题目（标题或 pid）
   - `u:` 开头：搜索用户（用户名或 uid）
 
+**LibreOJ.user.js**
+
+[安装][libreoj-user-js]
+
+- 在做过的题目标题前打勾；
+
 ## 参与开发
 
 ```bash
@@ -72,4 +78,5 @@ yarn build
 
 [bzoj-user-js]: https://cdn.jsdelivr.net/gh/sxyz-edu/user-scripts/dist/bzoj.user.js
 [luogu-user-js]: https://cdn.jsdelivr.net/gh/sxyz-edu/user-scripts/dist/luogu.user.js
+[libreoj-user-js]: https://cdn.jsdelivr.net/gh/sxyz-edu/user-scripts/dist/LibreOJ.user.js
 [this style]: https://userstyles.org/styles/166554/argon-design-luogu-argon-design
