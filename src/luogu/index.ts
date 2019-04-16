@@ -1,6 +1,8 @@
 /**
  * entry point
  */
+import "../utils/compare.scss";
+
 import autoLoad from "./autoLoad";
 import compare from "./compare";
 import mark from "./mark";

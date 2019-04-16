@@ -6,7 +6,6 @@
  * - Other: red
  */
 
-import style from "./compare.scss";
 const dataRegex = /<div class="lg-article am-hide-sm">([\s\S]*?)<\/div>/gi;
 const spanRegex = /<span[\s\S]*?<\/span>/gi;
 const aRegex = /<a[^>]*?>([\s\S]*?)<\/a>/gi;
@@ -130,7 +129,3 @@ export default () => {
     });
   }
 };
-
-document.addEventListener("DOMContentLoaded", () => {
-  style.use();
-});

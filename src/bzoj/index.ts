@@ -3,7 +3,7 @@
  */
 
 // loading sequence
-import "./style.scss";
+import "../utils/compare.scss";
 
 import "./access.ts";
 import "./autoRenewal.ts";

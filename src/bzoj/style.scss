@@ -1,4 +1,4 @@
-// 勾
+// mark
 
 i.icon.check {
   background: transparent;
@@ -11,18 +11,7 @@ i.icon.check {
   margin-right: 10px;
 }
 
-// 渲染
-
-a {
-
-  &.solved {
-    color: #1fc51f;
-  }
-
-  &.unsolved {
-    color: #ff6666;
-  }
-}
+// star
 
 .star {
   width: 20px;
