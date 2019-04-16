@@ -175,21 +175,6 @@ const solidStar =
   '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path></svg>';
 
 /**
- * fetch problem page
- * @param url problem link
- */
-const getHtml = (url: string): Promise<string> => {
-  return new Promise((resolve) => {
-    const xhr = new XMLHttpRequest();
-    xhr.onload = () => {
-      resolve(xhr.responseText);
-    };
-    xhr.open("GET", url);
-    xhr.send(null);
-  });
-};
-
-/**
  * convert HTMLElemnet to string
  * @param el Element
  */
@@ -259,34 +244,36 @@ document.addEventListener("DOMContentLoaded", () => {
         contain.innerHTML = "";
         saver.data.forEach((e) => {
           const url = `problem.php?id=${e}`;
-          getHtml(url).then((txt) => {
-            x++;
-            let s: string;
-            let str: string;
-            s = `<tr class="${x & 1 ? "evenrow" : "oddrow"}">`;
-            const html = document.createElement("html");
-            html.innerHTML = txt;
-            s += `<td><span></span></td>`; // TODO: mark accepted problmes
-            s += `<td align="center">${e}</td>`;
-            let el = html.querySelector("h2") as HTMLElement | null;
-            str = "";
-            if (el !== null) {
-              str = el.innerHTML;
-              str = str.slice(str.indexOf(":") + 2, str.length);
-            }
-            s += `<td align="left"><a href="${url}">${str}</a></td>`;
-            el = html.querySelector("p > a");
-            str = el !== null ? el.innerText : "";
-            s += `<td align="center">${str}</td>`;
-            const node = (html.querySelector("span") as HTMLElement).parentElement as HTMLElement;
-            str = dom2string(node.childNodes[9] as HTMLElement);
-            s += `<td align="center"><a href="status.php?problem_id=${e}&amp;jresult=4">${str}</a></td>`;
-            str = dom2string(node.childNodes[7] as HTMLElement);
-            str = str.slice(0, str.length - 12);
-            s += `<td align="center"><a href="status.php?problem_id=${e}">${str}</a></td>`;
-            s += "</tr>";
-            contain.innerHTML += s;
-          });
+          fetch(url)
+            .then((res) => res.text())
+            .then((txt) => {
+              x++;
+              let s: string;
+              let str: string;
+              s = `<tr class="${x & 1 ? "evenrow" : "oddrow"}">`;
+              const html = document.createElement("html");
+              html.innerHTML = txt;
+              s += `<td><span></span></td>`; // TODO: mark accepted problmes
+              s += `<td align="center">${e}</td>`;
+              let el = html.querySelector("h2") as HTMLElement | null;
+              str = "";
+              if (el !== null) {
+                str = el.innerHTML;
+                str = str.slice(str.indexOf(":") + 2, str.length);
+              }
+              s += `<td align="left"><a href="${url}">${str}</a></td>`;
+              el = html.querySelector("p > a");
+              str = el !== null ? el.innerText : "";
+              s += `<td align="center">${str}</td>`;
+              const node = (html.querySelector("span") as HTMLElement).parentElement as HTMLElement;
+              str = dom2string(node.childNodes[9] as HTMLElement);
+              s += `<td align="center"><a href="status.php?problem_id=${e}&amp;jresult=4">${str}</a></td>`;
+              str = dom2string(node.childNodes[7] as HTMLElement);
+              str = str.slice(0, str.length - 12);
+              s += `<td align="center"><a href="status.php?problem_id=${e}">${str}</a></td>`;
+              s += "</tr>";
+              contain.innerHTML += s;
+            });
         });
       });
       ele.appendChild(a);
