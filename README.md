@@ -46,9 +46,10 @@ Written in TypeScript, bundle by Webpack.
 
 **LibreOJ.user.js**
 
-[install][LibreOJ-user-js]
+[install][libreoj-user-js]
 
 - Add a mark before the title if you have solved this problem already.
+- Compare solved problems between you and other users.
 
 ## Development
 
@@ -78,5 +79,5 @@ Thanks for your contribution.
 
 [bzoj-user-js]: https://cdn.jsdelivr.net/gh/sxyz-edu/user-scripts/dist/bzoj.user.js
 [luogu-user-js]: https://cdn.jsdelivr.net/gh/sxyz-edu/user-scripts/dist/luogu.user.js
-[LibreOJ-user-js]: https://cdn.jsdelivr.net/gh/sxyz-edu/user-scripts/dist/LibreOJ.user.js
+[libreoj-user-js]: https://cdn.jsdelivr.net/gh/sxyz-edu/user-scripts/dist/LibreOJ.user.js
 [this style]: https://userstyles.org/styles/166554/argon-design-luogu-argon-design
