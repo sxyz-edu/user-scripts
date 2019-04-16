@@ -1,6 +1,6 @@
 name: Scripts for LibreOJ
 namespace: https://loj.ac/
-version: 1.0.2
+version: 1.0.3
 match:
   - https://loj.ac/*
 run-at: document-start

@@ -13,8 +13,12 @@ import getProblemList from "./getProblemList";
  * @returns {void} nothing
  */
 const displayNumber = (num: number): void => {
-  const h2 = (document.querySelectorAll("h4.ui.top.attached.block.header") as NodeListOf<Element>)[4];
-  h2.textContent = `通过的题目（其中你有 ${num} 道题尚未 AC）`;
+  const h4 = document.querySelectorAll("h4.ui.top.attached.block.header");
+  h4.forEach((el) => {
+    if (el.textContent === "通过的题目") {
+      el.textContent = `通过的题目（其中你有 ${num} 道题尚未 AC）`;
+    }
+  });
 };
 
 document.addEventListener("DOMContentLoaded", () => {
