@@ -234,7 +234,21 @@ textarea {
 }
 
 .am-input-group-sm > .am-input-group-btn > .am-btn {
+  background-color: #5e72e4 !important;
+  border: none;
+  border-radius: .5rem !important;
+  outline: none !important;
+  letter-spacing: .05em;
+  transition: all .15s ease;
+  box-shadow: 0 4px 6px rgba(50, 50, 93, .11), 0 1px 3px rgba(0, 0, 0, .08);
+  margin-bottom: 6px;
+  height: 33.4px;
   font-size: 1.35rem !important;
+}
+
+.am-btn-default {
+  background-color: #3bb4f2 !important;
+  border-color: #3bb4f2 !important;
 }
 
 @mixin button-color($color1, $color2) {
@@ -860,20 +874,20 @@ textarea {
 
 // 代码字体
 
-code,
-kbd,
-samp {
+.code,
+.kbd,
+.samp {
   font-family: Consolas, monospace, "Courier New" !important;
 }
 
 // 标题字体
 
-.lg-content-left > .lg-article > h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+.lg-content-left > .lg-article > .h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
   font-weight: 600 !important;
 }
 
@@ -909,4 +923,10 @@ td {
 
 .center {
   background: #ffffffbf !important;
+}
+
+// 比赛日历修正
+
+.am-datepicker {
+  width: auto !important;
 }
