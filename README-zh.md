@@ -64,14 +64,31 @@ yarn install
 
 在 commit 或者发送 pull request 之前，需要确保代码能够通过测试以及经过构建。
 
+注意，除非你知道自己修改的是什么脚本，否则请构建所有脚本。
+
 ```bash
 # 如果你用 npm
 npm run tslint
 npm run stylelint
+# 如果你想构建洛谷脚本
+npm run luogu
+# 如果你想构建 bzoj 脚本
+npm run bzoj
+# 如果你想构建 LibreOJ 脚本
+npm run LibreOJ
+# 如果你想构建全部脚本
 npm run build
+
 # 如果你用 yarn
 yarn tslint
 yarn stylelint
+# 如果你想构建洛谷脚本
+yarn luogu
+# 如果你想构建 bzoj 脚本
+yarn bzoj
+# 如果你想构建 LibreOJ 脚本
+yarn LibreOJ
+# 如果你想构建全部脚本
 yarn build
 ```
 

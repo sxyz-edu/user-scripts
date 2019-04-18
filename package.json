@@ -32,7 +32,10 @@
     "tslint:fix": "tslint \"src/**/*.ts\" --fix",
     "stylelint": "stylelint \"src/**/*.scss\"",
     "stylelint:fix": "stylelint \"src/**/*.scss\" --fix",
-    "build": "gulp"
+    "build": "gulp",
+    "luogu": "gulp luogu",
+    "bzoj": "gulp bzoj",
+    "LibreOJ": "gulp LibreOJ"
   },
   "repository": {
     "type": "git",

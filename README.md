@@ -64,14 +64,31 @@ yarn install
 
 Before you commit or pull request, you need to make sure your code passes the test and is built.
 
+Attention, unless you know what are you doing, please do not run the single build task.
+
 ```bash
 # if you use npm
 npm run tslint
 npm run stylelint
+# if you want to build scripts for luogu
+npm run luogu
+# if you want to build scripts for bzoj
+npm run bzoj
+# if you want to build scripts for LibreOJ
+npm run LibreOJ
+# if you want to build all scripts
 npm run build
+
 # if you use yarn
 yarn tslint
 yarn stylelint
+# if you want to build scripts for luogu
+yarn luogu
+# if you want to build scripts for bzoj
+yarn bzoj
+# if you want to build scripts for LibreOJ
+yarn LibreOJ
+# if you want to build all scripts
 yarn build
 ```
 
