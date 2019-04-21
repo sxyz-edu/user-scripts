@@ -28,3 +28,23 @@ i.icon.check {
     transition: color .2s;
   }
 }
+
+// 页边距
+
+body {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+// 去掉题目背景奇怪的蓝色
+
+div.content {
+  background: #ffffff00;
+}
+
+// 选择
+
+::selection {
+  background-color: #cce2ff;
+  color: rgba(0, 0, 0, .87);
+}
