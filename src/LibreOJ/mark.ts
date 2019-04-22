@@ -23,9 +23,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   getProblemList(uid).then((data) => {
     const passedlist = new Set(data.passedlist);
-    if (passedlist.has(pid)) {
-      const ele = document.getElementsByTagName("h1")[0];
-      ele.innerHTML = ['<span class="status accepted"><i class="checkmark icon"></i></span>'].join(" ") + ele.innerHTML;
-    }
+    const AC = passedlist.has(pid);
+    const ele = document.querySelector(".ui.center.aligned.grid") as HTMLElement;
+    const span = document.createElement("span");
+    span.setAttribute("class", "ui label");
+    span.innerHTML =
+      `通过情况：
+      <span class="status ${AC ? "accepted" : "wrong_answer"}">
+      ${AC ? "Accepted" : "Unaccepted"}
+      </span>`;
+    ele.childNodes[7].appendChild(span);
   });
 });
