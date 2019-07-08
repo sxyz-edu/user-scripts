@@ -95,37 +95,43 @@ export default () => {
     }
     const another = anotherMatch[1];
 
-    const uidMatch = /_uid=(\d+)/i.exec(document.cookie);
-    if (!uidMatch) {
-      // if the current user is not logged in yet
-      return;
-    }
-    const uid = uidMatch[1];
-
-    if (another === uid) {
-      // compared with the current user logged in
-      return;
-    }
-
-    getProblemList(uid).then((data) => {
-      let num = 0;
-      const passedlist = new Set(data.passedlist);
-      const triedlist = new Set(data.triedlist);
-      const list = Array.from(document.querySelectorAll("div.lg-article > a[data-pjax]"));
-      list.forEach((a) => {
-        const pid = a.innerHTML;
-        if (passedlist.has(pid)) {
-          a.classList.add("solved");
-        } else {
-          ++num;
-          if (triedlist.has(pid)) {
-            a.classList.add("tried");
-          } else {
-            a.classList.add("unsolved");
+    const waitForLoaded = (): void => {
+      const el = document.querySelectorAll("a[data-v-29932d52]");
+      if (!el.length) {
+        setTimeout(waitForLoaded, 500);
+      } else {
+        const uidMatch = /uid=(\d+)/i.exec(el[2].getAttribute("href") as string);
+        if (uidMatch) {
+          // the current user must be logged in
+          const uid = uidMatch[1];
+          if (another === uid) {
+            // compared with the current user logged in
+            return;
           }
+
+          getProblemList(uid).then((data) => {
+            let num = 0;
+            const passedlist = new Set(data.passedlist);
+            const triedlist = new Set(data.triedlist);
+            const list = Array.from(document.querySelectorAll("div.lg-article > a[data-pjax]"));
+            list.forEach((a) => {
+              const pid = a.innerHTML;
+              if (passedlist.has(pid)) {
+                a.classList.add("solved");
+              } else {
+                ++num;
+                if (triedlist.has(pid)) {
+                  a.classList.add("tried");
+                } else {
+                  a.classList.add("unsolved");
+                }
+              }
+            });
+            displayNumber(num);
+          });
         }
-      });
-      displayNumber(num);
-    });
+      }
+    };
+    waitForLoaded();
   }
 };
