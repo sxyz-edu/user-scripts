@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   elem.forEach((el) => {
     if (el) {
-      el.innerHTML += `[<a href="https://darkbzoj.tk/data/${pid}.zip">Download</a>]`;
+      el.innerHTML += `[<a href="https://gitlab.com/3088482189/bzojdata/raw/master/${pid}.zip">Download</a>]`;
     }
   });
 });
