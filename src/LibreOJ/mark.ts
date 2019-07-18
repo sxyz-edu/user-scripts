@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const url = e.attributes[0].value;
+  // eslint-disable-next-line no-extra-parens
   const uid = ((/\/user\/(\w+)/i).exec(url) as RegExpExecArray)[1];
 
   const pidMatch = (/\/problem\/(\w+)/i).exec(window.location.href);
