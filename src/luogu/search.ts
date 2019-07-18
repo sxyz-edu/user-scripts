@@ -2,6 +2,7 @@
  * Extended search tool
  */
 
+/* eslint-disable-next-line @typescript-eslint/camelcase */
 declare function show_alert(title: string, content: string): void;
 
 /**
@@ -12,18 +13,18 @@ declare function show_alert(title: string, content: string): void;
 const search = (parameter: string): void => {
   const txt = parameter.trim();
   if (!txt) {
-    return show_alert("提示", "请输入内容");
+    return show_alert('提示', '请输入内容');
   }
 
-  if (/^u:/i.test(txt)) {
+  if ((/^u:/i).test(txt)) {
     // search user
     let uid = txt.slice(2);
     uid = uid.trim();
     if (!uid) {
       // no input
-      return show_alert("提示", "请输入用户名或uid");
+      return show_alert('提示', '请输入用户名或uid');
     }
-    if (/^\d+$/g.test(uid)) {
+    if ((/^\d+$/g).test(uid)) {
       // direct jump
       window.location.href = `/space/show?uid=${uid}`;
     } else {
@@ -32,7 +33,7 @@ const search = (parameter: string): void => {
         .then((res) => res.json())
         .then((res) => {
           if (res.code !== 200) {
-            show_alert("好像哪里有点问题", "找不到该用户");
+            show_alert('好像哪里有点问题', '找不到该用户');
           } else {
             window.location.href = `/space/show?uid=${res.more.uid}`;
           }
@@ -40,10 +41,10 @@ const search = (parameter: string): void => {
         .catch((err) => {
           console.error(err);
 
-          return show_alert("错误", "网络超时");
+          return show_alert('错误', '网络超时');
         });
     }
-  } else if (/^(?:\d+|P\d+|CF\d+[A-Z]|SP\d+|AT\d+|UVA\d+)$/i.test(txt)) {
+  } else if ((/^(?:\d+|P\d+|CF\d+[A-Z]|SP\d+|AT\d+|UVA\d+)$/i).test(txt)) {
     // is a pid
     window.location.href = `/problemnew/show/${txt}`;
   } else {
@@ -59,10 +60,10 @@ const search = (parameter: string): void => {
  * @returns {void} nothing
  */
 const searchEvent = (el: HTMLInputElement): void => {
-  el.addEventListener("keypress", (e) => {
-    if (e.key === "Enter") {
+  el.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
       const target = e.target as HTMLInputElement;
-      const txt = (target && target.value) || "";
+      const txt = target && target.value || '';
       search(txt);
     }
   });
@@ -73,29 +74,29 @@ const searchEvent = (el: HTMLInputElement): void => {
  * @returns {void} nothing
  */
 const replaceBtn = (): void => {
-  const btn = document.querySelector("[name=goto]");
+  const btn = document.querySelector('[name=goto]');
   if (btn) {
     const nbtn = btn.cloneNode(true);
     if (btn.parentNode) {
       btn.parentNode.replaceChild(nbtn, btn);
     }
 
-    nbtn.textContent = "搜索";
-    nbtn.addEventListener("click", (e) => {
+    nbtn.textContent = '搜索';
+    nbtn.addEventListener('click', (e) => {
       // prevent default listener
       e.stopImmediatePropagation();
-      const toproblem = document.querySelector("input[name=toproblem]") as HTMLInputElement;
-      const txt = (toproblem && toproblem.value) || "";
+      const toproblem = document.querySelector('input[name=toproblem]') as HTMLInputElement;
+      const txt = toproblem && toproblem.value || '';
       search(txt);
     });
   }
 
-  const h2 = document.querySelector("div.lg-article.lg-index-stat > h2");
+  const h2 = document.querySelector('div.lg-article.lg-index-stat > h2');
   if (h2) {
-    h2.innerHTML = "<h2>搜索</h2>";
+    h2.innerHTML = '<h2>搜索</h2>';
   }
 
-  const input = document.querySelector("[name=toproblem]");
+  const input = document.querySelector('[name=toproblem]');
   if (input) {
     const ninput = input.cloneNode(true) as HTMLInputElement;
     ninput.placeholder = '使用 "u:" 搜索用户';
@@ -113,7 +114,7 @@ const replaceBtn = (): void => {
  */
 const replaceSearchBar = (): void => {
   const searchBar = () => {
-    const sbt = document.querySelector(".search-wrap input");
+    const sbt = document.querySelector('.search-wrap input');
     if (sbt) {
       const nsbt = sbt.cloneNode(true) as HTMLInputElement;
       if (sbt.parentNode) {
@@ -129,7 +130,7 @@ const replaceSearchBar = (): void => {
 };
 
 export default () => {
-  if (window.location.pathname === "/") {
+  if (window.location.pathname === '/') {
     // is home page
     replaceBtn();
   }

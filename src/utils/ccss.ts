@@ -1,4 +1,4 @@
-import html from "./html";
+import html from './html';
 
 /**
  * Dynamic control your CSS global variables
@@ -8,10 +8,10 @@ export default class ControlCSS {
 
   public style: HTMLStyleElement;
 
-  constructor(map: Map<string, string>) {
+  public constructor(map: Map<string, string>) {
     this.map = map;
-    this.style = html("style") as HTMLStyleElement;
-    document.addEventListener("DOMContentLoaded", () => {
+    this.style = html('style') as HTMLStyleElement;
+    document.addEventListener('DOMContentLoaded', () => {
       document.head.appendChild(this.style);
     });
     this.flush();
@@ -20,8 +20,8 @@ export default class ControlCSS {
   // flush to make the settings take effect
   public flush() {
     const v = Array.from(this.map)
-      .map((a) => a.join(":"))
-      .join(";");
+      .map((a) => a.join(':'))
+      .join(';');
     this.style.innerHTML = `:root{${v}}`;
   }
 

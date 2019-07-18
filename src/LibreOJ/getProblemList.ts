@@ -10,7 +10,7 @@ const aRegex = /<a[^>]*?>(\d+)<\/a>/gi;
  * @returns {number} problem ids
  */
 const parseProblems = (str: string): number[] => {
-  return (str.match(aRegex) || []).map((res) => Number(res.replace(aRegex, "$1")));
+  return (str.match(aRegex) || []).map((res) => Number(res.replace(aRegex, '$1')));
 };
 
 interface IPassedList {
@@ -37,7 +37,7 @@ const getProblemList = (uid: string): Promise<IPassedList> => {
       .then((res) => {
         const save = {
           passedlist: parseProblems(res),
-          updateAt: Number(new Date()),
+          updateAt: Number(new Date())
         };
         localStorage.setItem(uid, JSON.stringify(save));
         resolve(save);
