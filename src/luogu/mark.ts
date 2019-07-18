@@ -45,7 +45,7 @@ export default () => {
   const pid = pidMatch[1];
 
   const waitForLoaded = (): void => {
-    const el = document.querySelectorAll("a[data-v-29932d52]");
+    const el = document.querySelectorAll("a[data-v-7750579c]");
     if (!el.length) {
       setTimeout(waitForLoaded, 500);
     } else {
