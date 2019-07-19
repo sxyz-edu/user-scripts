@@ -7,17 +7,25 @@
   },
   "extends": [
     "plugin:@typescript-eslint/recommended",
-    "eslint:recommended",
+    "eslint:recommended"
   ],
   "parserOptions": {
     "sourceType": "module",
-    "ecmaVersion": 2018,
+    "ecmaVersion": 2018
   },
-  "plugins": [ "@typescript-eslint" ],
+  "plugins": [
+    "@typescript-eslint"
+  ],
   "rules": {
-    "@typescript-eslint/indent": ["error", 2],
+    "@typescript-eslint/indent": [
+      "error",
+      2
+    ],
     "@typescript-eslint/no-bitwise": "off",
-    "@typescript-eslint/interface-name-prefix": ["error", "always"],
+    "@typescript-eslint/interface-name-prefix": [
+      "error",
+      "always"
+    ],
     "@typescript-eslint/explicit-function-return-type": "off",
     "accessor-pairs": "error",
     "array-bracket-newline": "off",
@@ -43,10 +51,13 @@
       "1tbs"
     ],
     "callback-return": "error",
-    "camelcase": "off", // conflict @typescript-eslint/camelcase
+    "camelcase": "off",
     "capitalized-comments": "off",
     "class-methods-use-this": "error",
-    "comma-dangle": ["error", "only-multiline"],
+    "comma-dangle": [
+      "error",
+      "only-multiline"
+    ],
     "comma-spacing": [
       "error",
       {
@@ -145,7 +156,7 @@
     "no-array-constructor": "error",
     "no-async-promise-executor": "error",
     "no-await-in-loop": "error",
-    "no-bitwise": "off", // conflict @typescript/no-bitwise
+    "no-bitwise": "off",
     "no-buffer-constructor": "error",
     "no-caller": "error",
     "no-catch-shadow": "error",
