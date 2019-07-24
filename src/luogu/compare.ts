@@ -96,7 +96,7 @@ export default () => {
     const another = anotherMatch[1];
 
     const waitForLoaded = (): void => {
-      const el = document.querySelectorAll('a[data-v-7750579c]');
+      const el = document.querySelectorAll('a[data-v-15137c5e]');
       if (!el.length) {
         setTimeout(waitForLoaded, 500);
       } else {

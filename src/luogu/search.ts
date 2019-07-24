@@ -108,31 +108,9 @@ const replaceBtn = (): void => {
   }
 };
 
-/**
- * Replace search bar element
- * @returns {void} nothing
- */
-const replaceSearchBar = (): void => {
-  const searchBar = () => {
-    const sbt = document.querySelector('.search-wrap input');
-    if (sbt) {
-      const nsbt = sbt.cloneNode(true) as HTMLInputElement;
-      if (sbt.parentNode) {
-        sbt.parentNode.replaceChild(nsbt, sbt);
-      }
-
-      searchEvent(nsbt);
-    } else {
-      setTimeout(searchBar, 500);
-    }
-  };
-  setTimeout(searchBar, 500);
-};
-
 export default () => {
   if (window.location.pathname === '/') {
     // is home page
     replaceBtn();
   }
-  replaceSearchBar();
 };

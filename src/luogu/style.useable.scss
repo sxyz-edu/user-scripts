@@ -8,19 +8,19 @@ body {
 
 // 顶栏
 
-#app-header,
-.content > header {
-  background-color: transparent !important;
+header {
+  color: transparent !important;
+  background: transparent !important;
+
+  div.header {
+    background-color: transparent !important;
+  }
 }
 
 .lfe-h1 {
   color: #333333 !important;
   font-size: 30px !important;
   opacity: var(--lg-opacity);
-}
-
-.header {
-  background-color: #f5f5f500 !important;
 }
 
 // 选中内容的样式
@@ -736,7 +736,7 @@ textarea {
 
 // 底栏
 
-#app-footer {
+footer.wrapped.lfe-body {
   margin-left: 0 !important;
   background: #ffffff00 !important;
 }
