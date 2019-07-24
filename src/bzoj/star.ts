@@ -2,28 +2,30 @@
  * Star problems
  */
 
-/* tslint:disable max-line-length */
-
 /* global AV */
 
 /**
  * Provides data storage
  */
 interface ISaver {
+
   /**
    * stared problems
    */
   data: Set<string>;
+
   /**
    * check if pid is stared
    * @param {String} pid problem id
    */
   has(pid: string): boolean;
+
   /**
    * mark pid as stared
    * @param {String} pid problem id
    */
   add(pid: string): void;
+
   /**
    * mark pid as unstared
    * @param {String} pid problem id
@@ -38,7 +40,7 @@ interface ISaver {
  */
 const createLocalSaver = (): ISaver => {
   let Data: string[] = [];
-  const saved = localStorage.getItem("stars");
+  const saved = localStorage.getItem('stars');
   if (saved) {
     try {
       Data = JSON.parse(saved);
@@ -49,7 +51,7 @@ const createLocalSaver = (): ISaver => {
   const data = new Set(Data);
 
   const update = (): void => {
-    localStorage.setItem("stars", JSON.stringify(Array.from(data)));
+    localStorage.setItem('stars', JSON.stringify(Array.from(data)));
   };
   const remove = (pid: string): void => {
     data.delete(pid);
@@ -63,7 +65,7 @@ const createLocalSaver = (): ISaver => {
     return data.has(pid);
   };
 
-  return { data, add, has, remove };
+  return { add, data, has, remove };
 };
 
 /**
@@ -72,6 +74,7 @@ const createLocalSaver = (): ISaver => {
  * @param {String} appKey appkey
  * @param {String} appId appid
  * @param {String} username username
+ * @returns {Promise<ISaver>} the saver
  */
 const createLeancloudSaver = (appKey: string, appId: string, username: string): Promise<ISaver> => {
   const reportError = (err: Error): void => {
@@ -81,17 +84,18 @@ const createLeancloudSaver = (appKey: string, appId: string, username: string): 
 
   return new Promise((resolve, reject) => {
     AV.init({ appId, appKey });
-    const Stars = AV.Object.extend("Stars");
-    const str = new AV.Query("Stars");
-    str.equalTo("name", username);
+    const Stars = AV.Object.extend('Stars');
+    const str = new AV.Query('Stars');
+    str.equalTo('name', username);
 
     /**
      * create a new object
+     * @returns {Promise<AV.Object>} the object
      */
     const createNewStar = (): Promise<AV.Object> => {
       const star = new Stars();
-      star.set("name", username);
-      star.set("star", []);
+      star.set('name', username);
+      star.set('star', []);
 
       return star.save();
     };
@@ -99,27 +103,28 @@ const createLeancloudSaver = (appKey: string, appId: string, username: string): 
     /**
      * resolve a saver
      * @param {AV.Object} star av object
+     * @returns {void} nothing
      */
     const solve = (star: AV.Queriable): void => {
       if (star instanceof AV.File) {
-        throw new Error("File can not be solved");
+        throw new Error('File can not be solved');
       }
 
-      const data = new Set(star.get("star") as string[]);
+      const data = new Set(star.get('star') as string[]);
       const has = (id: string): boolean => {
         return data.has(id);
       };
       const add = (id: string): void => {
         data.add(id);
-        star.add("star", id);
+        star.add('star', id);
         star.save().catch(reportError);
       };
       const remove = (id: string): void => {
         data.delete(id);
-        star.remove("star", id);
+        star.remove('star', id);
         star.save().catch(reportError);
       };
-      resolve({ data, add, has, remove });
+      resolve({ add, data, has, remove });
     };
 
     str.find().then((res: AV.Queriable[]) => {
@@ -137,6 +142,7 @@ const createLeancloudSaver = (appKey: string, appId: string, username: string): 
  * get a saver
  * default to a leancloud saver
  * if fails anyway, return a local saver
+ * @returns {Promise<ISaver>} a saver
  */
 const getSaver = (): Promise<ISaver> => {
   return new Promise((resolve) => {
@@ -147,23 +153,23 @@ const getSaver = (): Promise<ISaver> => {
       resolve(createLocalSaver());
     };
 
-    const font = document.querySelector("font");
+    const font = document.querySelector('font');
     if (!font) {
       return reject();
     }
     const username = font.innerText;
-    if (username === "捐赠本站") {
+    if (username === '捐赠本站') {
       return reject();
     }
 
     /**
      * This is my leancloud app now (@sxyugao)
      */
-    createLeancloudSaver("48WcElR7mXie846wsb85yTgB", "yxzUEAgrLrP0XSQkN4k1vNE6-gzGzoHsz", username)
+    createLeancloudSaver('48WcElR7mXie846wsb85yTgB', 'yxzUEAgrLrP0XSQkN4k1vNE6-gzGzoHsz', username)
       .then(resolve)
       .catch((err: Error) => {
         console.error(err);
-        console.warn("Leancloud saver disabled, use localStorage instead.");
+        console.warn('Leancloud saver disabled, use localStorage instead.');
         reject();
       });
   });
@@ -176,15 +182,17 @@ const solidStar =
 
 /**
  * convert HTMLElemnet to string
- * @param el Element
+ * @param {HTMLElement} el Element
+ * @returns {String} the result
  */
 const dom2string = (el: HTMLElement): string => {
-  const tmpNode = document.createElement("div");
+  const tmpNode = document.createElement('div');
   tmpNode.appendChild(el);
+
   return tmpNode.innerHTML;
 };
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
   // get a saver
   getSaver().then((saver: ISaver) => {
     // bind elements here
@@ -194,18 +202,18 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      const div = document.createElement("div");
-      div.classList.add("star");
+      const div = document.createElement('div');
+      div.classList.add('star');
       let stared = saver.has(pid);
       if (stared) {
         div.innerHTML = solidStar;
-        div.classList.add("stared");
+        div.classList.add('stared');
       } else {
         div.innerHTML = regularStar;
       }
-      div.addEventListener("click", () => {
+      div.addEventListener('click', () => {
         stared = !stared;
-        div.classList.toggle("stared");
+        div.classList.toggle('stared');
         if (stared) {
           saver.add(pid);
           div.innerHTML = solidStar;
@@ -219,62 +227,65 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     if (
-      window.location.pathname === "/JudgeOnline/show.php" ||
-      window.location.pathname === "/JudgeOnline/problem.php"
+      window.location.pathname === '/JudgeOnline/show.php' ||
+      window.location.pathname === '/JudgeOnline/problem.php'
     ) {
       // is problem page
-      const pid = location.href.split("=")[1];
-      insertStar(pid, document.querySelector("h2"));
+      const pid = location.href.split('=')[1];
+      insertStar(pid, document.querySelector('h2'));
     }
 
-    if (window.location.pathname === "/JudgeOnline/problemset.php") {
+    if (window.location.pathname === '/JudgeOnline/problemset.php') {
       // is problem set page
       const list = Array.from(document.querySelectorAll('td[align="left"]'));
       list.forEach((td) => {
-        const pid = (td.children[0].getAttribute("href") || "").split("=")[1];
+        const pid = (td.children[0].getAttribute('href') || '').split('=')[1];
         insertStar(pid, td);
       });
-      const ele = document.querySelector("thead > tr > td > center") as HTMLElement;
-      const a = document.createElement("a") as HTMLElement;
-      a.innerText = " Stared problems";
-      a.setAttribute("href", "javascript:void(0)");
-      a.addEventListener("click", () => {
-        let x: number = 0;
-        const contain = document.querySelector("#problemset > tbody") as HTMLElement;
-        contain.innerHTML = "";
+      const ele = document.querySelector('thead > tr > td > center') as HTMLElement;
+      const a = document.createElement('a') as HTMLElement;
+      a.innerText = ' Stared problems';
+      a.setAttribute('href', '#');
+      a.addEventListener('click', () => {
+        let x = 0;
+        const contain = document.querySelector('#problemset > tbody') as HTMLElement;
+        contain.innerHTML = '';
         saver.data.forEach((e) => {
           const url = `problem.php?id=${e}`;
           fetch(url)
             .then((res) => res.text())
             .then((txt) => {
+              // TODO: 这里太不优美了，试试 pug?
               x++;
-              let s: string;
-              let str: string;
-              s = `<tr class="${x & 1 ? "evenrow" : "oddrow"}">`;
-              const html = document.createElement("html");
+              // eslint-disable-next-line init-declarations
+              let s: string, str: string;
+              s = `<tr class="${x & 1 ? 'evenrow' : 'oddrow'}">`;
+              const html = document.createElement('html');
               html.innerHTML = txt;
-              s += `<td><span></span></td>`; // TODO: mark accepted problmes
+              s += '<td><span></span></td>'; // TODO: mark accepted problmes
               s += `<td align="center">${e}</td>`;
-              let el = html.querySelector("h2") as HTMLElement | null;
-              str = "";
+              let el = html.querySelector('h2') as HTMLElement | null;
+              str = '';
               if (el !== null) {
                 str = el.innerHTML;
-                str = str.slice(str.indexOf(":") + 2, str.length);
+                str = str.slice(str.indexOf(':') + 2, str.length);
               }
               s += `<td align="left"><a href="${url}">${str}</a></td>`;
-              el = html.querySelector("p > a");
-              str = el !== null ? el.innerText : "";
+              el = html.querySelector('p > a');
+              str = el !== null ? el.innerText : '';
               s += `<td align="center">${str}</td>`;
-              const node = (html.querySelector("span") as HTMLElement).parentElement as HTMLElement;
+              const node = html.querySelector('span') as HTMLElement;
               str = dom2string(node.childNodes[9] as HTMLElement);
               s += `<td align="center"><a href="status.php?problem_id=${e}&amp;jresult=4">${str}</a></td>`;
               str = dom2string(node.childNodes[7] as HTMLElement);
               str = str.slice(0, str.length - 12);
               s += `<td align="center"><a href="status.php?problem_id=${e}">${str}</a></td>`;
-              s += "</tr>";
+              s += '</tr>';
               contain.innerHTML += s;
             });
         });
+
+        return false;
       });
       ele.appendChild(a);
     }

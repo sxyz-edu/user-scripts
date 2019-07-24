@@ -14,13 +14,13 @@ const queryForScore = (uid: number, pid: string): Promise<number> => {
     fetch(`/recordnew/lists?uid=${uid}&pid=${pid}`)
       .then((res) => res.text())
       .then((res) => {
-        const dom = new DOMParser().parseFromString(res, "text/html");
+        const dom = new DOMParser().parseFromString(res, 'text/html');
         const elems = Array.from(dom.querySelectorAll('strong[class^="lg-fg-"]'));
         // special judge for remote judge
         if (!elems.length) {
-          if (dom.querySelectorAll("span.lg-bg-green").length) {
+          if (dom.querySelectorAll('span.lg-bg-green').length) {
             resolve(100);
-          } else if (dom.querySelectorAll("span.lg-bg-red").length) {
+          } else if (dom.querySelectorAll('span.lg-bg-red').length) {
             resolve(0);
           } else {
             resolve(-1);
@@ -36,7 +36,7 @@ const queryForScore = (uid: number, pid: string): Promise<number> => {
 };
 
 export default () => {
-  const pidMatch = /\/problemnew\/show\/(\w+)/i.exec(window.location.href);
+  const pidMatch = (/\/problemnew\/show\/(\w+)/i).exec(window.location.href);
   if (!pidMatch) {
     // this is not a problem page
     return;
@@ -45,16 +45,16 @@ export default () => {
   const pid = pidMatch[1];
 
   const waitForLoaded = (): void => {
-    const el = document.querySelectorAll("a[data-v-7750579c]");
+    const el = document.querySelectorAll('a[data-v-7750579c]');
     if (!el.length) {
       setTimeout(waitForLoaded, 500);
     } else {
-      const uidMatch = /uid=(\d+)/i.exec(el[2].getAttribute("href") as string);
+      const uidMatch = (/uid=(\d+)/i).exec(el[2].getAttribute('href') as string);
       if (uidMatch) {
         // the current user must be logged in
         const uid = Number(uidMatch[1]);
         queryForScore(uid, pid).then((score) => {
-          let html = "";
+          let html = '';
           if (score === 100) {
             html = '<strong class="lg-fg-green"><i class="am-icon-check"></i></strong>';
           } else if (score > 80) {
@@ -69,7 +69,7 @@ export default () => {
             html = '<strong style="color: #515151;"><i class="am-icon-minus"></i></strong>';
           }
           html = `<a href="/recordnew/lists?uid=${uid}&pid=${pid}" target="_blank">${html}</a>`;
-          const h1 = document.querySelector("header h1") as HTMLElement;
+          const h1 = document.querySelector('header h1') as HTMLElement;
           h1.innerHTML = html + h1.innerHTML;
         });
       }

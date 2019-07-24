@@ -5,7 +5,7 @@ install:
   - yarn install
 script:
   # check grammar
-  - yarn tslint
+  - yarn eslint
   - yarn stylelint
   # check if files in `dist/` is up-to-date
   - mv dist _dist && yarn build && diff dist _dist

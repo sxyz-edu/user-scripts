@@ -1,4 +1,5 @@
-declare module "*.scss" {
+/* eslint-disable */
+declare module '*.scss' {
   const scss: {
     use: () => void;
     unuse: () => void;
