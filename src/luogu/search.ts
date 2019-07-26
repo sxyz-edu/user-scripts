@@ -50,7 +50,7 @@ const search = (parameter: string): void => {
   } else {
     // search it
     const str = encodeURIComponent(txt);
-    window.location.href = `/problemnew/lists?name=${str}`;
+    window.location.href = `/problem/list?keyword=${str}&page=1`;
   }
 };
 
