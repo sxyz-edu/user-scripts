@@ -18,13 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   elem.forEach((el) => {
     if (el) {
-      if (pid < 3500) {
-        el.innerHTML += `[<a href="https://gitlab.com/3088482189/bzojdata/raw/master/${pid}.zip">Download</a>]`;
-      } else if (pid < 4500) {
-        el.innerHTML += `[<a href="https://gitlab.com/3088482189/bzojdata3500-4999/raw/master/${pid}.zip">Download</a>]`;
-      } else {
-        el.innerHTML += `[<a href="https://gitlab.com/3088482189/bzojdata4500-/raw/master/${pid}.zip">Download</a>]`;
-      }
+      el.innerHTML += `[<a href="https://darkbzoj.tk/data/${pid}.zip">Download</a>]`;
     }
   });
 });

@@ -23,7 +23,7 @@
 [安装][bzoj-user-js]
 
 - 提供其他题库相关题目的跳转连接（数据来自第三方）；
-- 提供便捷的数据下载链接（基于 <https://bzoj.netlify.com/>，仅供个人学习使用）；
+- 提供便捷的数据下载链接（基于 <https://darkbzoj.tk>，仅供个人学习使用）；
 - 提供权限题的访问权限（仍然不能提交）；
 - 在做过的题目标题前打勾；
 - 比较别人和你的做题记录；
@@ -68,7 +68,7 @@ yarn install
 
 ```bash
 # 如果你用 npm
-npm run tslint
+npm run eslint
 npm run stylelint
 # 如果你想构建洛谷脚本
 npm run luogu
@@ -80,7 +80,7 @@ npm run LibreOJ
 npm run build
 
 # 如果你用 yarn
-yarn tslint
+yarn eslint
 yarn stylelint
 # 如果你想构建洛谷脚本
 yarn luogu

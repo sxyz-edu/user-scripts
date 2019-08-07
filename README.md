@@ -23,7 +23,7 @@ Written in TypeScript, bundle by Webpack.
 [install][bzoj-user-js]
 
 - Provide links for related problems on luogu, vijos, codevs, etc.
-- Provide direct data download link (based on <https://bzoj.netlify.com/>, for personal study only).
+- Provide direct data download link (based on <https://darkbzoj.tk>, for personal study only).
 - Provide access to protected problems (read only, cannot submit yet).
 - Add a mark before the title if you have solved this problem already.
 - Compare solved problems between you and other users.
@@ -68,7 +68,7 @@ Attention, unless you know what are you doing, please do not run the single buil
 
 ```bash
 # if you use npm
-npm run tslint
+npm run eslint
 npm run stylelint
 # if you want to build scripts for luogu
 npm run luogu
@@ -80,7 +80,7 @@ npm run LibreOJ
 npm run build
 
 # if you use yarn
-yarn tslint
+yarn eslint
 yarn stylelint
 # if you want to build scripts for luogu
 yarn luogu
