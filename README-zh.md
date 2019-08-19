@@ -34,12 +34,8 @@
 
 [安装][luogu-user-js]
 
-**设置的入口在左侧导航栏中**
-
-- 提供了一个更加舒适的 UI（从[这个样式][this style]修改而来）；
 - 评论自动翻页功能；
 - 比较别人和你的做题记录；
-- 在题目页面标题处添加该题的当前得分；
 - 扩展原有搜索功能：
   - 默认：直接搜索题目（标题或 pid）
   - `u:` 开头：搜索用户（用户名或 uid）
@@ -97,4 +93,3 @@ yarn build
 [bzoj-user-js]: https://cdn.jsdelivr.net/gh/sxyz-edu/user-scripts/dist/bzoj.user.js
 [luogu-user-js]: https://cdn.jsdelivr.net/gh/sxyz-edu/user-scripts/dist/luogu.user.js
 [libreoj-user-js]: https://cdn.jsdelivr.net/gh/sxyz-edu/user-scripts/dist/LibreOJ.user.js
-[this style]: https://userstyles.org/styles/166554/argon-design-luogu-argon-design

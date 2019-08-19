@@ -34,12 +34,8 @@ Written in TypeScript, bundle by Webpack.
 
 [install][luogu-user-js]
 
-**Config Entrance is at the left nav bar**
-
-- Provide a more friendly UI (modified from [this style]).
 - Load comments automatically in discuss pages.
 - Compare solved problems between you and other users.
-- Add your score of the problem before the title.
 - Extend the original search function.
   - Default: direct search for the problem (title or pid).
   - Start with `u:` : search for the user (username or uid).
@@ -97,4 +93,3 @@ Thanks for your contribution.
 [bzoj-user-js]: https://cdn.jsdelivr.net/gh/sxyz-edu/user-scripts/dist/bzoj.user.js
 [luogu-user-js]: https://cdn.jsdelivr.net/gh/sxyz-edu/user-scripts/dist/luogu.user.js
 [libreoj-user-js]: https://cdn.jsdelivr.net/gh/sxyz-edu/user-scripts/dist/LibreOJ.user.js
-[this style]: https://userstyles.org/styles/166554/argon-design-luogu-argon-design

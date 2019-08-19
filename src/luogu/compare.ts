@@ -79,11 +79,10 @@ const getProblemList = (uid: string): Promise<IProblemList> => {
  * @returns {void} nothing
  */
 const displayNumber = (num: number): void => {
-  const h2 = document.querySelector('span.fuck-spider') as HTMLElement;
-  if (h2) {
-    h2.style.fontSize = '18px';
-    h2.textContent = `通过题目（其中你有 ${num} 道题尚未 AC）`;
-  }
+  const el = document.querySelector('span.fuck-spider') as HTMLElement;
+  const h2 = el.parentElement as HTMLElement;
+  h2.style.fontSize = '18px';
+  h2.textContent = `通过题目（其中你有 ${num} 道题尚未 AC）`;
 };
 
 export default () => {
@@ -95,41 +94,43 @@ export default () => {
     }
     const another = anotherMatch[1];
 
+    const el = document.querySelectorAll('a[data-v-19d75f76][data-v-445f91a0]');
+    // the current user must be logged in
+    if (el.length < 3) {
+      return;
+    }
     const waitForLoaded = (): void => {
-      const el = document.querySelectorAll('a[data-v-15137c5e]');
-      if (!el.length) {
-        setTimeout(waitForLoaded, 500);
+      const href = el[2].getAttribute('href') as string;
+      const uidMatch = (/uid=(\d+)/i).exec(href);
+      if (!uidMatch) {
+        setTimeout(waitForLoaded, 100);
       } else {
-        const uidMatch = (/uid=(\d+)/i).exec(el[2].getAttribute('href') as string);
-        if (uidMatch) {
-          // the current user must be logged in
-          const uid = uidMatch[1];
-          if (another === uid) {
-            // compared with the current user logged in
-            return;
-          }
-
-          getProblemList(uid).then((data) => {
-            let num = 0;
-            const passedlist = new Set(data.passedlist);
-            const triedlist = new Set(data.triedlist);
-            const list = Array.from(document.querySelectorAll('div.lg-article > a[data-pjax]'));
-            list.forEach((a) => {
-              const pid = a.innerHTML;
-              if (passedlist.has(pid)) {
-                a.classList.add('solved');
-              } else {
-                ++num;
-                if (triedlist.has(pid)) {
-                  a.classList.add('tried');
-                } else {
-                  a.classList.add('unsolved');
-                }
-              }
-            });
-            displayNumber(num);
-          });
+        const uid = uidMatch[1];
+        if (another === uid) {
+          // compared with the current user logged in
+          return;
         }
+
+        getProblemList(uid).then((data) => {
+          let num = 0;
+          const passedlist = new Set(data.passedlist);
+          const triedlist = new Set(data.triedlist);
+          const list = Array.from(document.querySelectorAll('div.lg-article > a[data-pjax]'));
+          list.forEach((a) => {
+            const pid = a.innerHTML;
+            if (passedlist.has(pid)) {
+              a.classList.add('solved');
+            } else {
+              ++num;
+              if (triedlist.has(pid)) {
+                a.classList.add('tried');
+              } else {
+                a.classList.add('unsolved');
+              }
+            }
+          });
+          displayNumber(num);
+        });
       }
     };
     waitForLoaded();

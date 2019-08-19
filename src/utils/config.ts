@@ -209,8 +209,12 @@ export default class ConfigWindow {
     // different button styles for different online judges
     switch (this.onlineJudge) {
       case 'luogu': {
-        confirmButton.classList.add('am-btn', 'am-btn-danger', 'am-btn-sm');
-        cancelButton.classList.add('am-btn', 'am-btn-primary', 'am-btn-sm');
+        confirmButton.style.backgroundColor = '#dd514c';
+        confirmButton.style.borderColor = '#dd514c';
+        confirmButton.style.padding = '.5em 1em';
+        cancelButton.style.backgroundColor = '#0e90d2';
+        cancelButton.style.borderColor = '#0e90d2';
+        cancelButton.style.padding = '.5em 1em';
         break;
       }
       default: {
