@@ -94,43 +94,46 @@ export default () => {
     }
     const another = anotherMatch[1];
 
-    const el = document.querySelectorAll('a[data-v-19d75f76][data-v-445f91a0]');
-    // the current user must be logged in
-    if (el.length < 3) {
-      return;
-    }
     const waitForLoaded = (): void => {
-      const href = el[2].getAttribute('href') as string;
-      const uidMatch = (/uid=(\d+)/i).exec(href);
-      if (!uidMatch) {
+      const el = document.querySelectorAll('a[data-v-1f4667be][data-v-19d75f76]');
+      if (!el.length) {
         setTimeout(waitForLoaded, 100);
       } else {
-        const uid = uidMatch[1];
-        if (another === uid) {
-          // compared with the current user logged in
+        // the current user must be logged in
+        if (el.length < 3) {
           return;
         }
-
-        getProblemList(uid).then((data) => {
-          let num = 0;
-          const passedlist = new Set(data.passedlist);
-          const triedlist = new Set(data.triedlist);
-          const list = Array.from(document.querySelectorAll('div.lg-article > a[data-pjax]'));
-          list.forEach((a) => {
-            const pid = a.innerHTML;
-            if (passedlist.has(pid)) {
-              a.classList.add('solved');
-            } else {
-              ++num;
-              if (triedlist.has(pid)) {
-                a.classList.add('tried');
+        const href = el[2].getAttribute('href') as string;
+        const uidMatch = (/uid=(\d+)/i).exec(href);
+        if (!uidMatch) {
+          setTimeout(waitForLoaded, 100);
+        } else {
+          const uid = uidMatch[1];
+          if (another === uid) {
+            // compared with the current user logged in
+            return;
+          }
+          getProblemList(uid).then((data) => {
+            let num = 0;
+            const passedlist = new Set(data.passedlist);
+            const triedlist = new Set(data.triedlist);
+            const list = Array.from(document.querySelectorAll('div.lg-article > a[data-pjax]'));
+            list.forEach((a) => {
+              const pid = a.innerHTML;
+              if (passedlist.has(pid)) {
+                a.classList.add('solved');
               } else {
-                a.classList.add('unsolved');
+                ++num;
+                if (triedlist.has(pid)) {
+                  a.classList.add('tried');
+                } else {
+                  a.classList.add('unsolved');
+                }
               }
-            }
+            });
+            displayNumber(num);
           });
-          displayNumber(num);
-        });
+        }
       }
     };
     waitForLoaded();
