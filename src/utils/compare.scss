@@ -1,14 +1,14 @@
 a {
 
   &.solved {
-    color: #1fc51f;
+    color: #1fc51f !important;
   }
 
   &.unsolved {
-    color: #ff6666;
+    color: #ff6666 !important;
   }
 
   &.tried {
-    color: #ff9900;
+    color: #ff9900 !important;
   }
 }

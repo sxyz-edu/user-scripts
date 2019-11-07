@@ -1,6 +1,6 @@
 name: Scripts for Luogu
 namespace: https://www.luogu.org/
-version: 0.6.1-beta
+version: 1.0.0-beta
 match:
   - https://www.luogu.org/*
   - https://www.luogu.com.cn/*
