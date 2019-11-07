@@ -71,6 +71,10 @@ const gen = (list: Array<any>): Set<any> => {
 }
 
 export default () => {
+  if (!window.location.pathname.includes('user')) {
+    // in order to avoid MLE
+    return;
+  }
   const waitForAvatarLoaded = (): void => {
     const el = document.querySelector('img.avatar');
     if (!el) {
