@@ -58,11 +58,11 @@ const getProblemList = (uid: string): Promise<IProblemList> => {
 
 /**
  * Generator problem set
- * @param {Array<any>} list the input
+ * @param {Array<string>} list the input
  * @return {Set} the output
  */
-const gen = (list: Array<any>): Set<any> => {
-  const res = new Set();
+const gen = (list: Array<any>): Set<string> => {
+  const res = new Set<string>();
   list.forEach((pro) => {
     res.add(pro.pid);
   });
@@ -71,10 +71,6 @@ const gen = (list: Array<any>): Set<any> => {
 }
 
 export default () => {
-  if (!window.location.pathname.includes('user')) {
-    // in order to avoid MLE
-    return;
-  }
   const waitForAvatarLoaded = (): void => {
     const el = document.querySelector('img.avatar');
     if (!el) {
@@ -94,10 +90,14 @@ export default () => {
       }
       let num = 0;
       const watchDog = (): void => {
+        if (!window.location.pathname.includes('user')) {
+          // in order to avoid MLE
+          return;
+        }
         if (!window.location.href.includes('#problem')) {
           // if not in problem page
           num = 0;
-          setTimeout(watchDog, 1000);
+          setTimeout(watchDog, 1500);
         } else if (!num) {
           // only run one time
           ++num;
@@ -109,7 +109,7 @@ export default () => {
           const another = anotherMatch[1];
           if (another === uid) {
             // compared with the current user logged in
-            setTimeout(watchDog, 1000);
+            setTimeout(watchDog, 1500);
           } else {
             getProblemList(uid).then((data) => {
               const passedlist = gen(Array.from(data.passedlist));
@@ -140,7 +140,7 @@ export default () => {
             });
           }
         }
-        setTimeout(watchDog, 1000);
+        setTimeout(watchDog, 1500);
       }
       watchDog();
     }
