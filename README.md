@@ -36,9 +36,6 @@ Written in TypeScript, bundle by Webpack.
 
 - Load comments automatically in discuss pages.
 - Compare solved problems between you and other users.
-- Extend the original search function.
-  - Default: direct search for the problem (title or pid).
-  - Start with `u:` : search for the user (username or uid).
 
 **LibreOJ.user.js**
 
