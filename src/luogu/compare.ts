@@ -88,7 +88,6 @@ export default () => {
         // the current user must be logged in
         return;
       }
-      let num = 0;
       const watchDog = (): void => {
         if (!window.location.pathname.includes('user')) {
           // in order to avoid MLE
@@ -96,11 +95,8 @@ export default () => {
         }
         if (!window.location.href.includes('#problem')) {
           // if not in problem page
-          num = 0;
           setTimeout(watchDog, 1500);
-        } else if (!num) {
-          // only run one time
-          ++num;
+        } else {
           const anotherMatch = (/(\d+)#problem/).exec(window.location.href);
           if (!anotherMatch) {
             // it's impossible
@@ -139,6 +135,9 @@ export default () => {
               waitForLoaded();
             });
           }
+
+          // only run one time
+          return;
         }
         setTimeout(watchDog, 1500);
       }
